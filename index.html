@@ -1,12 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Les Petits Plats</title>
-    </head>
-    <body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet" />
 
-    </body>
-    </html>
+  <title>Les Petits Plats</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <header class="container_header">
+      <img class="logo" src="./assets/logo.svg" alt="Logotype de l'enseigne">
+    </header>
+  </div>
+
+  <main id="app" role="main">
+    <div class="searchbar">
+      <div class="searchbar_group">
+        <input class="search-bar" type="search" aria-label="search"
+          placeholder="Recherchez un ingrédient, un appareil, un ustencil ou une recette">
+        <img class="input_logo" src="./assets/loupe.svg">
+      </div>
+    </div>
+    <div class="btn-group-wrapper">
+      <div class="btn-group">
+        <button class="btn-ingredient btn btn-primary" type="button">
+          Ingrédients
+          <i class="dropdown-ingredient-toggle fas fa-chevron-down"></i>
+        </button>
+        <button class="btn-ingredient btn btn-primary" type="button">
+          Ingrédients
+          <i class="dropdown-ingredient-toggle fas fa-chevron-down"></i>
+        </button>
+        <button class="btn-ingredient btn btn-primary" type="button">
+          Ingrédients
+          <i class="dropdown-ingredient-toggle fas fa-chevron-down"></i>
+        </button>
+      </div>
+    </div>
+    
+
+    
+  </main>
+
+</body>
+
+</html>
