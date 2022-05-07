@@ -1,0 +1,57 @@
+.container_header {
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar {
+  padding: 15px;
+}
+
+.search-bar::placeholder {
+  color: #c7bebe;
+  font-size: 18px;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem 0;
+}
+  
+@media screen and (max-width : 375px) {
+    flex-direction: column;
+  }
+
+  .btn {
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-right: 2%;
+    padding: 1% 0%;
+    width: 15%;
+  }
+    @media screen and (max-width : 767px) {
+      width: 33%;
+    }
+
+    @media screen and (max-width : 375px) {
+      width: 100%;
+      margin: 2% 0%;
+    }
+  
+    .tags {
+      display: flex;
+    }
+
+    
+  .tags.ingredient-tag, .btn-primary {
+        background-color: #3282f7;
+      }
+  .tags.appliance-tag, .btn-success {
+        background-color: #68d9a4 ;
+      }
+  .tags.utensil-tag, .btn-danger {
+        background-color: #ed6454;
+      }
+    
