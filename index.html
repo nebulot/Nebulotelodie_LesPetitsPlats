@@ -4,9 +4,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta content="Les petits plats, outil de recettes de cuisine"
+      name="description"    />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="script/styles/index.css" />
+  <script src="https://kit.fontawesome.com/504f488958.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
   <title>Les Petits Plats</title>
 </head>
 
@@ -19,39 +22,87 @@
   </div>
 
   <main id="app" role="main">
-    <div class="searchbar">
+    <section class="searchbar">
       <div class="searchbar_group">
         <input class="search-bar" type="search" aria-label="search"
           placeholder="Recherchez un ingrédient, un appareil, un ustensile ou une recette">
         <img class="input_logo" src="./assets/loupe.svg">
       </div>
-    </div>
-    <div class="tags"></div>
-    <div class="btn-group-wrapper">
+    </section>
+    <!-- ARRAY OF TAGS JS -->
+    <section class="tags"></section>
+
+
+    <!-- UL and LI x 3  JS -->
+    <section class="btn-group-wrapper">
       <div class="btn-group">
         <button class="btn-ingredient btn btn-primary" type="button">
           Ingrédients
           <i class="dropdown-ingredient-toggle fas fa-chevron-down"></i>
         </button>
+        <!-- Li-->
+        <div class="list-wrapper ingredient-list-wrapper">
+          <label for="input-ingredient"></label>
+          <input
+            type="search"
+            class="input-dropdown"
+            id="input-ingredient"
+            placeholder="Rechercher un ingrédient"
+          />
+          <button type="button" class="close-dropdown-tag close-dropdown-ingredient">
+            <i class="fas fa-chevron-up"></i>
+          </button>
+          <ul class="dropdown-list ingredient-list"></ul>
+        </div>
+
         <button class="btn-appliance btn btn-success" type="button">
           Appareils
           <i class="dropdown-appliance-toggle fas fa-chevron-down"></i>
         </button>
+        <!-- Li-->
+        <div class="list-wrapper appliance-list-wrapper">
+          <label for="input-appliance"></label>
+          <input
+            type="search"
+            class="input-dropdown"
+            id="input-appliance"
+            placeholder="Rechercher un appareil"
+          />
+          <button type="button" class="close-dropdown-tag close-dropdown-appliance">
+            <i class="fas fa-chevron-up"></i>
+          </button>
+          <ul class="dropdown-list appliance-list"></ul>
+        </div>
+
         <button class="btn-ustensil btn btn-danger" type="button">
           Ustensiles
           <i class="dropdown-ustensil-toggle fas fa-chevron-down"></i>
         </button>
+        <!-- Li-->
+        <div class="list-wrapper ustensil-list-wrapper">
+          <label for="input-ustensil"></label>
+          <input
+            type="search"
+            class="input-dropdown"
+            id="input-ustensil"
+            placeholder="Rechercher un ustensile"
+          />
+          <button type="button" class="close-dropdown-tag close-dropdown-ustensil">
+            <i class="fas fa-chevron-up"></i>
+          </button>
+          <ul class="dropdown-list ustensil-list"></ul>
+        </div>
       </div>
-    </div>
-  <div class ="receipe-container">
-    <div class = "receipe"></dic>
-  </div>
+    </section>
 
-    
+    <!-- CARDS COMPONENT JS -->
+    <section class="receipe-container">
+      <div class="receipe">
+        </dic>
+    </section>
 
-    
   </main>
-
+  <!-- script JS -->
 </body>
 
 </html>
