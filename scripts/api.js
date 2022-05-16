@@ -1,20 +1,22 @@
 
 //2 GET DATA
 export const getRecipes = (async () => {
-    await fetch("./recipe.json")
+    
+  return await fetch("scripts/recipe.json")
       .then((res) => {
         return res.json();
       })
       .then((data) => {
-        index.get_Recipes(data.recipes);
-  
+        
+        return data.recipes;
+          
       })
       .catch((err) => {
         err.message;
       });
   })();
 
-  // + function constructor
+  /* + function constructor
 export function renderRecipes(data) {
   // console.log(data);
   this.data = data;
@@ -22,5 +24,5 @@ export function renderRecipes(data) {
     console.log(data);
     return data;
   };
-}
+}*/
 

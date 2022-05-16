@@ -1,8 +1,9 @@
-import { renderRecipes } from "./api.js";
+import { getRecipes } from "./api.js";
 
+console.log(await getRecipes);
 
 //get_Recipes(data.recipes)
-export const get_Recipes = (renderRecipes.prototype.getAllRecipes =
+/*export const get_Recipes = (renderRecipes.prototype.getAllRecipes =
     function (recipes) {
       // console.log(recipes);
       cards.displayCard(recipes);
@@ -11,4 +12,4 @@ export const get_Recipes = (renderRecipes.prototype.getAllRecipes =
       //google.tagged(recipes);
       return recipes;
     });
-
+*/
