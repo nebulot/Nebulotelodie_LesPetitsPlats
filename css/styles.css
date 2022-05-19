@@ -1,7 +1,7 @@
 .container_header {
   display: flex;
   justify-content: center;
-  margin:30px 0;
+  margin: 30px 0;
 }
 .searchbar {
   width: 100%;
@@ -20,9 +20,9 @@
   display: flex;
   width: 90%;
   background-color: #ece9e9;
-  border:none;
-  border-top-left-radius:5px;
-  border-bottom-left-radius:5px;
+  border: none;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .search-bar::placeholder {
@@ -33,11 +33,11 @@
 .input_logo {
   padding: 5px;
   background-color: #e9ecef;
-  border-top-right-radius:5px;
-  border-bottom-right-radius:5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
-.input_logo_loop{
+.input_logo_loop {
   width: 17px;
   padding: 8px;
 }
@@ -68,7 +68,8 @@
   width: 15%;
   border: none;
   color: white;
-  border-radius:8px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 @media screen and (max-width: 767px) {
   width: 33%;
@@ -105,15 +106,15 @@
 }
 
 .ingredient-list-wrapper {
-  background-color:#3282f7;
-  position:absolute;
-  left:0%; 
+  background-color: #3282f7;
+  position: absolute;
+  left: 0%;
 }
 
 .appliance-list-wrapper {
-background-color:#68d9a4;
-position: absolute;
-left:20%; 
+  background-color: #68d9a4;
+  position: absolute;
+  left: 20%;
 }
 
 .utensil-list-wrapper {
