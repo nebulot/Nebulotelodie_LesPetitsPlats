@@ -5,16 +5,15 @@ $dark: #04040C;
 $headings-color: #284876;
 $card-bg: #FCFCFC;*/
 // scss-docs-start theme-colors-map
-$theme-colors: (
-  "primary":    #3282F7,
-  "secondary":  #C7BEBE,
-  "success":    #68D9A4,
-  "info":       $info,
-  "warning":    $warning,
-  "danger":     #ED6454,
-  "light":      #E7E7E7,
-  "dark":       $dark
-) !default;
+
+  $primary: #3282F7;
+  $secondary: #C7BEBE;
+  $success: #68D9A4;
+  $info: $info;
+  $warning: $warning;
+  $danger: #ED6454;
+  $light: #E7E7E7;
+  $dark: $dark;
 // scss-docs-end theme-colors-map
 // npm install --save bootstrap and select 
 
