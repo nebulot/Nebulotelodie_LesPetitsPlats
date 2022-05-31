@@ -1,0 +1,22 @@
+{
+  "name": "p7_nebulot_elodie",
+  "version": "1.0.0",
+  "description": "Les petits plats",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nebulot/p7_nebulot_elodie.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nebulot/p7_nebulot_elodie/issues"
+  },
+  "homepage": "https://github.com/nebulot/p7_nebulot_elodie#readme",
+  "dependencies": {
+    "bootstrap": "^5.1.3"
+  }
+}

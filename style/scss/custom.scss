@@ -1,7 +1,4 @@
 // npm install --save bootstrap and select 
-@import "node_modules/bootstrap/scss/functions";
-@import "node_modules/bootstrap/scss/variables";
-
 $theme-colors: (
   "primary":    #3282F7,
   "secondary":  #C7BEBE,
@@ -13,4 +10,3 @@ $theme-colors: (
   "dark":       $dark
 );
 
-@import "node_modules/bootstrap/scss/bootstrap";
