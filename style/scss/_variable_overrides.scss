@@ -1,4 +1,4 @@
-// npm install --save bootstrap and select 
+// scss-docs-start theme-colors-map
 $theme-colors: (
   "primary":    #3282F7,
   "secondary":  #C7BEBE,
@@ -8,5 +8,7 @@ $theme-colors: (
   "danger":     #ED6454,
   "light":      #E7E7E7,
   "dark":       $dark
-);
+) !default;
+// scss-docs-end theme-colors-map
+// npm install --save bootstrap and select 
 
