@@ -16,8 +16,9 @@ export class RecipeCard {
   
 
   get recipeCard() {
-    return `
-		<article class="receipe_card">
+	  document.querySelector(".receipe-container").insertAdjacentHTML(
+		  "afterbegin",
+     `  <article class="receipe_card">
 		<a href="#">
 		<div class="card_img">
 			<div class="card_recipe">
@@ -37,30 +38,9 @@ export class RecipeCard {
 						  </div>
 						  </div>
 					  </a>
-					</article>`;
+					</article>`
+					
+	);
   }
 }
 
-/*createDom(
-					"aside",
-					{ class: "recipe__card__aside" },
-					createDom(
-						"ul",
-						{ class: "recipe__card__list" },
-						// ... pour transformer les éléments du tableau en paramètres pour createDom
-						//     .map() pour renvoyer un tableau car .forEach() renvoie undefined
-						...this._ingredients.map((ingredient) => {
-							// return pour renvoyer une valeur sinon .map() renvoie un tableau de undefined
-							return createDom(
-								"li",
-								createDom("strong", `${ingredient.ingredient} `),
-								ingredient.quantity ? `: ${ingredient.quantity} ` : "",
-								ingredient.unit ? `${ingredient.unit} ` : "",
-								{
-									class: "recipe__card__list__item",
-								}
-							);
-						})
-					),
-					createDom("p", `${this._description}`, { class: "recipe__card__description" })
-      }*/
