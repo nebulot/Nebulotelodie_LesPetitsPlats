@@ -223,18 +223,18 @@
     z-index: 3;
     transition: linear .1s;
   }
+
+  // display card
   
-  .receipe_card {
-    display:grid;
+  .receipe-container {
+    display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
     width: 95%;
     margin: 20px auto;
     margin: 1rem 0;
     height: 450px;
-    .card_receipe {
-      height: 40%;
-    }
+    
     .card_content {
       height: 60%;
     }
