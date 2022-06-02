@@ -1,39 +1,43 @@
+//3 container card recipes
+
 import { getRecipes } from "./api.js";
+import { RecipeCard } from "./constructor/displayCards.js";
 
-console.log(await getRecipes);
-//Keep data and create display 
+//Keep data and create display
 
-// open and close the three butons filter
+const dropdownFilters = (recipes) => {
+  let ingredients = [];
+  let apparatus = [];
+  let ustensils = [];
+  recipes.forEach((recipe) => {
+    ingredients = [
+      ...new Set([
+        ...ingredients,
+        ...recipe.ingredients.map((i) => i.ingredient),
+      ]),
+    ].sort();
+    ustensils = [
+      ...new Set([...ustensils, ...recipe.ustensils.map((u) => u)]),
+    ].sort();
+    apparatus = [...new Set([...apparatus, ...[recipe.appliance]])].sort();
+  });
+  return { ingredients, ustensils, apparatus };
+};
+
+//open and close the three butons filter
+console.log(getRecipes);
+
 //display cards recipes
- 
-export class RecipeCard {
-  constructor(recipe) {
-  this.recipe = recipe;
-  
-  }
-  
-  createHtml() {
-    return ` 
-    <article class="card">
-    <a href="#">
-    <div class="card_img">
-        <div class="card_recipe">
-        <h2 class="card_title">title</h2>
-        <div class="card_time">
-        <i class="card_oclock"></i>
-        <p class="card_min">minute min</p>
-        </div>
-        </div>
-        <div class="card_content">
-        <ul class="card_ingredients">
-                        listCard_HTML
-                        </ul>
-                        <p class="card_description">
-                        description
-                        </p>
-                      </div>
-                      </div>
-                  </a>
-                </article>`
-  }
-}
+const recipesSection = document.querySelector(".receipe-container");
+const displayCards = (recipes) => {
+  recipes.forEach((recipe) => {
+    recipesSection.append(new RecipeCard(recipe).recipeCard);
+  });
+};
+
+const init = async () => {
+  const { recipes } = await getRecipes();
+  dropdownFilters(recipes);
+  displayCards(recipes);
+};
+init();
