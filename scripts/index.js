@@ -1,4 +1,4 @@
-//3 container card recipes
+
 
 import { getRecipes } from "./api.js";
 import { RecipeCard } from "./constructor/displayCards.js";
@@ -14,6 +14,7 @@ import { RecipeCard } from "./constructor/displayCards.js";
 //open and close the three butons filter
 console.log(getRecipes);
 
+//3 container card recipes
 //display cards recipes
 const recipesSection = document.querySelector(".receipe-container");
 const displayCards = (recipes) => {
