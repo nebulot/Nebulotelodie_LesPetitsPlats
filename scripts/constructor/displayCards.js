@@ -1,4 +1,4 @@
-// create DOM recipe CARD
+// 4 create DOM recipe CARD
 
 export class RecipeCard {
   constructor(data) {
@@ -15,20 +15,20 @@ export class RecipeCard {
 
   get recipeCard() {
     const recipeContainer = document.createElement("div");
-    recipeContainer.className = "recipeCard col-12 col-md-6 col-lg-4";
     document.querySelector(".receipe-container").insertAdjacentHTML(
       "afterbegin",
-      recipeContainer.innerHTML = ` 
-	  <div class="card rounded border-0">
+      (recipeContainer.innerHTML = ` 
+      
+	    <div class="card rounded border-0">
 	    <div class="card-header bg-secondary"></div>
 	    <div class="card-body bg-light">
 	    <div class="title-time">
-		 <h2 class="card-title m-0 font-weight-light">
+		 <h5 class="card-title m-0 font-weight-light">
 		   ${this._name}
-		 </h2>
+		 </h5>
 		 <div class="recipe_time">
 		 <i class="far fa-clock"></i>
-		 <h3 class="time">${this._time}min</h3>
+		 <h5 class="time">${this._time}min</h5>
 	   </div>
 	 </div>
 	 <div class="ingredients-directions row">
@@ -40,12 +40,14 @@ export class RecipeCard {
 	 </div>
    </div>
    </div>
-   </div>`
+   </div>`)
     );
-	this.ingredientsCard();
-  }
+    return recipeContainer;
+ }
 
-// create li to put ingredients[array].ingredients.ingredients
+ //5 put the ingredients and quantity on the recipeCard (recipeContainer)
+ 
+  /* create li to put ingredients[array].ingredients.ingredients
 get ingredientsCard() {
 	const ingredients = recipeCard.querySelector('.recipe-ingredient-list');
     const ingredientsList = recipe.ingredients.map(ingredient => {
@@ -56,5 +58,5 @@ return
 	`<li class = "ingredient-list">${ingredient.ingredient}`	
 }
 });
-}
+}*/
 }

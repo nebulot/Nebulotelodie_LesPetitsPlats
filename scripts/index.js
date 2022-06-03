@@ -3,11 +3,11 @@
 import { getRecipes } from "./api.js";
 import { RecipeCard } from "./constructor/displayCards.js";
 
-//Keep data and create display
+//6 Keep data and create display filters
 
 const dropdownFilters = (recipes) => {
   let ingredients = [];
-  let apparatus = [];
+  let appliance = [];
   let ustensils = [];
   recipes.forEach((recipe) => {
     ingredients = [
@@ -19,9 +19,9 @@ const dropdownFilters = (recipes) => {
     ustensils = [
       ...new Set([...ustensils, ...recipe.ustensils.map((u) => u)]),
     ].sort();
-    apparatus = [...new Set([...apparatus, ...[recipe.appliance]])].sort();
+    appliance = [...new Set([...appliance, ...[recipe.appliance]])].sort();
   });
-  return { ingredients, ustensils, apparatus };
+  return { ingredients, ustensils, appliance };
 };
 
 //open and close the three butons filter
