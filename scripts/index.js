@@ -5,24 +5,11 @@ import { RecipeCard } from "./constructor/displayCards.js";
 
 //6 Keep data and create display filters
 
-const dropdownFilters = (recipes) => {
+/*const dropdownFilters = (recipes) => {
   let ingredients = [];
   let appliance = [];
-  let ustensils = [];
-  recipes.forEach((recipe) => {
-    ingredients = [
-      ...new Set([
-        ...ingredients,
-        ...recipe.ingredients.map((i) => i.ingredient),
-      ]),
-    ].sort();
-    ustensils = [
-      ...new Set([...ustensils, ...recipe.ustensils.map((u) => u)]),
-    ].sort();
-    appliance = [...new Set([...appliance, ...[recipe.appliance]])].sort();
-  });
-  return { ingredients, ustensils, appliance };
-};
+  let ustensils = [];*/
+  
 
 //open and close the three butons filter
 console.log(getRecipes);
@@ -37,7 +24,7 @@ const displayCards = (recipes) => {
 
 const init = async () => {
   const { recipes } = await getRecipes();
-  dropdownFilters(recipes);
+  //dropdownFilters(recipes);
   displayCards(recipes);
 };
 init();
