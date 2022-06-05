@@ -46,25 +46,15 @@ export class RecipeCard {
  }
 
  //5 put the ingredients and quantity on the recipeCard (recipeContainer)
+ //create li to put ingredients[array].ingredients.ingredients
 
 get ingredientsList() {
   let ingredientsList = "";
   this._ingredients.forEach(ingredient => {
-    ingredientsList += `<li>${ingredient.ingredient}</li>`
+    ingredientsList += 
+    `<li class = "ingredient-list">${ingredient.ingredient} : ${ingredient.quantity ?? ''} ${ingredient.unit ?? ''} </li>`
    })
    return ingredientsList;
 }
- 
-  /* create li to put ingredients[array].ingredients.ingredients
-get ingredientsCard() {
-	const ingredients = recipeCard.querySelector('.recipe-ingredient-list');
-    const ingredientsList = recipe.ingredients.map(ingredient => {
-		if(ingredient.quantity) {
-return
-`<li class = "ingredient-list">${ingredient.ingredient} : ${ingredient.quantity ?? ''} ${ingredient.unit ?? ''}</li>`
-} else {
-	`<li class = "ingredient-list">${ingredient.ingredient}`	
-}
-});
-}*/
+
 }
