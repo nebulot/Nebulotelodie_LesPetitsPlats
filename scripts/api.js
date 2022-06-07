@@ -6,11 +6,11 @@ export const getRecipes = (async () => {
       .then((res) => {
         return res.json();
       })
-      //.then((data) => {
+      /*.then((data) => {
         
-      //  return data.recipes;
+      return data.recipes;
           
-      //})
+      })*/
       .catch((err) => {
         err.message;
       });

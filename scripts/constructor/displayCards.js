@@ -17,7 +17,7 @@ export class RecipeCard {
     const recipeContainer = document.createElement("div");
     document.querySelector(".receipe-container").insertAdjacentHTML(
       "afterbegin",
-      (recipeContainer.innerHTML = ` 
+      recipeContainer.innerHTML = ` 
       <div class="card rounded border-0">
 	    <div class="card-header bg-secondary"></div>
 	    <div class="card-body bg-light">
@@ -38,12 +38,9 @@ export class RecipeCard {
 	   ${this._description}
 	   </p>
 	 </div>
-   </div>
-   </div>
-   </div>`)
+   </div>`
     );
-    return recipeContainer;
- }
+  }
 
  //5 put the ingredients and quantity on the recipeCard (recipeContainer)
  //create li to put ingredients[array].ingredients.ingredients
@@ -52,7 +49,7 @@ get ingredientsList() {
   let ingredientsList = "";
   this._ingredients.forEach(ingredient => {
     ingredientsList += 
-    `<li class = "ingredient-list">${ingredient.ingredient} : ${ingredient.quantity ?? ''} ${ingredient.unit ?? ''} </li>`
+    `<li class = "recipe-ingredient-list">${ingredient.ingredient} : ${ingredient.quantity ?? ''} ${ingredient.unit ?? ''} </li>`
    })
    return ingredientsList;
 }

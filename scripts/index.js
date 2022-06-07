@@ -2,6 +2,7 @@
 
 import { getRecipes } from "./api.js";
 import { RecipeCard } from "./constructor/displayCards.js";
+import {sortRecipes} from "./constructor/searchBar.js"
 
 
 //6 Keep data and create display filters
@@ -23,6 +24,7 @@ export const displayCards = (recipes) => {
     recipesSection.append(new RecipeCard(recipe).recipeCard);
   });
 };
+console.log(displayCards);
 
 // open and close 3 buttons filters 
 let buttons = document.querySelectorAll(".btn");
@@ -40,6 +42,8 @@ const init = async () => {
   const { recipes } = await getRecipes();
   //dropdownFilters(recipes);
   displayCards(recipes);
+  sortRecipes(recipes, filter);
+  
   
 };
 init();

@@ -92,104 +92,6 @@
   color: #C7BEBE;
 }
 
-.list-wrapper {
-  display: none;
-  padding: 1%;
-  position: absolute;
-  width: 45%;
-  z-index: 1;
-}
-@media screen and (max-width: 767px) {
-  .list-wrapper {
-    width: 100%;
-  }
-}
-.list-wrapper .list-wrapper.expanded {
-  display: block;
-  z-index: 3;
-}
-
-.input-dropdown {
-  border: none;
-  width: 90%;
-  color: white;
-}
-.input-dropdown::placeholder {
-  color: AliceBlue;
-}
-
-.close-dropdown-tag {
-  background: none;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-  color: white;
-}
-
-.dropdown-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin: 0;
-  padding: 0;
-}
-
-.list-item {
-  list-style: none;
-  color: white;
-  padding: 0.5rem;
-}
-
-.ingredient-list-wrapper {
-  background-color: #3282f7;
-  position: absolute;
-  left: 0%;
-}
-.ingredient-list-wrapper #input-ingredient {
-  background-color: #3282f7;
-}
-.ingredient-list-wrapper .ingredients-list .ingredient:hover, .ingredient-list-wrapper .ingredients-list .ingredient:active {
-  background-color: white;
-  color: #3282f7;
-}
-
-.appliance-list-wrapper {
-  background-color: #68d9a4;
-  position: absolute;
-  left: 16.95%;
-}
-@media screen and (max-width: 767px) {
-  .appliance-list-wrapper {
-    left: 0%;
-  }
-}
-.appliance-list-wrapper #input-appliance {
-  background-color: #68d9a4;
-}
-.appliance-list-wrapper .appliances-list .appliance:hover, .appliance-list-wrapper .appliances-list .appliance:active {
-  background-color: white;
-  color: #68d9a4;
-}
-
-.utensil-list-wrapper {
-  background-color: #ed6454;
-  position: absolute;
-  left: 33.85%;
-}
-@media screen and (max-width: 767px) {
-  .utensil-list-wrapper {
-    left: 0%;
-  }
-}
-.utensil-list-wrapper #input-utensil {
-  background-color: #ed6454;
-}
-.utensil-list-wrapper .utensils-list .utensil:hover, .utensil-list-wrapper .utensils-list .utensil:active {
-  background-color: white;
-  color: #ed6454;
-}
-
 .tags {
   display: flex;
 }
@@ -219,6 +121,32 @@
   display: block;
   z-index: 3;
   transition: linear 0.1s;
+}
+
+.list-wrapper {
+  display: none;
+  padding: 1%;
+  position: absolute;
+  width: 45%;
+  z-index: 1;
+}
+@media screen and (max-width: 767px) {
+  .list-wrapper {
+    width: 100%;
+  }
+}
+.list-wrapper .list-wrapper.expanded {
+  display: block;
+  z-index: 3;
+}
+
+.ingredient-list-wrapper {
+  background-color: #3282f7;
+  position: absolute;
+  left: 0%;
+}
+.ingredient-list-wrapper #input-ingredient {
+  background-color: #3282F7;
 }
 
 .receipe-container {
@@ -268,10 +196,10 @@
   align-items: flex-start;
   margin: 1rem 0;
 }
-.ingredients-directions .recipe-ingredient-list {
+.ingredients-directions .ingredient-list {
   width: 55%;
 }
-.ingredients-directions .recipe-ingredient-list .recipe-ingredient {
+.ingredients-directions .ingredient-list .recipe-ingredient-list {
   font-size: 12px;
 }
 .ingredients-directions .card-text {

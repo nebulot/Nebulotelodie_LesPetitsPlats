@@ -93,9 +93,6 @@
   }
   }
   
- 
-  
-  
   .tags {
     display: flex;
     .tag {
@@ -126,6 +123,33 @@
     z-index: 3;
     transition: linear .1s;
   }
+
+  //dropdown open 
+  .list-wrapper {
+    display: none;
+    padding: 1%;
+    position: absolute;
+    width: 45%;
+    z-index: 1;
+    @media screen and (max-width : 767px) {
+      width: 100%;      
+    }
+    .list-wrapper.expanded {
+      display :  block;
+      z-index: 3;
+    }
+  }
+    
+.ingredient-list-wrapper {
+      background-color: #3282f7;
+      position: absolute;
+      left: 0%;
+      #input-ingredient {
+        background-color: #3282F7;
+      }
+      
+    }
+
 
   // display card
   
@@ -176,9 +200,9 @@
     justify-content: space-between;
     align-items: flex-start;
     margin: 1rem 0;
-    .recipe-ingredient-list {
+    .ingredient-list {
       width: 55%;
-      .recipe-ingredient {
+      .recipe-ingredient-list {
         font-size: 12px;
       }
     }
@@ -192,6 +216,8 @@
       -webkit-box-orient: vertical;
     }
   }
+
+  
   
 
   
