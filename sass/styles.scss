@@ -1,19 +1,19 @@
 
 //create for all colours 
 
-  .btn-primary{
+.btn-primary{
       background-color :  #3282F7;
     }
-    .btn-success {
+.btn-success {
         background-color : #68D9A4;
     }
-    .btn-danger {
+.btn-danger {
         background-color : #ED6454;
     }
-    .bg-light {
+.bg-light {
         background-color: #E7E7E7;
     }
-    .bg-secondary {
+.bg-secondary {
       background-color : #C7BEBE;
     }
 
@@ -31,6 +31,14 @@
   }
 
 //navigation search bar with loop
+.input-group {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+}
+
 .search-bar {
     padding: 1rem;
     &::placeholder {
@@ -155,8 +163,8 @@
   
   .receipe-container {
     gap: 20px;
-    width: 95%;
-    margin: 20px auto;
+    width: 100%;
+    margin: 0px;
     margin: 1rem 0;
     height: 450px;
     
@@ -199,10 +207,10 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin: 1rem 0;
+    margin: 10px 0;
     .ingredient-list {
-      width: 55%;
-      .recipe-ingredient-list {
+      width: 50%;
+      .recipe-ingredient{
         font-size: 12px;
       }
     }
