@@ -3,6 +3,7 @@
 
 .btn-primary{
       background-color :  #3282F7;
+      border-radius : 0;
     }
 .btn-success {
         background-color : #68D9A4;
@@ -36,18 +37,18 @@
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  width: 100%;
+  width: 94%;
 }
 
 .search-bar {
     padding: 1rem;
     &::placeholder {
       color: #c7bebe;
-      font-size: 18px;
+      font-size: 15px;
     }
 }
 
-//alerts
+//display container alerts
 .alerts {
     padding: 1rem 0;
     .alert {
@@ -60,10 +61,12 @@
   }
 
 // dropdown display 
+// rounded on html (the same of border-radius)
   .btn-group {
     display: flex;
     flex-direction: row;
     margin: 1rem 0;
+
     @media screen and (max-width : 375px) {
       flex-direction: column;
     }
@@ -80,7 +83,9 @@
     justify-content: space-evenly;
     margin-right: 10px;
     padding: 7px 0px;
-    width: 15%;
+    width: 16%;
+   
+   
     @media screen and (max-width : 767px) {
       width: 33%;
     }

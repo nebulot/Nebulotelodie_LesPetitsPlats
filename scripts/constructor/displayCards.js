@@ -10,13 +10,13 @@ export class RecipeCard {
     this._ustensils = data.ustensils;
     this._ingredients = data.ingredients;
     this._appliance = data.appliance;
-   }
-  
+  }
+
   get createRecipeCard() {
     const recipeContainer = document.createElement("div");
     document.querySelector(".receipe-container").insertAdjacentHTML(
       "afterbegin",
-      recipeContainer.innerHTML = ` 
+      recipeContainer.innerHTML = `
       <div class="card rounded border-0">
 	    <div class="card-header bg-secondary"></div>
 	    <div class="card-body bg-light">
@@ -37,22 +37,23 @@ export class RecipeCard {
 	   ${this._description}
 	   </p>
 	 </div>
+   </div>
    </div>`
     );
   }
 
- //5 put the ingredients and quantity on the recipeCard (recipeContainer)
- //create li to put ingredients[array].ingredients.ingredients
+  //5 put the ingredients and quantity on the recipeCard (recipeContainer)
+  //create li to put ingredients[array].ingredients.ingredients
 
-get ingredientsList() {
-  //const ingredients = recipeContainer.querySelector (".recipe-ingredient-list");
-  let ingredientsList = "";
+  get ingredientsList() {
+    //const ingredients = recipeContainer.querySelector (".recipe-ingredient-list");
+    let ingredientsList = "";
 
-  this._ingredients.forEach(ingredient => {
-    ingredientsList += 
-    `<li class = "recipe-ingredient">${ingredient.ingredient} : ${ingredient.quantity ?? ''} ${ingredient.unit ?? ''} </li>`
-   })
-   return ingredientsList;
-}
-
+    this._ingredients.forEach((ingredient) => {
+      ingredientsList += `<li class = "recipe-ingredient">${
+        ingredient.ingredient
+      } : ${ingredient.quantity ?? ""} ${ingredient.unit ?? ""} </li>`;
+    });
+    return ingredientsList;
+  }
 }

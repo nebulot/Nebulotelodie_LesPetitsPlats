@@ -1,5 +1,6 @@
 .btn-primary {
   background-color: #3282F7;
+  border-radius: 0;
 }
 
 .btn-success {
@@ -33,7 +34,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  width: 100%;
+  width: 94%;
 }
 
 .search-bar {
@@ -41,7 +42,7 @@
 }
 .search-bar::placeholder {
   color: #c7bebe;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .alerts {
@@ -77,7 +78,7 @@
   justify-content: space-evenly;
   margin-right: 10px;
   padding: 7px 0px;
-  width: 15%;
+  width: 16%;
 }
 @media screen and (max-width: 767px) {
   .btn {

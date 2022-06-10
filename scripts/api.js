@@ -4,15 +4,16 @@ export const getRecipes = (async () => {
     
   return await fetch("/scripts/data/recipe.json")
       .then((res) => {
-        return res.json();
+        return res.json();       
       })
-      /*.then((data) => {
-        
-      return data.recipes;
-          
+      
+      /*.then((data) => {        
+      return data.recipes;          
       })*/
+
       .catch((err) => {
         err.message;
+        
       });
   });
 
