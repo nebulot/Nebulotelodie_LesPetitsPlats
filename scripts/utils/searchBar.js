@@ -1,6 +1,6 @@
 const recipesSection = document.querySelector(".receipe-container");
 
-//5 bis Get ustensils / appliance / ingredients (without the duplicate)
+/*5 bis Get ustensils / appliance / ingredients (without the duplicate)
 const allAppliances = [];
 for (let i=0; i<recipesSection.length; i++){
   let appliances = recipes[i].appliance;

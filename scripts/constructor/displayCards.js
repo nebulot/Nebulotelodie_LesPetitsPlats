@@ -12,6 +12,22 @@ export class RecipeCard {
     this._appliance = data.appliance;
   }
 
+  //5 put the ingredients and quantity on the recipeCard (recipeContainer)
+  //create li to put ingredients[array].ingredients.ingredients
+
+  get ingredientsList() {
+    //const ingredients = recipeContainer.querySelector (".recipe-ingredient-list");
+    let ingredientsList = "";
+
+    this._ingredients.forEach((ingredient) => {
+      ingredientsList += `<li class = "recipe-ingredient">${
+        ingredient.ingredient
+      } : ${ingredient.quantity ?? ""} ${ingredient.unit ?? ""} </li>`;
+    });
+    return ingredientsList;
+  }
+
+
   get createRecipeCard() {
     const recipeContainer = document.createElement("div");
     document.querySelector(".receipe-container").insertAdjacentHTML(
@@ -40,20 +56,8 @@ export class RecipeCard {
    </div>
    </div>`
     );
-  }
-
-  //5 put the ingredients and quantity on the recipeCard (recipeContainer)
-  //create li to put ingredients[array].ingredients.ingredients
-
-  get ingredientsList() {
-    //const ingredients = recipeContainer.querySelector (".recipe-ingredient-list");
-    let ingredientsList = "";
-
-    this._ingredients.forEach((ingredient) => {
-      ingredientsList += `<li class = "recipe-ingredient">${
-        ingredient.ingredient
-      } : ${ingredient.quantity ?? ""} ${ingredient.unit ?? ""} </li>`;
-    });
-    return ingredientsList;
+    console.log(recipeContainer);
   }
 }
+
+  

@@ -7,15 +7,14 @@ export const getRecipes = (async () => {
         return res.json();       
       })
       
-      /*.then((data) => {        
-      return data.recipes;          
-      })*/
-
       .catch((err) => {
         err.message;
         
       });
   });
+  
+
+ 
 
   
 
