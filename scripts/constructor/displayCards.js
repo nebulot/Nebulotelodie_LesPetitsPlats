@@ -1,14 +1,28 @@
+//import { Ingredient } from "../utils/ingredients.js";
 // 4 create DOM recipe CARD
 
 export class RecipeCard {
+/*
+     * @constructor
+     * @param {Object} data 
+     * @param {number} data.id
+     * @param {string} data.name
+     * @param {number} data.servings
+     * @param {number} data.time
+     * @param {string} data.description
+     * @param {string} data.appliance
+     * @param {Array.<string>} data.ustensils
+     * @param {Array.<Object>} data.ingredients
+     */
+
   constructor(data) {
     this._id = data.id;
     this._name = data.name;
     this._description = data.description;
     this._time = data.time;
     this._servings = data.servings;
-    this._ustensils = data.ustensils;
     this._ingredients = data.ingredients;
+    this._ustensils = data.ustensils;
     this._appliance = data.appliance;
   }
 
@@ -20,14 +34,28 @@ export class RecipeCard {
     let ingredientsList = "";
 
     this._ingredients.forEach((ingredient) => {
+      if (ingredient.quantity) {
       ingredientsList += `
       <li class = "recipe-ingredients">${ingredient.ingredient} : ${
         ingredient.quantity ?? ""
-      } ${ingredient.unit ?? ""} </li>`;
-    });
+      } ${ingredient.unit ?? ""} </li>`
+    } else {
+      ingredientsList += `
+      <li class= "recipe-ingredients">${ingredient.ingredient}</li>` 
+    }
+  });    
     return ingredientsList;
   }
 
+  // when description is too long, remove by "&hellip;" => ...
+  get shortDescription () {
+    const limit = 200;
+    if (this._description.length <= limit) return this._description;
+    let description = this._description.substr(0, limit - 1);
+    return description.substr(0, description.lastIndexOf(" ")) + " &hellip;";
+  }
+
+  //5 create display card 
   get createRecipeCard() {
     const recipeContainer = document.createElement("div");
     document.querySelector(".receipe-container").insertAdjacentHTML(
@@ -50,7 +78,7 @@ export class RecipeCard {
      ${this.ingredientsList}
 	   </ul>
 	   <p class="card-text">
-	   ${this._description}
+	   ${this.shortDescription}
 	   </p>
 	 </div>
    </div>

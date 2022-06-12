@@ -195,7 +195,7 @@
     width: 100%;
     .card-title {
       width: 70%;
-      font-weight: 400;
+      font-weight: 300;
     }
     .recipe_time {
       display: flex;
@@ -212,10 +212,10 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin: 10px 0;
+    margin: 20px 0;
     .ingredient-list {
       width: 50%;
-      .recipe-ingredient{
+      .recipe-ingredients{
         font-size: 12px;
       }
     }

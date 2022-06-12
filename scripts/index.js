@@ -2,7 +2,7 @@ import { getRecipes } from "./api.js";
 import { RecipeCard } from "./constructor/displayCards.js";
 import {filteredCards} from "./utils/searchBar.js";
 import { Alerts } from "./utils/alerts.js";
-import { DropdownHandler } from "./utils/filtersDropdown.js";
+
 
 
 //console.log(RecipeCard);
@@ -36,10 +36,6 @@ const displayCards = (recipes) => {
     recipesSection.append(new RecipeCard(recipe).createRecipeCard);
   });
 };
-console.log(recipesSection);
-console.log(RecipeCard);
-console.log(displayCards);
-
 
 //5 focus on searchbar and check all recipes : nodeList(50)
 export const searchBarInput = document.querySelector(".search-bar");
@@ -62,15 +58,11 @@ const init = async () => {
   
   const { recipes } = await getRecipes();
   //dropdownFilters(recipes);
-  new DropdownHandler(recipes);
+  
   displayCards(recipes);
   displayAlert(recipes);
-  
-  
   console.log(recipes);
-  
-  
-  
+ 
 };
 init();
 

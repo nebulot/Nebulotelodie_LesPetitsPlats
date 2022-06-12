@@ -187,7 +187,7 @@
 }
 .title-time .card-title {
   width: 70%;
-  font-weight: 400;
+  font-weight: 300;
 }
 .title-time .recipe_time {
   display: flex;
@@ -203,12 +203,12 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin: 10px 0;
+  margin: 20px 0;
 }
 .ingredients-directions .ingredient-list {
   width: 50%;
 }
-.ingredients-directions .ingredient-list .recipe-ingredient {
+.ingredients-directions .ingredient-list .recipe-ingredients {
   font-size: 12px;
 }
 .ingredients-directions .card-text {

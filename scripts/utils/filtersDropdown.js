@@ -1,4 +1,4 @@
-// Dom three dropdown btn
+/* Dom three dropdown btn
 const ingredientBtn = document.querySelector(".btn-ingredient");
 const applianceBtn = document.querySelector(".btn-appliance");
 const ustensilBtn = document.querySelector(".btn-ustensil");
