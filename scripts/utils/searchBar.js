@@ -1,6 +1,13 @@
 const recipesSection = document.querySelector(".receipe-container");
 
-/*5 bis Get ustensils / appliance / ingredients (without the duplicate)
+/*5 bis Get ingredients / appliance / ustensils (without the duplicate)
+const allIngredients = [];
+for (let i=0; i<recipesSection.length; i++){
+  let ingredients = recipes[i].ingredients;
+  allIngredients.push(ingredients);
+}const ingredientsNoDuplicate = new Set(allIngredients);
+const ingredientsFilterArray = Array.from(ingredientsNoDuplicate);
+
 const allAppliances = [];
 for (let i=0; i<recipesSection.length; i++){
   let appliances = recipes[i].appliance;
@@ -21,14 +28,6 @@ const allUstensilsJoin = allUstensils.flat();
 const lowercaseUstensils = allUstensilsJoin.map(x => x.toLowerCase());
 const ustensilsNoDuplicate = new Set(lowercaseUstensils);
 const ustensilsFilterArray = Array.from(ustensilsNoDuplicate);
-
-
-const allIngredients = [];
-for (let i=0; i<recipesSection.length; i++){
-  let ingredients = recipes[i].ingredients;
-  allIngredients.push(ingredients);
-}const ingredientsNoDuplicate = new Set(allIngredients);
-const ingredientsFilterArray = Array.from(ingredientsNoDuplicate);
 
 /* display filters for all 
 const appliance = new FiltersList(applianceFilterBtn, applianceFilterList, applianceFilterArray);

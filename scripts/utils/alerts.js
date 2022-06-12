@@ -61,18 +61,5 @@ export class Alerts {
       });
     }
   }
-}
-/*function createAlerts() {
-  const alertBox = document.createElement("div");
-  alertBox.className = "alert";
-  alertBox.getAttribute = "alert";
-  document.querySelector(".alert").insertAdjacentHTML(
-    "afterbegin",
-  alertBox.innerHTML = `
-  <i class= "far fa-times-circle"></i>
-  <p>Aucun résultat ne correspond à votre critère de recherche</p>
-  <p> </p>
-  `
-  )
-  alerts.appendChild(alertBox);
-};*/
+};
+
