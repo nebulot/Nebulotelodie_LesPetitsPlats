@@ -3,30 +3,23 @@ import { RecipeCard } from "./constructor/displayCards.js";
 import {filteredCards} from "./utils/searchBar.js";
 import { Alerts } from "./utils/alerts.js";
 
-
-
 //console.log(RecipeCard);
 //7 Keep data and create display filters 
 
 
 
+// 8 button filters open and close
+// open and close 3 buttons filters 
 
-
-
-/*export const dropdownFilters = (recipes) => {
-	let ingredients = [];
-	let appliances = [];
-	let ustensils = [];
-	recipes.forEach((recipe) => {
-		ingredients = [
-			...new Set([...ingredients, ...recipe.ingredients.map((i) => i.ingredient)])].sort();
-		ustensils = [...new Set([...ustensils, ...recipe.ustensils.map((u) => u)])].sort();
-		appliances = [...new Set([...appliances, ...[recipe.appliances]])].sort();
-	});
-	return { ingredients, ustensils, appliances };
-};
-console.log(dropdownFilters)*/
-
+/*let buttons = document.querySelectorAll(".btn");
+let buttonValue;
+buttons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    buttonValue = btn.getAttribute("value");
+    // console.log(buttonValue, btn);
+    openclosefilters.isFiltersInteractive(btn, buttonValue);
+  });
+});*/
 
 //3 container card recipes
 //display cards recipes
@@ -58,7 +51,6 @@ const init = async () => {
   
   const { recipes } = await getRecipes();
   //dropdownFilters(recipes);
-  
   displayCards(recipes);
   displayAlert(recipes);
   console.log(recipes);

@@ -10,8 +10,10 @@ export const getRecipes = (async () => {
       .catch((err) => {
         err.message;
         
+        console.log(getRecipes());
       });
-  });
+   });
+
   
 
  
