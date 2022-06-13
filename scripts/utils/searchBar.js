@@ -42,15 +42,17 @@ ingredients.display();*/
 //filtered by name and numbers of letters >2 write 3 letters
 //if letters = display blog vs number = display none
 export function filteredCards(letters, elements) {
+  let count = 0;
   if (letters.length > 2) {
     for (let i = 0; i < elements.length; i++) {
       if (elements[i].textContent.toLowerCase().includes(letters)) {
+        count++;
         elements[i].style.display = "block";
       } else {
         elements[i].style.display = "none";
       }
     }
   }
-}
-console.log(filteredCards);
+  return count;
+};
 

@@ -26,6 +26,7 @@ buttons.forEach((btn) => {
 const recipesSection = document.querySelector(".receipe-container");
 const displayCards = (recipes) => {
   recipes.forEach((recipe) => {
+    //console.log(recipe); ok
     recipesSection.append(new RecipeCard(recipe).createRecipeCard);
   });
 };
@@ -35,24 +36,23 @@ export const searchBarInput = document.querySelector(".search-bar");
 searchBarInput.addEventListener("keyup", (e) => {
   const searchRecipes = e.target.value;
   const cards = document.querySelectorAll(".card");
-  filteredCards(searchRecipes, cards);
+  let count = filteredCards(searchRecipes, cards);
+  displayAlert(count);
   console.log(searchRecipes);
 });
 
 //6 focus alert and put, change or remove research
-const alerts = document.querySelector(".alerts");
-const displayAlert = (recipes) => {
-  recipes.forEach((recipe) => {
-    alerts.append(new Alerts(recipe).handleAlert());
-  });
-}
+
+const displayAlert = (count) => {
+  const alerts = document.querySelector(".alerts");
+  alerts.append(new Alerts(count).handleAlert());
+  }
 
 const init = async () => {
   
   const { recipes } = await getRecipes();
   //dropdownFilters(recipes);
   displayCards(recipes);
-  displayAlert(recipes);
   console.log(recipes);
  
 };

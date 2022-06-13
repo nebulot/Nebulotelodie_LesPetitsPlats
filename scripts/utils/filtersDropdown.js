@@ -3,6 +3,7 @@ import { ingredientsMap, appliancesMap, utensilsMap } from './builderDropdown.js
 import { RecipeCard } from "./constructor/displayCards.js";
 import { getRecipes } from '../api.js';
 import { recipes } from '../index.js';
+import {Alerts} from '../utils/alerts.js';
 
 
 // when you choose on the dropdown toogle => one tag 

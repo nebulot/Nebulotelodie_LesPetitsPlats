@@ -1,11 +1,10 @@
 import { getRecipes } from "../api.js";
 import { searchBarInput } from "../index.js";
 import { filteredCards } from "./searchBar.js";
-// condition to see the different alert success or danger
 
+// condition to see the different alert success or danger
 export class Alerts {
-  handleAlert() {
-    
+  handleAlert() {    
     const alertBox = document.querySelector(".alert");
     if (searchBarInput.value.length != 0 && getRecipes.length == 0) {
       this.dangerAlert(alertBox);
