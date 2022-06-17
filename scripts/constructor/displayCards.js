@@ -2,18 +2,18 @@
 // 4 create DOM recipe CARD
 
 export class RecipeCard {
-/*
-     * @constructor
-     * @param {Object} data 
-     * @param {number} data.id
-     * @param {string} data.name
-     * @param {number} data.servings
-     * @param {number} data.time
-     * @param {string} data.description
-     * @param {string} data.appliance
-     * @param {Array.<string>} data.ustensils
-     * @param {Array.<Object>} data.ingredients
-     */
+  /*
+   * @constructor
+   * @param {Object} data
+   * @param {number} data.id
+   * @param {string} data.name
+   * @param {number} data.servings
+   * @param {number} data.time
+   * @param {string} data.description
+   * @param {string} data.appliance
+   * @param {Array.<string>} data.ustensils
+   * @param {Array.<Object>} data.ingredients
+   */
 
   constructor(data) {
     this._id = data.id;
@@ -30,39 +30,37 @@ export class RecipeCard {
   //create li to put ingredients[array].ingredients.ingredients
 
   get ingredientsList() {
-    
     let ingredientsList = "";
 
     this._ingredients.forEach((ingredient) => {
       if (ingredient.quantity) {
-      ingredientsList += `
+        ingredientsList += `
       <li class = "recipe-ingredients">${ingredient.ingredient} : ${
-        ingredient.quantity ?? ""
-      } ${ingredient.unit ?? ""} </li>`
-    } else {
-      ingredientsList += `
-      <li class= "recipe-ingredients">${ingredient.ingredient}</li>` 
-    }
-  });    
+          ingredient.quantity ?? ""
+        } ${ingredient.unit ?? ""} </li>`;
+      } else {
+        ingredientsList += `
+      <li class= "recipe-ingredients">${ingredient.ingredient}</li>`;
+      }
+    });
     return ingredientsList;
   }
 
   // when description is too long, remove by "&hellip;" => ...
-  get shortDescription () {
+  get shortDescription() {
     const limit = 200;
     if (this._description.length <= limit) return this._description;
     let description = this._description.substr(0, limit - 1);
     return description.substr(0, description.lastIndexOf(" ")) + " &hellip;";
   }
 
-  //5 create display card 
+  //5 create display card
   get createRecipeCard() {
-    const recipeContainer = document.createElement("div");
-    document.querySelector(".receipe-container").insertAdjacentHTML(
-      "afterbegin",
-      (recipeContainer.innerHTML = `
-      <div class="card rounded border-0">
-	    <div class="card-header bg-secondary"></div>
+    const card = document.createElement("div");
+    card.className = "receipe col-12 col-md-6 col-lg-4";
+    card.innerHTML = `
+    <div class="card rounded border-0">
+    <div class="card-header bg-secondary"></div>
 	    <div class="card-body bg-light">
 	    <div class="title-time">
 		 <h5 class="card-title m-0 font-weight-light">
@@ -82,8 +80,9 @@ export class RecipeCard {
 	   </p>
 	 </div>
    </div>
-   </div>`)
-    );
-    //console.log(recipeContainer);
+   </div>`;
+   return card
+   
+    
   }
 }

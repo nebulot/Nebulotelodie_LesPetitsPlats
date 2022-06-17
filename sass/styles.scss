@@ -1,27 +1,17 @@
+@import "../node_modules/bootstrap/scss/functions.scss";
+@import "../node_modules/bootstrap/scss/variables.scss";
 
 //create for all colours 
-
-.btn-primary{
-      background-color :  #3282F7;
-      border-radius : 0;
-    }
-.btn-success {
-        background-color : #68D9A4;
-    }
-.btn-danger {
-        background-color : #ED6454;
-    }
-.bg-light {
-        background-color: #E7E7E7;
-    }
-.bg-secondary {
-      background-color : #C7BEBE;
-    }
-
-    /*
+$theme-colors: (
+  "primary":    #3282F7,
+  "secondary":  #C7BEBE,
+  "success":    #68D9A4,
   "info":       $info,
   "warning":    $warning,
-  "dark":       $dark;*/
+  "danger":     #ED6454,
+  "light":      #E7E7E7,
+  "dark":       $dark
+);
 
 
 //logo fisheye
@@ -165,27 +155,15 @@
 
 
   // display card
-  
-  .receipe-container {
-    gap: 20px;
-    width: 100%;
-    margin: 0px;
+  .card {
     margin: 1rem 0;
     height: 450px;
-    
-    .card_content {
+    .card-header {
+      height: 40%;
+    }
+    .card-body {
       height: 60%;
     }
-  }
-
-  .card {
-  margin: 1rem 0;
-  height: 450px;
-  width: 30%;
-  }
-
-  .card .card-header {
-    height: 40%;
   }
   
   .title-time {
@@ -230,7 +208,7 @@
     }
   }
 
-  
+  @import "../node_modules/bootstrap/scss/bootstrap.scss";
   
 
   

@@ -1,5 +1,5 @@
 import { getRecipes } from "../api.js";
-import { searchBarInput } from "../index.js";
+import { searchBarInput } from "./searchBar.js";
 import { filteredCards } from "./searchBar.js";
 
 // condition to see the different alert success or danger
