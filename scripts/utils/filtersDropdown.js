@@ -1,106 +1,104 @@
-import { DropdownsBuilder } from './builderDropdown.js';
-import { ingredientsMap, appliancesMap, utensilsMap } from './builderDropdown.js';
-import { RecipeCard } from "./constructor/displayCards.js";
-import { getRecipes } from '../api.js';
-import { recipes } from '../index.js';
-import {Alerts} from '../utils/alerts.js';
 
 
-// when you choose on the dropdown toogle => one tag 
-export let selectedTags = [];
+export const ingredientMap = new Map();
+export const applianceMap = new Map();
+export const ustensilMap = new Map();
 
-// open close and select tag on btn dropdown-list
+// filters [ingredients, appliances, ustensils] dropdown 
 
-export class DropdownHandler {
-	// create new array with Array.prototype.map
-	//type Array : Array<string>
-  selectedTagsMap = New Map();
-  typeArray = ["ingredient", "appliance", "utensil"];
-
-  constructor(RecipeCard, DropdownsBuilder,)
-   {
-    this._typeArray.forEach((type) => {
-      let list = `.${type}-list-wrapper`;
-      let input = `input-${type}`;
-      this.openDropdown(type, list, input);
-      this.closeDropdown(type, list);
-      this.inputListener(type, input);
-    });
-    this.refreshTags();
+export class dropdownFilters {
+  constructor (recipes, selectedTags) {
+    this.addFilters(recipes, selectedTags);
   }
 
-  openDropdown(type, list, input) {
-    let dropdown = `.button-${type}`;
-    const dropdownBtn = document.querySelector(dropdown);
-    const dropdownList = document.querySelector(list);
-    const dorpdownInput = document.getElementById(input);
-    dropdownBtn.addEventListener("click", function () {
-      dropdownBtn.classList.add("opened");
-      dropdownList.classList.add("expanded");
-      dorpdownInput.focus();
-    });
-  }
+//7 Keep data and create display filters 
+// keep arrays clean and create a new arrays for the researchs  
+  addFilters(recipes,selectedTags) {
 
-  closeDropdown(type, list) {
-    let close = `.close-dropdown-${type}`;
-    let dropdown = `.button-${type}`;
-    const dropdownButton = document.querySelector(dropdown);
-    const closeBtn = document.querySelector(close);
-    const dropdownList = document.querySelector(list);
+      let ingredients = [];
+      let appliances = [];
+      let ustensils = [];
 
-    closeBtn.addEventListener("click", () => {
-      dropdownButton.classList.remove("opened");
-      dropdownList.classList.remove("expanded");
-    });
-  }
-
-  inputListener(type, input) {
-    const dropdownInput = document.getElementById(input);
-    dropdownInput.addEventListener("input", (e) =>
-      this.updateDropdown(e, type)
-    );
-  }
-
-  updateDropdown(e, type) {
-    const userInput = e.target.value.toLowerCase();
-    const dropdownItem = document.getElementsByClassName(type);
-    const dropdownArray = Array.from(dropdownItem);
-
-    dropdownArray.forEach((dropdownItem) => {
-      if (
-        userInput.length >= 3 &&
-        dropdownItem.innerHTML.toLowerCase().includes(userInput)
-      ) {
-        dropdownItem.style.display = "block";
-      } else if (
-        userInput.length >= 3 &&
-        !dropdownItem.innerHTML.toLowerCase().includes(userInput)
-      ) {
-        dropdownItem.style.display = "none";
-      } else if (userInput.length < 2) {
-        dropdownItem.style.display = "block";
-      }
-    });
-  }
-
-  refreshTags() {
-    this._typeArray.forEach(type => {
-      const dropdownItem = document.getElementsByClassName(type);
-      const dropdownArray = Array.from(dropdownItem);
-      
-      dropdownArray.forEach((element) => {
-        element.addEventListener('click', () => {
-          
-          this.createTag(element, type);
-          selectedTags.push(element.innerHTML);
-         
-          this.updateSelectRecipes();
-          this.getRecipes.update(globalRecipesList);
-          this.dropdownsBuilder.update(globalRecipesList, selectedTags);
-          this.refreshTags();
-          this.alerts.handleAlert();
-        });
+    
+    
+    const dropdownIngredients = document.querySelector('.ingredients-list');
+    recipes.forEach((recipe) => {
+      recipe.ingredients.forEach((ingredient) => {
+        this.updateMap(ingredient.ingredient, recipe.id, ingredientMap, selectedTags);
       });
+    });
+    this.createLi(dropdownIngredients, ingredients, "list-item ingredient");
+
+    const dropdownAppliances = document.querySelector('.appliances-list');
+    recipes.forEach((recipe) => {
+      this.updateMap(recipe.appliance, recipe.id, appliances, selectedTags);
     })
+    this.createLi(dropdownAppliances, appliances, "list-item appliance");
+
+    const dropdownUtensils = document.querySelector('.utensils-list');
+    recipes.forEach((recipe) => {
+      recipe.utensils.forEach((utensil) => {
+        this.updateMap(utensil, recipe.id, ustensils, selectedTags);
+      });
+    });
+    this.createLi(dropdownUtensils, ustensils, "list-item utensil");
+  }
+
+  //create updateMap 
+  //create li for all list [ingredients btn, appliances btn, ustensils btn]
+
+  updateMap(filter, id, map, selectedTags) {
+    let key = filter.toLowerCase();
+    key = key.charAt(0).toUpperCase() + key.slice(1);
+    if(!selectedTags.includes(key) || globalRecipesList.length == recipes.length) { //check if key isn't contained in selected tags => prevent tag from being selected twice: if tag has been selected, it doesn't appear in the dropdown anymore
+      if (map.has(key)) {
+        let idsArray = map.get(key);
+        idsArray.push(id);
+        map.set(key, idsArray);
+      } else {
+        map.set(key, [id]);
+      }
+    }
+    //console.log(key);
+    return this.updateMap();
+ }
+
+
+
+  createLi(HTMLElement,map,className) {
+    let filterKeys = Array.from(map.keys());
+    let filterList = filterKeys.map((element) => {
+      return  `<li class="${className}">${element}</li>`;
+    });
+
+    filterList.forEach((li) => {
+      HTMLElement.innerHTML = HTMLElement.innerHTML + li;
+    });
+    return this.createLi;
+  }
+  
+
+  update(recipes, selectedTags) {
+    this.removeChildOf('.ingredients-list', 'ingredient');
+    this.removeChildOf('.appliances-list', 'appliance');
+    this.removeChildOf('.utensils-list', 'utensil');
+    this.addFilters(recipes, selectedTags);
   }
 }
+
+
+
+
+
+
+      /*recipes.forEach((recipe) => {
+        ingredient = [
+          ...new Set([...ingredient, ...recipe.ingredients.map((i) => i.ingredients)])].sort();
+        ustensil = [...new Set([...ustensil, ...recipe.ustensils.map((u) => u)])].sort();
+        appliance = [...new Set([...appliance, ...[recipe.appliances]])].sort();
+      });
+      return { ingredient, ustensil, appliance };
+    };*/
+   
+
+

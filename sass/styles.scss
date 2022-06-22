@@ -1,16 +1,16 @@
-@import "../node_modules/bootstrap/scss/functions.scss";
-@import "../node_modules/bootstrap/scss/variables.scss";
+
+
 
 //create for all colours 
 $theme-colors: (
   "primary":    #3282F7,
   "secondary":  #C7BEBE,
   "success":    #68D9A4,
-  "info":       $info,
-  "warning":    $warning,
+  "info":       info,
+  "warning":    warning,
   "danger":     #ED6454,
   "light":      #E7E7E7,
-  "dark":       $dark
+  "dark":       dark
 );
 
 
@@ -74,6 +74,7 @@ $theme-colors: (
     margin-right: 10px;
     padding: 7px 0px;
     width: 16%;
+    color:white;
    
    
     @media screen and (max-width : 767px) {
@@ -123,7 +124,7 @@ $theme-colors: (
   
   .expanded {
     display: block;
-    z-index: 3;
+    z-index: 5;
     transition: linear .1s;
   }
 
@@ -142,16 +143,97 @@ $theme-colors: (
       z-index: 3;
     }
   }
-    
-.ingredient-list-wrapper {
-      background-color: #3282f7;
-      position: absolute;
-      left: 0%;
-      #input-ingredient {
-        background-color: #3282F7;
-      }
-      
+
+  .input-dropdown {
+    border: none;
+    width: 90%;
+    color: white;
+    &::placeholder {
+      color: AliceBlue;
     }
+  }
+  .close-dropdown-tag {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    color: white;
+  }
+    
+  .dropdown-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0;
+    padding: 0;
+  }
+  .list-item {
+    list-style: none;
+    color: white;
+    padding: 0.5rem;
+  }
+
+  .ingredient-list-wrapper {
+    background-color: #3282f7;
+    position: absolute;
+    left: 0%;
+    #input-ingredient {
+      background-color: #3282f7;
+    }
+    .ingredients-list {
+      .ingredient {
+        &:hover,
+        &:active {
+          background-color: white;
+          color: #3282f7;
+        }
+      }
+    }
+  }
+  
+  .appliance-list-wrapper {
+    background-color: #68d9a4;
+    position: absolute;
+    left: 16.95%;
+    @media screen and (max-width : 767px) {
+      left: 0%;
+    }
+    #input-appliance {
+      background-color: #68d9a4;
+    }
+    .appliances-list {
+      .appliance {
+        &:hover,
+        &:active {
+          background-color: white;
+          color: #68d9a4;
+        }
+      }
+    }
+  }
+  
+  .utensil-list-wrapper {
+    background-color: #ed6454;
+    position: absolute;
+    left: 33.85%;
+    @media screen and (max-width : 767px) {
+      left: 0%;
+    }
+    #input-utensil {
+      background-color: #ed6454;
+    }
+    .utensils-list {
+      .utensil {
+        &:hover,
+        &:active {
+          background-color: white;
+          color: #ed6454;
+        }
+      }
+    }
+  }
+
 
 
   // display card
@@ -208,7 +290,7 @@ $theme-colors: (
     }
   }
 
-  @import "../node_modules/bootstrap/scss/bootstrap.scss";
+  
   
 
   

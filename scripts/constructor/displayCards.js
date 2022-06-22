@@ -30,19 +30,26 @@ export class RecipeCard {
   //create li to put ingredients[array].ingredients.ingredients
 
   get ingredientsList() {
+    
     let ingredientsList = "";
-
     this._ingredients.forEach((ingredient) => {
       if (ingredient.quantity) {
+        if (ingredient.unit && ingredient.quantity) {
         ingredientsList += `
       <li class = "recipe-ingredients">${ingredient.ingredient} : ${
           ingredient.quantity ?? ""
         } ${ingredient.unit ?? ""} </li>`;
       } else {
+      ingredientsList += `
+      <li class= "recipe-ingredients">${ingredient.ingredient} :  ${
+        ingredient.quantity}
+       </li>`;
+    }
+      } else {
         ingredientsList += `
       <li class= "recipe-ingredients">${ingredient.ingredient}</li>`;
       }
-    });
+     });
     return ingredientsList;
   }
 

@@ -1,7 +1,5 @@
 import {displayAlert} from "../index.js";
 
-
-const recipesSection = document.querySelector(".receipe-container");
 //5 focus on searchbar and check all recipes : nodeList(50)
 export const searchBarInput = document.querySelector(".search-bar");
 searchBarInput.addEventListener("keyup", (e) => {

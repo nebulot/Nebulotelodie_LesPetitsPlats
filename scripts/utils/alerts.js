@@ -1,4 +1,5 @@
 import { getRecipes } from "../api.js";
+import { RecipeCard } from "../constructor/displayCards.js";
 import { searchBarInput } from "./searchBar.js";
 import { filteredCards } from "./searchBar.js";
 
@@ -6,11 +7,12 @@ import { filteredCards } from "./searchBar.js";
 export class Alerts {
   handleAlert() {    
     const alertBox = document.querySelector(".alert");
-    if (searchBarInput.value.length != 0 && getRecipes.length == 0) {
+    if (searchBarInput.value.length != 0 && RecipeCard.length == 0) {
       this.dangerAlert(alertBox);
+      console.log(searchBarInput);
     } else if (
       searchBarInput.value.length < 3 &&
-      getRecipes.length == filteredCards.length
+      RecipeCard.length == filteredCards.length
     ) {
       alertBox.classList.remove("displayed");
     } else {
@@ -26,17 +28,18 @@ export class Alerts {
     alertBox.classList.add("alert-success");
     alertBox.classList.add("displayed");
     alertBox.classList.remove("alert-danger");
-    if (getRecipes.length > 1) {
+    if (RecipeCard.length > 1) {
       alertBox.innerHTML = `
-                  ${getRecipes.length} recettes correspondent à votre recherche
+                  ${RecipeCard.length} recettes correspondent à votre recherche
                   <i class="close-alert far fa-times-circle"></i>
                   `;
     } else {
       alertBox.innerHTML = `
-                  ${getRecipes.length} recettes correspondent à votre recherche
+                  ${RecipeCard.length} recettes correspondent à votre recherche
                   <i class="close-alert far fa-times-circle"></i>
                   `;
     }
+    
   }
   // no success research on searchBar alert remove
   // create display dangerAlert
@@ -44,7 +47,7 @@ export class Alerts {
     alertBox.classList.add("alert-danger");
     alertBox.classList.add("displayed");
     alertBox.classList.remove("alert-success");
-    alertBox.innerHTML = `
+    return alertBox.innerHTML = `
                 Aucune recette ne correspond à votre critère... 
                 Vous pouvez chercher "tarte aux pommes", "poisson", etc.
                 <i class="close-alert far fa-times-circle"></i>
