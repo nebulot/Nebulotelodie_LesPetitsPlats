@@ -1,5 +1,5 @@
-import { dropdownFilters } from "./filtersDropdown.js";
-import {ingredientMap, applianceMap, ustensilMap} from "./filtersDropdown.js";
+//import { dropdownFilters } from "./filtersDropdown.js";
+//import {ingredientMap, applianceMap, ustensilMap} from "./filtersDropdown.js";
 import { RecipeCard } from "../constructor/displayCards.js";
 import { Alerts } from "./alerts.js";
 
@@ -22,6 +22,7 @@ export class dropdownBuilder {
   selectedTagsMap = new Map();
   //three buttons' array  typeArray : Array<string>
   typeArray = ["ingredient", "ustensil", "appliance"];
+  
 
   constructor(
     /*
@@ -31,13 +32,14 @@ export class dropdownBuilder {
      * @param searchBar :
      * @param
      */
-    RecipeCard, dropdownFilters
+    RecipeCard, 
     
   ) {
 	
     this.typeArray.forEach((type) => {
       let list = `.${type}-list-wrapper`;
       let input = `input-${type}`;
+      let element = 
       this.openDropdown(type, list, input);
       this.closeDropdown(type, list);
       this.inputListener(type, input);
@@ -49,20 +51,32 @@ export class dropdownBuilder {
 	
   }
 
+  // create li 
+  
+      
+   
+    
+  
+
   //part 1 OPEN dropdown and list for all buttons whent you click opened and expanded toggle and see input label
   openDropdown(type, list, input) {
     let dropdown = `.btn-${type}`;
     const dropdownBtn = document.querySelector(dropdown);
     const dropdownList = document.querySelector(list);
     const dropdownInput = document.getElementById(input);
+    const itemList = document.createElement("li");
+    itemList.className = `list-item-${type}`;
+    itemList.innerHTML = `${element}`;
+    dropdownList.append(itemList);
 
     dropdownBtn.addEventListener("click", () => {
       dropdownBtn.classList.add("opened");
       dropdownList.classList.add("expanded");
       dropdownInput.focus();
-      console.log(dropdownBtn);
-      console.log(dropdownList);
+      
     });
+    return itemList;
+    
 }
 
 //part 2 CLOSE dropdown and list for all buttons whenyou click close no visibility on toggle and input label
@@ -78,6 +92,7 @@ export class dropdownBuilder {
       dropdownList.classList.remove("expanded");
       console.log(dropdownBtn);
     });
+    console.log(dropdownList);
 }
 
 // part 3 create an event with the buttons' input 

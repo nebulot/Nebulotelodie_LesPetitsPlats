@@ -1,6 +1,8 @@
+/*import { RecipeCard } from "../constructor/displayCards.js";
+import { filteredCards } from "./searchBar.js";
 
 
-export const ingredientMap = new Map();
+/*export const ingredientMap = new Map();
 export const applianceMap = new Map();
 export const ustensilMap = new Map();
 
@@ -43,14 +45,15 @@ export class dropdownFilters {
     });
     this.createLi(dropdownUtensils, ustensils, "list-item utensil");
   }
+}
 
-  //create updateMap 
+  /*create updateMap 
   //create li for all list [ingredients btn, appliances btn, ustensils btn]
 
   updateMap(filter, id, map, selectedTags) {
     let key = filter.toLowerCase();
     key = key.charAt(0).toUpperCase() + key.slice(1);
-    if(!selectedTags.includes(key) || globalRecipesList.length == recipes.length) { //check if key isn't contained in selected tags => prevent tag from being selected twice: if tag has been selected, it doesn't appear in the dropdown anymore
+    if(!selectedTags.includes(key) || RecipeCard.length == filteredCards.length) { //check if key isn't contained in selected tags => prevent tag from being selected twice: if tag has been selected, it doesn't appear in the dropdown anymore
       if (map.has(key)) {
         let idsArray = map.get(key);
         idsArray.push(id);

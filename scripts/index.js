@@ -2,24 +2,13 @@ import { getRecipes } from "./api.js";
 import { RecipeCard } from "./constructor/displayCards.js";
 import { Alerts } from "./utils/alerts.js";
 import { dropdownBuilder } from "./utils/builderDropdown.js";
-import { dropdownFilters } from "./utils/filtersDropdown.js";
+//import { dropdownFilters } from "./utils/filtersDropdown.js";
 
+//console.log(recipes);
 
-//console.log(RecipeCard);
-
-
-/*export const addFilters = (recipes) => {
-	let ingredient = [];
-	let appliance = [];
-	let ustensil = [];
-	recipes.forEach((recipe) => {
-		ingredient = [
-			...new Set([...ingredient, ...recipe.ingredients.map((i) => i.ingredients)])].sort();
-		ustensil = [...new Set([...ustensil, ...recipe.ustensils.map((u) => u)])].sort();
-		appliance = [...new Set([...appliance, ...[recipe.appliances]])].sort();
-	});
-	return { ingredient, ustensil, appliance };
-};*/
+//DOM for "searchbar" and "tags"
+const searchbar = document.querySelector(".input-group");
+const tags = document.querySelector(".tags");
 
 //3 container card recipes
 //display cards recipes
@@ -29,27 +18,19 @@ const displayCards = (recipes) => {
     //console.log(recipe); ok
     recipesSection.append(new RecipeCard(recipe).createRecipeCard);
     console.log(RecipeCard);
-    //console.log(createRecipeCard);
+    //console.log(createRecipeCard); ok
 
   });
 };
 
-// 8 create an alert display under searchbar to success or danger research 
-export const displayAlert = (count) => {
-  const alerts = document.querySelector(".alerts");
-  alerts.append(new Alerts(count).handleAlert());
-  }
-
 const init = async () => {
   
   const { recipes } = await getRecipes();
-  //recupere les listes dans recettes 
-  //let lists = addFilters(recipes);  
   displayCards(recipes);
   console.log(recipes);
   // envoi tout au dropdown builder
   let dropdownBuild = new dropdownBuilder();
-  let dropdownFilter = new dropdownFilters(recipes, []);
+  //let dropdownFilter = new dropdownFilters(recipes, []);
   
   //console.log(dropdownFilter);
   console.log(dropdownBuild);
@@ -58,6 +39,25 @@ const init = async () => {
 };
 init();
 
+// 8 create an alert display under searchbar to success or danger research 
+export const displayAlert = (count) => {
+  const alerts = document.querySelector(".alerts");
+  alerts.append(new Alerts(count).handleAlert());
+  }
+
+  //DOM after initialized recipes card on the main 
+  const ingredients = querySelectorall(".ingredients");
+  const appliances = querySelector (".appliances");
+  const ustensils= querySelector(".ustensils");
+  const resultsReceipe = querySelector(".receipe-container");
+
+  // TAGS BTN
+  
+function closeTags(e) {
+  const tagsBtn = [...tags.querySelectorAll("button")];
+  const [ container ] = tagsBtn.filter(btn => btn.contains(e.target));
+  container.remove();
+}
 
 
 

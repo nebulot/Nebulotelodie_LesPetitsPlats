@@ -74,12 +74,12 @@
       <div class="row">
         <div class="col-12 btn-group-wrapper">
           <div class="btn-group">
-            <button class="btn-ingredient  btn btn-primary rounded" type="button">
+            <button id="opened" class="btn-ingredient ingredients btn btn-primary rounded" type="button">
               Ingrédients
               <i class="dropdown-ingredient-toggle fas fa-chevron-down"></i>
             </button>
             <!-- Li-->
-            <div class="list-wrapper ingredient-list-wrapper">
+            <div id="expanded" class="list-wrapper ingredients ingredient-list-wrapper">
               <label for="input-ingredient"></label>
               <input type="search" class="input-dropdown" id="input-ingredient"
                 placeholder="Rechercher un ingrédient" />
@@ -89,13 +89,13 @@
               <ul class="dropdown-list ingredient-list_display"></ul>
             </div>
 
-            <button class="btn-appliance btn btn-success rounded" type="button">
+            <button id="opened" class="btn-appliance appliances btn btn-success rounded" type="button">
               Appareils
               <i class="dropdown-appliance-toggle fas fa-chevron-down"></i>
             </button>
 
             <!-- Li-->
-            <div class="list-wrapper appliance-list-wrapper">
+            <div id ="expanded" class="list-wrapper appliances appliance-list-wrapper">
               <label for="input-appliance"></label>
               <input type="search" class="input-dropdown" id="input-appliance" placeholder="Rechercher un appareil" />
               <button type="button" class="close-dropdown-tag close-dropdown-appliance">
@@ -104,13 +104,13 @@
               <ul class="dropdown-list appliance-list_display"></ul>
             </div>
 
-            <button class="btn-ustensil btn btn-danger rounded" type="button">
+            <button id="opened" class="btn-ustensil ustensils btn btn-danger rounded" type="button">
               Ustensiles
               <i class="dropdown-ustensil-toggle fas fa-chevron-down"></i>
             </button>
 
             <!-- Li-->
-            <div class="list-wrapper ustensil-list-wrapper">
+            <div id="expanded" class="list-wrapper ustensils ustensil-list-wrapper">
               <label for="input-ustensil"></label>
               <input type="search" class="input-dropdown" id="input-ustensil" placeholder="Rechercher un ustensile" />
               <button type="button" class="close-dropdown-tag close-dropdown-ustensil">
