@@ -52,44 +52,74 @@ $theme-colors: (
 
 // dropdown display 
 // rounded on html (the same of border-radius)
-@media (min-width: 768px) {
-main .btns-dropdown {
+main.btns-dropdown {
   width: auto;
   flex-direction: column;
-  
 
   .input-group {
-    display: flex;
-    width: auto;
-    .form-control {
-      font-size: 18px;
-      &::placeholder {
-          opacity: .5;
-          color: white;
+      display: flex;
+      width: auto;
+      .form-control {
+          font-size: 18px;
+          &::placeholder {
+              opacity: .5;
+              color: white;
+          }
       }
-  }
   }
 
   #hidden {
-    width: auto;
-}
+      display: flex;
+      width: 100%;
+  }
 
   #opened {
-    width: auto;
-    margin-inline: 10px;
-    
-    input {
-        margin-inline-start: -20px;
-    }
-    button {
-        margin-inline-end: -20px;
-    }
-    .result {
-        font-size: larger;
-        line-height: 2;
-        // margin-bottom: 10px;
-    }
+      display: none;
+      width: 100%;
+      margin-inline: 0;
+      input {
+          margin-inline-start: 0;
+      }
+      button {
+          margin-inline-end: 0;
+      }
+      .result {
+          font-size: smaller;
+          line-height: 1;
+      }
   }
+}
+
+
+@media (min-width: 768px) {
+  main.btns-dropdown {
+    flex-direction: row;
+
+    .input-group {
+        .form-control {
+            font-size: 21px;
+        }
+    }
+
+    #hidden {
+        width: auto;
+    }
+
+    #opened {
+        width: auto;
+        margin-inline: 10px;
+        input {
+            margin-inline-start: -20px;
+        }
+        button {
+            margin-inline-end: -20px;
+        }
+        .result {
+            font-size: larger;
+            line-height: 2;
+            // margin-bottom: 10px;
+        }
+    }
 }
 }
 

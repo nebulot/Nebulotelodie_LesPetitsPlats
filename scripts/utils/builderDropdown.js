@@ -41,7 +41,7 @@ export class DropdownsBuilder {
       const wrapper = document.createElement('div');
       const input = document.createElement('input');
       const btn = document.createElement('button');
-      const listItem = document.createElement('ul');
+      const listItem = document.createElement('div');
 
       buttons.className = `row rounded mx-0 bg-${this.color} ${this.type}`;
       buttons.id = 'opened';
@@ -60,8 +60,16 @@ export class DropdownsBuilder {
       buttons.appendChild(wrapper);
       buttons.appendChild(listItem);
       return buttons;
+      
   }
   make() {
-      return [this.hiddenDrop(), this.openedDrop()];
+    return [this.hiddenDrop(), this.openedDrop()];
+    
   }
-}
+  
+  
+  }
+  
+  
+  
+

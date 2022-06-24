@@ -29,15 +29,15 @@ const init = async () => {
   displayCards(recipes);
   console.log(recipes);
 
-  // 
+  // return bts'dropdown
   const dropdownsValues = ['ingredients', 'appareils', 'ustensiles'];
     for (let type of dropdownsValues) {
         const dropdownsBtn = new DropdownsBuilder(type);
         dropdownsBtn.make().forEach(btn => dropdownsBar.append(btn));
+        //console.log(dropdownsBtn); (type : "", color :"");
+        //console.log(dropdownsBar); <div "btns-dropdown">
     }
-  // envoi tout au dropdown builder
-  //let dropdownBuild = new dropdownBuilder();
-  //let dropdownFilter = new dropdownFilters(recipes, []);
+    // console.log(dropdownsValues); results (3)[ingredients,appliances,ustensils]
   
   
 };
@@ -65,25 +65,42 @@ function closeTags(e) {
   container.remove();
 }
 
-// btn dropdown 
-hidden.forEach(btn => btn.addEventListener('click', displayDropdown));
-opened.forEach(btn => btn.querySelector('button').addEventListener('click', displayDropdown));
+// btn dropdown and (3)search in tag List "li"
+hidden.forEach(btn => btn.addEventListener("click", displayDropdown));
+opened.forEach(btn => btn.querySelector("button").addEventListener("click", displayDropdown));
+opened.forEach(btn => btn.querySelector("input").addEventListener("input", searchTags));
+
 
 function displayDropdown(e) {
+  // close dropdown 
+  closeDropdown();
   // ALL BTNS INACTIVE
-  [...opened].forEach(elt => elt.style.display = 'none');
-  [...hidden].forEach(elt => elt.style.display = 'flex');
+  [...opened].forEach(elt => elt.style.display = "none");
+  [...hidden].forEach(elt => elt.style.display = "flex");
   // ONE BTN ACTIVE
-  const [buttons] = [...opened].filter(elt => elt.contains(e.target)).length > 0
+  const [container] = [...opened].filter(elt => elt.contains(e.target)).length > 0
       ? [...opened].filter(elt => elt.contains(e.target))
       : [...hidden].filter(elt => elt.contains(e.target));
-  const isOpened = container.id;
-  const type = container.classList[buttons.classList.length - 1];
+  const isOpened = buttons.id;
+  const type = container.classList[container.classList.length - 1];
   const [siblingContainer] = [...dropdownsBar.querySelectorAll(`.${type}`)].filter(elt => elt.id != isOpened);
 
-  buttons.style.display = 'flex' ? 'none' : 'flex';
-  siblingContainer.style.display = buttons.style.display == 'flex' ? 'none' : 'flex';
+  container.style.display = "flex" ? "none" : "flex";
+  siblingContainer.style.display = container.style.display == "flex" ? "none" : "flex";
+
+// and tags condition
+if (isOpened == "hidden") {
+  listTags(type);
 }
+}
+
+// create CLOSEDROPDOWN 
+function closeDropdown() {
+  [...opened].forEach(elt => elt.querySelector("input").value = "");
+  [...opened].forEach(elt => elt.style.display = "none");
+  [...hidden].forEach(elt => elt.style.display = "flex");
+
+} 
 
 
 
