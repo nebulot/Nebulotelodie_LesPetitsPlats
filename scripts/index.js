@@ -1,13 +1,13 @@
 import { getRecipes } from "./api.js";
 import { RecipeCard } from "./constructor/displayCards.js";
 import { Alerts } from "./utils/alerts.js";
-import { dropdownBuilder } from "./utils/builderDropdown.js";
-//import { dropdownFilters } from "./utils/filtersDropdown.js";
+import { DropdownsBuilder } from "./utils/builderDropdown.js";
+
 
 //console.log(recipes);
 
 //DOM for "searchbar" and "tags"
-const searchbar = document.querySelector(".input-group");
+const dropdownsBar = document.querySelector(".btns-dropdown");
 const tags = document.querySelector(".tags");
 
 //3 container card recipes
@@ -28,14 +28,18 @@ const init = async () => {
   const { recipes } = await getRecipes();
   displayCards(recipes);
   console.log(recipes);
+
+  // 
+  const dropdownsValues = ['ingredients', 'appareils', 'ustensiles'];
+    for (let type of dropdownsValues) {
+        const dropdownsBtn = new DropdownsBuilder(type);
+        dropdownsBtn.make().forEach(btn => dropdownsBar.append(btn));
+    }
   // envoi tout au dropdown builder
-  let dropdownBuild = new dropdownBuilder();
+  //let dropdownBuild = new dropdownBuilder();
   //let dropdownFilter = new dropdownFilters(recipes, []);
   
-  //console.log(dropdownFilter);
-  console.log(dropdownBuild);
-
- 
+  
 };
 init();
 
@@ -46,10 +50,12 @@ export const displayAlert = (count) => {
   }
 
   //DOM after initialized recipes card on the main 
-  const ingredients = querySelectorall(".ingredients");
-  const appliances = querySelector (".appliances");
-  const ustensils= querySelector(".ustensils");
-  const resultsReceipe = querySelector(".receipe-container");
+  const ingredients = dropdownsBar.querySelectorAll(".ingredients");
+  const appliances = dropdownsBar.querySelectorAll (".appliances");
+  const ustensils= dropdownsBar.querySelector(".ustensils");
+  const opened = dropdownsBar.querySelectorAll("#opened");
+  const hidden = dropdownsBar.querySelectorAll("#hidden");
+  const resultsReceipe = document.querySelector(".receipe-container");
 
   // TAGS BTN
   
@@ -59,7 +65,25 @@ function closeTags(e) {
   container.remove();
 }
 
+// btn dropdown 
+hidden.forEach(btn => btn.addEventListener('click', displayDropdown));
+opened.forEach(btn => btn.querySelector('button').addEventListener('click', displayDropdown));
 
+function displayDropdown(e) {
+  // ALL BTNS INACTIVE
+  [...opened].forEach(elt => elt.style.display = 'none');
+  [...hidden].forEach(elt => elt.style.display = 'flex');
+  // ONE BTN ACTIVE
+  const [buttons] = [...opened].filter(elt => elt.contains(e.target)).length > 0
+      ? [...opened].filter(elt => elt.contains(e.target))
+      : [...hidden].filter(elt => elt.contains(e.target));
+  const isOpened = container.id;
+  const type = container.classList[buttons.classList.length - 1];
+  const [siblingContainer] = [...dropdownsBar.querySelectorAll(`.${type}`)].filter(elt => elt.id != isOpened);
+
+  buttons.style.display = 'flex' ? 'none' : 'flex';
+  siblingContainer.style.display = buttons.style.display == 'flex' ? 'none' : 'flex';
+}
 
 
 

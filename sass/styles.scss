@@ -52,26 +52,67 @@ $theme-colors: (
 
 // dropdown display 
 // rounded on html (the same of border-radius)
-.btn-group {
+@media (min-width: 768px) {
+main .btns-dropdown {
+  width: auto;
+  flex-direction: column;
+  
+
+  .input-group {
+    display: flex;
+    width: auto;
+    .form-control {
+      font-size: 18px;
+      &::placeholder {
+          opacity: .5;
+          color: white;
+      }
+  }
+  }
+
+  #hidden {
+    width: auto;
+}
+
+  #opened {
+    width: auto;
+    margin-inline: 10px;
+    
+    input {
+        margin-inline-start: -20px;
+    }
+    button {
+        margin-inline-end: -20px;
+    }
+    .result {
+        font-size: larger;
+        line-height: 2;
+        // margin-bottom: 10px;
+    }
+  }
+}
+}
+
+ 
+
+/*.btn-group {
     display: flex;
     flex-direction: row;
     margin: 1rem 0;
 
-    @media screen and (max-width : 375px) {
-      flex-direction: column;
-  }
+    
 }
   
 .btn-group > .btn, .btn-group-vertical > .btn {
     flex: unset;
-  }
+  }*/
+
   
 .btn {
     z-index: 2;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    margin-right: 10px;
     padding: 7px 0px;
     width: 16%;
     color:white;
@@ -86,10 +127,7 @@ $theme-colors: (
     }
 }
   
-#opened {
-    width: 45%;
-    transition: linear .1s;
-}
+
     
 .search-bar {
   &::placeholder {
@@ -118,16 +156,6 @@ $theme-colors: (
     }
 }
   
-.selected {
-    display: none;
-}
-  
-#expanded {
-    display: block;
-    z-index: 5;
-    transition: linear .1s;
-}
-
 //dropdown open 
   .list-wrapper {
     display: none;
