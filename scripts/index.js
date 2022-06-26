@@ -2,9 +2,15 @@ import { getRecipes } from "./api.js";
 import { RecipeCard } from "./constructor/displayCards.js";
 import { Alerts } from "./utils/alerts.js";
 import { DropdownsBuilder } from "./utils/builderDropdown.js";
-
+import {displayDropdown} from "./utils/displayDropdown.js";
 
 //console.log(recipes);
+
+//ARRAY METHOD 
+
+let recipes = [];
+let searchResult = [];
+let queryLength = 0;
 
 //DOM for "searchbar" and "tags"
 const dropdownsBar = document.querySelector(".btns-dropdown");
@@ -23,7 +29,7 @@ const displayCards = (recipes) => {
   });
 };
 
-const init = async () => {
+async function init() {
   
   const { recipes } = await getRecipes();
   displayCards(recipes);
@@ -43,6 +49,9 @@ const init = async () => {
 };
 init();
 
+
+//5 search bar est censé etre dans l'algorithme search.js
+
 // 8 create an alert display under searchbar to success or danger research 
 export const displayAlert = (count) => {
   const alerts = document.querySelector(".alerts");
@@ -55,8 +64,7 @@ export const displayAlert = (count) => {
   const ustensils= dropdownsBar.querySelector(".ustensils");
   const opened = dropdownsBar.querySelectorAll("#opened");
   const hidden = dropdownsBar.querySelectorAll("#hidden");
-  const resultsReceipe = document.querySelector(".receipe-container");
-
+    
   // TAGS BTN
   
 function closeTags(e) {
@@ -66,41 +74,12 @@ function closeTags(e) {
 }
 
 // btn dropdown and (3)search in tag List "li"
-hidden.forEach(btn => btn.addEventListener("click", displayDropdown));
-opened.forEach(btn => btn.querySelector("button").addEventListener("click", displayDropdown));
+hidden.forEach(btn => btn.addEventListener("click", displayDropdown()));
+opened.forEach(btn => btn.querySelector("button").addEventListener("click", displayDropdown()));
 opened.forEach(btn => btn.querySelector("input").addEventListener("input", searchTags));
 
 
-function displayDropdown(e) {
-  // close dropdown 
-  closeDropdown();
-  // ALL BTNS INACTIVE
-  [...opened].forEach(elt => elt.style.display = "none");
-  [...hidden].forEach(elt => elt.style.display = "flex");
-  // ONE BTN ACTIVE
-  const [container] = [...opened].filter(elt => elt.contains(e.target)).length > 0
-      ? [...opened].filter(elt => elt.contains(e.target))
-      : [...hidden].filter(elt => elt.contains(e.target));
-  const isOpened = buttons.id;
-  const type = container.classList[container.classList.length - 1];
-  const [siblingContainer] = [...dropdownsBar.querySelectorAll(`.${type}`)].filter(elt => elt.id != isOpened);
 
-  container.style.display = "flex" ? "none" : "flex";
-  siblingContainer.style.display = container.style.display == "flex" ? "none" : "flex";
-
-// and tags condition
-if (isOpened == "hidden") {
-  listTags(type);
-}
-}
-
-// create CLOSEDROPDOWN 
-function closeDropdown() {
-  [...opened].forEach(elt => elt.querySelector("input").value = "");
-  [...opened].forEach(elt => elt.style.display = "none");
-  [...hidden].forEach(elt => elt.style.display = "flex");
-
-} 
 
 
 

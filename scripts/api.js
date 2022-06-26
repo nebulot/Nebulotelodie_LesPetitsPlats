@@ -1,6 +1,13 @@
 
 //2 GET DATA
-export const getRecipes = (async () => {
+export function getRecipes () {
+  const recipes = fetch("/scripts/data/recipe.json")
+        .then(data => data.json())
+        .catch(err => console.log('Error', err));
+    return recipes;
+}
+
+/*} = (async () => {
     
   return await fetch("/scripts/data/recipe.json")
       .then((res) => {
@@ -13,7 +20,7 @@ export const getRecipes = (async () => {
         console.log(getRecipes());
       });
    });
-
+*/
   
 
  

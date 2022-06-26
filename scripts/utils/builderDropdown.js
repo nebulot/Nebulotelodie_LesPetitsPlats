@@ -40,19 +40,23 @@ export class DropdownsBuilder {
       const buttons = document.createElement('div');
       const wrapper = document.createElement('div');
       const input = document.createElement('input');
-      const btn = document.createElement('button');
-      const listItem = document.createElement('div');
+      const btn = document.createElement("button");
+      const listItem = document.createElement("div");
 
+      buttons.id = "opened";
       buttons.className = `row rounded mx-0 bg-${this.color} ${this.type}`;
-      buttons.id = 'opened';
+      
       wrapper.classList = `col input-group list-wrapper`;
+
       input.classList = `input-dropdown form-control form-control-lg py-4 rounded-left border-0 text-white bg-${this.color}`;
       input.id = `input-${this.type}`;
-      input.type = 'text';
-      input.name = `input-${this.type}`;
+      input.type = "text";
+      input.name = this.type;
       input.placeholder = `Rechercher un ${this.type.substr(0, this.type.length - 1)}`;
+
       btn.classList = `input-group-text px-3 rounded-right border-0 text-white bg-${this.color}`;
-      btn.innerHTML = '<i class="fas fa-chevron-up"></i>';                 
+      btn.innerHTML = `<i class="fas fa-chevron-up"></i>`;       
+                
       listItem.classList = `rounded-bottom border-0 text-white bg-${this.color} tag-result`;
 
       wrapper.appendChild(input);
