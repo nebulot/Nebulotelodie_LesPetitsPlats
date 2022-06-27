@@ -20,6 +20,22 @@
   font-size: 15px;
 }
 
+.search-bar::placeholder {
+  color: #C7BEBE;
+}
+
+.tags {
+  display: flex;
+}
+.tags .tag {
+  display: block;
+  color: white;
+  font-size: 14px;
+  margin: 1rem 0;
+  margin-right: 1rem;
+  padding: 0.5rem;
+}
+
 .alerts {
   padding: 1rem 0;
 }
@@ -31,51 +47,68 @@
   justify-content: space-between;
 }
 
-@media (min-width: 768px) {
-  main .btns-dropdown {
-    width: auto;
-    flex-direction: column;
+.input-group {
+  display: flex;
+  width: auto;
+}
+.input-group .form-control {
+  font-size: 18px;
+}
+.input-group .form-control::placeholder {
+  opacity: 0.5;
+  color: white;
+}
+
+.input-group > .form-control, .input-group > .form-select {
+  padding: 9px;
+}
+
+#hidden {
+  display: flex;
+  width: 100%;
+}
+
+#opened {
+  display: none;
+  width: 100%;
+  margin-inline: 0;
+}
+#opened input {
+  margin-inline-start: 0;
+}
+#opened button {
+  margin-inline-end: 0;
+}
+#opened .result {
+  font-size: smaller;
+  line-height: 1;
+}
+
+@media (min-width: 767px) {
+  .btns-dropdown {
+    flex-direction: inline;
   }
-  main .btns-dropdown .input-group {
-    display: flex;
-    width: auto;
-  }
-  main .btns-dropdown .input-group .form-control {
+  .btns-dropdown .input-group .form-control {
     font-size: 18px;
   }
-  main .btns-dropdown .input-group .form-control::placeholder {
-    opacity: 0.5;
-    color: white;
-  }
-  main .btns-dropdown #hidden {
+  .btns-dropdown #hidden {
     width: auto;
   }
-  main .btns-dropdown #opened {
+  .btns-dropdown #opened {
     width: auto;
     margin-inline: 10px;
   }
-  main .btns-dropdown #opened input {
+  .btns-dropdown #opened input {
     margin-inline-start: -20px;
   }
-  main .btns-dropdown #opened button {
+  .btns-dropdown #opened button {
     margin-inline-end: -20px;
   }
-  main .btns-dropdown #opened .result {
+  .btns-dropdown #opened .result {
     font-size: larger;
     line-height: 2;
   }
 }
-/*.btn-group {
-    display: flex;
-    flex-direction: row;
-    margin: 1rem 0;
-
-
-}
-
-.btn-group > .btn, .btn-group-vertical > .btn {
-    flex: unset;
-  }*/
 .btn {
   z-index: 2;
   display: flex;
@@ -95,129 +128,6 @@
     width: 100%;
     margin: 15px 0%;
   }
-}
-
-.search-bar::placeholder {
-  color: #C7BEBE;
-}
-
-.tags {
-  display: flex;
-}
-.tags .tag {
-  display: block;
-  color: white;
-  font-size: 14px;
-  margin: 1rem 0;
-  margin-right: 1rem;
-  padding: 0.5rem;
-}
-.tags .ingredient-tag {
-  background-color: #3282f7;
-}
-.tags .appliance-tag {
-  background-color: #68d9a4;
-}
-.tags .utensil-tag {
-  background-color: #ed6454;
-}
-
-.list-wrapper {
-  display: none;
-  padding: 1%;
-  position: absolute;
-  width: 45%;
-  z-index: 1;
-}
-@media screen and (max-width: 767px) {
-  .list-wrapper {
-    width: 100%;
-  }
-}
-.list-wrapper .list-wrapper.expanded {
-  display: block;
-  z-index: 3;
-}
-
-.input-dropdown {
-  border: none;
-  width: 90%;
-  color: white;
-}
-.input-dropdown::placeholder {
-  color: AliceBlue;
-}
-
-.close-dropdown-tag {
-  background: none;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-  color: white;
-}
-
-.dropdown-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin: 0;
-  padding: 0;
-}
-
-.list-item {
-  list-style: none;
-  color: white;
-  padding: 0.5rem;
-}
-
-.ingredient-list-wrapper {
-  background-color: #3282f7;
-  position: absolute;
-  left: 0%;
-}
-.ingredient-list-wrapper #input-ingredient {
-  background-color: #3282f7;
-}
-.ingredient-list-wrapper .ingredients-list .ingredient:hover, .ingredient-list-wrapper .ingredients-list .ingredient:active {
-  background-color: white;
-  color: #3282f7;
-}
-
-.appliance-list-wrapper {
-  background-color: #68d9a4;
-  position: absolute;
-  left: 16.95%;
-}
-@media screen and (max-width: 767px) {
-  .appliance-list-wrapper {
-    left: 0%;
-  }
-}
-.appliance-list-wrapper #input-appliance {
-  background-color: #68d9a4;
-}
-.appliance-list-wrapper .appliances-list .appliance:hover, .appliance-list-wrapper .appliances-list .appliance:active {
-  background-color: white;
-  color: #68d9a4;
-}
-
-.utensil-list-wrapper {
-  background-color: #ed6454;
-  position: absolute;
-  left: 33.85%;
-}
-@media screen and (max-width: 767px) {
-  .utensil-list-wrapper {
-    left: 0%;
-  }
-}
-.utensil-list-wrapper #input-utensil {
-  background-color: #ed6454;
-}
-.utensil-list-wrapper .utensils-list .utensil:hover, .utensil-list-wrapper .utensils-list .utensil:active {
-  background-color: white;
-  color: #ed6454;
 }
 
 .card {

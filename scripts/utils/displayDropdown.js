@@ -1,3 +1,8 @@
+
+const dropdownsBar = document.querySelector(".btns-dropdown");
+const opened = dropdownsBar.querySelectorAll("#opened");
+const hidden = dropdownsBar.querySelectorAll("#hidden");
+
 export function displayDropdown(e) {
   
     // close dropdown 
@@ -29,3 +34,6 @@ export function displayDropdown(e) {
     [...hidden].forEach(elt => elt.style.display = "flex");
   
   } 
+  //console.log(closeDropdown);
+  //console.log(hidden);(nodelist)
+  //console.log(opened);(nodelist)

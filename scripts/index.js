@@ -1,16 +1,15 @@
 import { getRecipes } from "./api.js";
 import { RecipeCard } from "./constructor/displayCards.js";
-import { Alerts } from "./utils/alerts.js";
+import {Tag} from "./utils/tags.js";
+//import { Alerts } from "./utils/alerts.js";
 import { DropdownsBuilder } from "./utils/builderDropdown.js";
 import {displayDropdown} from "./utils/displayDropdown.js";
 
+//import arrayAlgorithme 
+import { initRecipes } from "./arrayAlgo.js";
+import { searchRecipes } from "./arrayAlgo.js";
+
 //console.log(recipes);
-
-//ARRAY METHOD 
-
-let recipes = [];
-let searchResult = [];
-let queryLength = 0;
 
 //DOM for "searchbar" and "tags"
 const dropdownsBar = document.querySelector(".btns-dropdown");
@@ -44,19 +43,29 @@ async function init() {
         //console.log(dropdownsBar); <div "btns-dropdown">
     }
     // console.log(dropdownsValues); results (3)[ingredients,appliances,ustensils]
-  
-  
+
+// 8 alert tag searchbar 
+const tag = new Tag('ingredients', 'lait de coco').make();
+    tags.appendChild(tag);
+    const tag2 = new Tag('appareils', 'four').make();
+    tags.appendChild(tag2);
+    const tag3 = new Tag ('ustensiles', 'fouet').make();
+    tags.appendChild(tag3); 
 };
 init();
 
 
-//5 search bar est censé etre dans l'algorithme search.js
+
+//5 searchbar arrayAlgo.js 
+window.addEventListener('load', initRecipes);   //ask computer to querylength ?
+mainInput.addEventListener('input', searchRecipes);   //search function
+search.addEventListener('submit', (e) => e.preventDefault());
 
 // 8 create an alert display under searchbar to success or danger research 
-export const displayAlert = (count) => {
+/*export const displayAlert = (count) => {
   const alerts = document.querySelector(".alerts");
   alerts.append(new Alerts(count).handleAlert());
-  }
+  }*/
 
   //DOM after initialized recipes card on the main 
   const ingredients = dropdownsBar.querySelectorAll(".ingredients");
@@ -67,7 +76,7 @@ export const displayAlert = (count) => {
     
   // TAGS BTN
   
-function closeTags(e) {
+export function closeTags(e) {
   const tagsBtn = [...tags.querySelectorAll("button")];
   const [ container ] = tagsBtn.filter(btn => btn.contains(e.target));
   container.remove();
@@ -76,7 +85,7 @@ function closeTags(e) {
 // btn dropdown and (3)search in tag List "li"
 hidden.forEach(btn => btn.addEventListener("click", displayDropdown()));
 opened.forEach(btn => btn.querySelector("button").addEventListener("click", displayDropdown()));
-opened.forEach(btn => btn.querySelector("input").addEventListener("input", searchTags));
+//opened.forEach(btn => btn.querySelector("input").addEventListener("input", searchTags));
 
 
 
