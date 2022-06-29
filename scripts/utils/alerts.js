@@ -1,7 +1,7 @@
 import { getRecipes } from "../api.js";
 import { RecipeCard } from "../constructor/displayCards.js";
-import { searchBarInput } from "./searchBar.js";
-import { filteredCards } from "./searchBar.js";
+//import { searchBarInput } from "./searchBar.js";
+//import { filteredCards } from "./searchBar.js";
 
 // condition to see the different alert success or danger
 export class Alerts {

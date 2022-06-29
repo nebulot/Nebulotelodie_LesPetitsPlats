@@ -70,9 +70,7 @@ export class DropdownsBuilder {
     return [this.hiddenDrop(), this.openedDrop()];
     
   }
-  
-  
-  }
+   }
   
   
   

@@ -1,21 +1,22 @@
-import { getRecipes } from "./api.js";
-import { RecipeCard } from "./constructor/displayCards.js";
+
+//import { RecipeCard } from "./constructor/displayCards.js";
 import {Tag} from "./utils/tags.js";
-//import { Alerts } from "./utils/alerts.js";
+import { Alerts } from "./utils/alerts.js";
 import { DropdownsBuilder } from "./utils/builderDropdown.js";
 import {displayDropdown} from "./utils/displayDropdown.js";
 
 //import arrayAlgorithme 
-import { initRecipes } from "./arrayAlgo.js";
-import { searchRecipes } from "./arrayAlgo.js";
+import { initRecipes } from "./utils/searchBar.js";
+import { searchResultsRecipes } from "./utils/searchBar.js";
+//import {searchResult} from "./utils/searchBar.js";
 
 //console.log(recipes);
 
-//DOM for "searchbar" and "tags"
+//5 DOM for "searchbar" and 8 "tags"
 const dropdownsBar = document.querySelector(".btns-dropdown");
 const tags = document.querySelector(".tags");
 
-//3 container card recipes
+/*3 container card recipes
 //display cards recipes
 const recipesSection = document.querySelector(".receipe-container");
 const displayCards = (recipes) => {
@@ -26,13 +27,21 @@ const displayCards = (recipes) => {
     //console.log(createRecipeCard); ok
 
   });
-};
+};*/
 
+// 9 create an alert display under searchbar to success or danger research 
+export const displayAlert = (count) => {
+  const alerts = document.querySelector(".alerts");
+  alerts.append(new Alerts(count).handleAlert());
+  };
+
+
+////////////////////////////////INIT////////////////////////////////
 async function init() {
   
-  const { recipes } = await getRecipes();
+  /*const { recipes } = await getRecipes();
   displayCards(recipes);
-  console.log(recipes);   //=> search arrayalgo.js*/
+  //console.log(recipes);   //=> search arrayalgo.js*/
 
   // return bts'dropdown
   const dropdownsValues = ['ingredients', 'appareils', 'ustensiles'];
@@ -57,19 +66,24 @@ init();
 
 
 //5 searchbar arrayAlgo.js 
-const search = document.querySelector(".input-group input");
-const searchInput = search.querySelector("#search-bar");
+const search = document.querySelector(".input-group");
+const searchBarInput = search.querySelector("#search-bar");
 const submit = search.querySelector("#search-addon");
   
 window.addEventListener('load', initRecipes);   //ask computer to querylength ?
-searchInput.addEventListener('input', searchRecipes);   //search function
-search.addEventListener('submit', (e) => e.preventDefault());
+searchBarInput.addEventListener('input', searchResultsRecipes);   //search function
+search.addEventListener('submit', (e) => e.preventDefault());//
 
-// 8 create an alert display under searchbar to success or danger research 
-/*export const displayAlert = (count) => {
-  const alerts = document.querySelector(".alerts");
-  alerts.append(new Alerts(count).handleAlert());
-  }*/
+
+  // TAGS BTN 
+  
+  export function closeTags(e) {
+    const tagsBtn = [...tags.querySelectorAll("button")];
+    const [ container ] = tagsBtn.filter(btn => btn.contains(e.target));
+    container.remove();
+    //console.log(tagsBtn); ok
+  }
+  
 
   //DOM after initialized recipes card on the main 
   
@@ -79,20 +93,21 @@ search.addEventListener('submit', (e) => e.preventDefault());
   const opened = dropdownsBar.querySelectorAll("#opened");
   const hidden = dropdownsBar.querySelectorAll("#hidden");
   const results = document.querySelector("receipe-container");
-    
-  // TAGS BTN 
-  
-export function closeTags(e) {
-  const tagsBtn = [...tags.querySelectorAll("button")];
-  const [ container ] = tagsBtn.filter(btn => btn.contains(e.target));
-  container.remove();
-}
 
-// btn dropdown and (3)search in tag List "li"
+  //let searchResultsRecipes = [];
+  // create submit.addEventListener('click', searchResultsRecipes); arrayAlgo searchBar.js
+    
+
+// btn dropdown and search in tag List "li"
 hidden.forEach(btn => btn.addEventListener("click", displayDropdown()));
 opened.forEach(btn => btn.querySelector("button").addEventListener("click", displayDropdown()));
 //opened.forEach(btn => btn.querySelector("input").addEventListener("input", searchTags));
 
 
-
+// RESULT CARD //
+function displayCards() {
+  for (let recipe of searchResult) {
+      results.appendChild(recipe);
+  }
+}
 

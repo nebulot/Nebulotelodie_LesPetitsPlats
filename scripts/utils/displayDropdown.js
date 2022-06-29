@@ -14,7 +14,7 @@ export function displayDropdown(e) {
     const [container] = [...opened].filter(elt => elt.contains(e.target)).length > 0
         ? [...opened].filter(elt => elt.contains(e.target))
         : [...hidden].filter(elt => elt.contains(e.target));
-    const isOpened = buttons.id;
+    const isOpened = container.id;
     const type = container.classList[container.classList.length - 1];
     const [siblingContainer] = [...dropdownsBar.querySelectorAll(`.${type}`)].filter(elt => elt.id != isOpened);
   
