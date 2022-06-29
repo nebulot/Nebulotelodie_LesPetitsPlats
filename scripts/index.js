@@ -32,7 +32,7 @@ async function init() {
   
   const { recipes } = await getRecipes();
   displayCards(recipes);
-  console.log(recipes);
+  console.log(recipes);   //=> search arrayalgo.js*/
 
   // return bts'dropdown
   const dropdownsValues = ['ingredients', 'appareils', 'ustensiles'];
@@ -57,8 +57,12 @@ init();
 
 
 //5 searchbar arrayAlgo.js 
+const search = document.querySelector(".input-group input");
+const searchInput = search.querySelector("#search-bar");
+const submit = search.querySelector("#search-addon");
+  
 window.addEventListener('load', initRecipes);   //ask computer to querylength ?
-mainInput.addEventListener('input', searchRecipes);   //search function
+searchInput.addEventListener('input', searchRecipes);   //search function
 search.addEventListener('submit', (e) => e.preventDefault());
 
 // 8 create an alert display under searchbar to success or danger research 
@@ -68,13 +72,15 @@ search.addEventListener('submit', (e) => e.preventDefault());
   }*/
 
   //DOM after initialized recipes card on the main 
+  
   const ingredients = dropdownsBar.querySelectorAll(".ingredients");
   const appliances = dropdownsBar.querySelectorAll (".appliances");
   const ustensils= dropdownsBar.querySelector(".ustensils");
   const opened = dropdownsBar.querySelectorAll("#opened");
   const hidden = dropdownsBar.querySelectorAll("#hidden");
+  const results = document.querySelector("receipe-container");
     
-  // TAGS BTN
+  // TAGS BTN 
   
 export function closeTags(e) {
   const tagsBtn = [...tags.querySelectorAll("button")];
@@ -86,8 +92,6 @@ export function closeTags(e) {
 hidden.forEach(btn => btn.addEventListener("click", displayDropdown()));
 opened.forEach(btn => btn.querySelector("button").addEventListener("click", displayDropdown()));
 //opened.forEach(btn => btn.querySelector("input").addEventListener("input", searchTags));
-
-
 
 
 

@@ -10,6 +10,7 @@ let queryLength = 0;
 // INIT
 export async function initRecipes() {
     recipes = await getRecipes();
+    console.log(recipes);
 }
 
 // SEARCH
@@ -24,7 +25,7 @@ export function searchRecipes() {
             Array = searchResult.length > 0 ? [...searchResult] : [...recipes];
         }
 
-        results = searchArray.filter(recipe => {
+        results = Array.filter(recipe => {
             return recipe.name.toLowerCase().includes(query)
                 || recipe.description.toLowerCase().includes(query)
                 || recipe.ingredients.filter(ingredient => ingredient.ingredient.toLowerCase().includes(query)).length >= 1;
@@ -38,10 +39,11 @@ export function searchRecipes() {
         queryLength = 0;
         results.innerHTML = '';
     }
+    console.log(searchResult);
 }
 
 // DISPLAY
-function displayRecipes(data) {
+export function displayRecipes(data) {
     results.innerHTML = '';
     data.forEach(recipe => {
         let recipeCard = new RecipeCard(recipe).make();
