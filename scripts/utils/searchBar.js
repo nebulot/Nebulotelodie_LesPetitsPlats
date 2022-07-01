@@ -7,7 +7,7 @@ let recipes = [];
 let searchResult = [];
 let queryLength = 0;
 
-// GET JSON DATA
+// GET JSON DATA API
 export function getRecipes () {
   const recipes = fetch("./scripts/data/recipe.json")
         .then(data => data.json())
@@ -18,7 +18,7 @@ export function getRecipes () {
 // INIT
 export async function initRecipes() {
   recipes = await getRecipes();
-  console.log(recipes);
+  //console.log(recipes);
 }
 
 export function searchResultsRecipes() {
@@ -52,8 +52,8 @@ export function searchResultsRecipes() {
 function displayRecipes(data) {
   results.innerHTML = '';
   data.forEach(recipe => {
-      let recipeCard = new RecipeCard(recipe).createRecipeCard;
-      results.appendChild(recipeCard);
+      let Card = new RecipeCard(recipe).createRecipeCard;
+      results.appendChild(Card);
   });
 }
 

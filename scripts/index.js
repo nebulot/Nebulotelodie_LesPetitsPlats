@@ -3,11 +3,12 @@
 import {Tag} from "./utils/tags.js";
 import { Alerts } from "./utils/alerts.js";
 import { DropdownsBuilder } from "./utils/builderDropdown.js";
-import {displayDropdown} from "./utils/displayDropdown.js";
+
 
 //import arrayAlgorithme 
 import { initRecipes } from "./utils/searchBar.js";
 import { searchResultsRecipes } from "./utils/searchBar.js";
+
 //import {searchResult} from "./utils/searchBar.js";
 
 //console.log(recipes);
@@ -68,7 +69,8 @@ init();
 //5 searchbar arrayAlgo.js 
 const search = document.querySelector(".input-group");
 const searchBarInput = search.querySelector("#search-bar");
-const submit = search.querySelector("#search-addon");
+const submit = search.querySelector("span");
+
   
 window.addEventListener('load', initRecipes);   //ask computer to querylength ?
 searchBarInput.addEventListener('input', searchResultsRecipes);   //search function
@@ -90,18 +92,13 @@ search.addEventListener('submit', (e) => e.preventDefault());//
   const ingredients = dropdownsBar.querySelectorAll(".ingredients");
   const appliances = dropdownsBar.querySelectorAll (".appliances");
   const ustensils= dropdownsBar.querySelector(".ustensils");
-  const opened = dropdownsBar.querySelectorAll("#opened");
-  const hidden = dropdownsBar.querySelectorAll("#hidden");
-  const results = document.querySelector("receipe-container");
+  const results = document.querySelector("main .receipe-container");
 
   //let searchResultsRecipes = [];
   // create submit.addEventListener('click', searchResultsRecipes); arrayAlgo searchBar.js
     
 
-// btn dropdown and search in tag List "li"
-hidden.forEach(btn => btn.addEventListener("click", displayDropdown()));
-opened.forEach(btn => btn.querySelector("button").addEventListener("click", displayDropdown()));
-//opened.forEach(btn => btn.querySelector("input").addEventListener("input", searchTags));
+
 
 
 // RESULT CARD //

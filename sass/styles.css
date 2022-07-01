@@ -10,6 +10,7 @@
   flex-wrap: wrap;
   align-items: stretch;
   width: 94%;
+  cursor: pointer;
 }
 
 .search-bar {
@@ -18,10 +19,6 @@
 .search-bar::placeholder {
   color: #c7bebe;
   font-size: 15px;
-}
-
-.search-bar::placeholder {
-  color: #C7BEBE;
 }
 
 .tags {

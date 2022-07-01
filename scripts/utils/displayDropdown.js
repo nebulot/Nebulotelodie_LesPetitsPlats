@@ -2,8 +2,20 @@
 const dropdownsBar = document.querySelector(".btns-dropdown");
 const opened = dropdownsBar.querySelectorAll("#opened");
 const hidden = dropdownsBar.querySelectorAll("#hidden");
+console.log(dropdownsBar);
 
-export function displayDropdown(e) {
+// btn dropdown and search in tag List "li"
+hidden.forEach(btn => btn.addEventListener("click", DropdownsDisplay()));
+opened.forEach(btn => btn.querySelector("button").addEventListener("click", DropdownsDisplay()));
+//opened.forEach(btn => btn.querySelector("input").addEventListener("input", searchTags));
+
+export class DropdownsDisplay {
+  constructor(type) {
+      this.type = type;
+  }
+
+
+displayDropdown(e) {
   
     // close dropdown 
     closeDropdown();
@@ -16,7 +28,7 @@ export function displayDropdown(e) {
         : [...hidden].filter(elt => elt.contains(e.target));
     const isOpened = container.id;
     const type = container.classList[container.classList.length - 1];
-    const [siblingContainer] = [...dropdownsBar.querySelectorAll(`.${type}`)].filter(elt => elt.id != isOpened);
+    const [siblingContainer] = [...dropdownsBar.querySelectorAll(`.${this.type}`)].filter(elt => elt.id != isOpened);
   
     container.style.display = "flex" ? "none" : "flex";
     siblingContainer.style.display = container.style.display == "flex" ? "none" : "flex";
@@ -28,12 +40,13 @@ export function displayDropdown(e) {
   }
   
   // create CLOSEDROPDOWN 
-  function closeDropdown() {
+ closeDropdown() {
     [...opened].forEach(elt => elt.querySelector("input").value = "");
     [...opened].forEach(elt => elt.style.display = "none");
     [...hidden].forEach(elt => elt.style.display = "flex");
   
   } 
-  //console.log(closeDropdown);
+  //console.log(closeDropdown); ok 
   //console.log(hidden);(nodelist)
   //console.log(opened);(nodelist)
+}

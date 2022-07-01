@@ -1,3 +1,5 @@
+//@import "./variables_overrides.scss";
+
 
 //color '${this-color} 
 
@@ -15,6 +17,7 @@
   flex-wrap: wrap;
   align-items: stretch;
   width: 94%;
+  cursor : pointer;
 }
 
 .search-bar {
@@ -25,12 +28,6 @@
     }
 }
 
-.search-bar {
-  &::placeholder {
-    color: #C7BEBE;
-  }
-}
-  
 .tags {
     display: flex;
     .tag {

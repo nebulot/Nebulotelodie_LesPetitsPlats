@@ -32,6 +32,7 @@ export class DropdownsBuilder {
       buttons.appendChild(btnOne);
       buttons.appendChild(btnOpen);
       return buttons;
+      
   }
      
 
@@ -69,9 +70,11 @@ export class DropdownsBuilder {
   make() {
     return [this.hiddenDrop(), this.openedDrop()];
     
+    
   }
+  
    }
   
-  
+   //console.log(openedDrop);
   
 
