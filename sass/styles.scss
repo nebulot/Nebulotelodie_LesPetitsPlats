@@ -72,12 +72,12 @@
      padding: 9px;
   }
 
-  #hidden {
+  #inactive {
       display: flex;
       width: 100%;
   }
 
-  #opened {
+  #active {
       display: none;
       width: 100%;
       margin-inline: 0;
@@ -105,11 +105,11 @@
         }
     }
 
-    #hidden {
+    #inactive {
         width: auto;
     }
 
-    #opened {
+    #active {
         width: auto;
         margin-inline: 10px;
         input {

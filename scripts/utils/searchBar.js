@@ -2,10 +2,11 @@
 import {RecipeCard} from "../constructor/displayCards.js";
 
 //ARRAY METHOD 
-
+const results = document.querySelector(".receipe-container");
 let recipes = [];
-let searchResult = [];
+export let searchResult = [];
 let queryLength = 0;
+
 
 // GET JSON DATA API
 export function getRecipes () {
@@ -56,13 +57,6 @@ function displayRecipes(data) {
       results.appendChild(Card);
   });
 }
-
-
-
-
-
-
-
 
 
 

@@ -1,25 +1,25 @@
+//import arrayAlgorithme 
+import { initRecipes } from "./utils/searchBar.js";
+import { searchResultsRecipes } from "./utils/searchBar.js";
 
-//import { RecipeCard } from "./constructor/displayCards.js";
+
+import { searchResult } from "./utils/searchBar.js";
 import {Tag} from "./utils/tags.js";
 import { Alerts } from "./utils/alerts.js";
 import { DropdownsBuilder } from "./utils/builderDropdown.js";
 
 
-//import arrayAlgorithme 
-import { initRecipes } from "./utils/searchBar.js";
-import { searchResultsRecipes } from "./utils/searchBar.js";
-
-//import {searchResult} from "./utils/searchBar.js";
 
 //console.log(recipes);
 
-//5 DOM for "searchbar" and 8 "tags"
+///////////////////////5 DOM for "searchbar" and 8 "tags"/////////////////////////////
 const dropdownsBar = document.querySelector(".btns-dropdown");
 const tags = document.querySelector(".tags");
-
-/*3 container card recipes
-//display cards recipes
 const recipesSection = document.querySelector(".receipe-container");
+
+//3 container card recipes
+//display cards recipes
+/*const recipesSection = document.querySelector(".receipe-container");
 const displayCards = (recipes) => {
   recipes.forEach((recipe) => {
     //console.log(recipe); ok
@@ -30,7 +30,7 @@ const displayCards = (recipes) => {
   });
 };*/
 
-// 9 create an alert display under searchbar to success or danger research 
+//////////// 9 create an alert display under searchbar to success or danger research //////
 export const displayAlert = (count) => {
   const alerts = document.querySelector(".alerts");
   alerts.append(new Alerts(count).handleAlert());
@@ -40,11 +40,12 @@ export const displayAlert = (count) => {
 ////////////////////////////////INIT////////////////////////////////
 async function init() {
   
-  /*const { recipes } = await getRecipes();
-  displayCards(recipes);
+  //const { recipes } = await getRecipes();
+  //displayCards();
   //console.log(recipes);   //=> search arrayalgo.js*/
 
   // return bts'dropdown
+  
   const dropdownsValues = ['ingredients', 'appareils', 'ustensiles'];
     for (let type of dropdownsValues) {
         const dropdownsBtn = new DropdownsBuilder(type);
@@ -66,45 +67,68 @@ init();
 
 
 
-//5 searchbar arrayAlgo.js 
-const search = document.querySelector(".input-group");
-const searchBarInput = search.querySelector("#search-bar");
+///////////////////////    5 SEARCHBAR  arrayAlgo.js  ////////////////////////////////
+///////////////////////DOM recipe card 
+const search = document.querySelector("form .input-group ");
+export const searchBarInput = search.querySelector("#search-bar");
 const submit = search.querySelector("span");
+const open = dropdownsBar.querySelectorAll("#active");
+const hidden = dropdownsBar.querySelectorAll("#inactive");
+const ingredients = dropdownsBar.querySelectorAll (".ingredients");
+const appliances = dropdownsBar.querySelectorAll (".applainces");
+const ustensiles = dropdownsBar.querySelectorAll (".ustensiles");
+
+const results = document.querySelector("main .receipe-container");
 
   
 window.addEventListener('load', initRecipes);   //ask computer to querylength ?
 searchBarInput.addEventListener('input', searchResultsRecipes);   //search function
-search.addEventListener('submit', (e) => e.preventDefault());//
+search.addEventListener('submit', (e) => e.preventDefault()); 
 
 
-  // TAGS BTN 
+
+  ////////////////////////// TAGS BTN ////////////////////////////////////
   
   export function closeTags(e) {
     const tagsBtn = [...tags.querySelectorAll("button")];
-    const [ container ] = tagsBtn.filter(btn => btn.contains(e.target));
+    const [container] = tagsBtn.filter(btn => btn.contains(e.target));
     container.remove();
     //console.log(tagsBtn); ok
-  }
+  } 
   
-
-  //DOM after initialized recipes card on the main 
-  
-  const ingredients = dropdownsBar.querySelectorAll(".ingredients");
-  const appliances = dropdownsBar.querySelectorAll (".appliances");
-  const ustensils= dropdownsBar.querySelector(".ustensils");
-  const results = document.querySelector("main .receipe-container");
-
   //let searchResultsRecipes = [];
   // create submit.addEventListener('click', searchResultsRecipes); arrayAlgo searchBar.js
-    
+///////// DROPDOWN DISPLAY ////////////////
+// btn dropdown and search in tag List "li"
 
+hidden.forEach(btn => btn.addEventListener('click', displayDropdown));
+open.forEach(btn => btn.querySelector('button').addEventListener('click', displayDropdown));
+console.log(hidden); //nodeList inactive (3) ok
+console.log(open); //nodeList active (3) ok
 
+function displayDropdown(e) {
+  
+ // all btns is inactive we don't see the {typeList}
+  [...open].forEach(elt => elt.style.display = "none");
+  [...hidden].forEach(elt => elt.style.display = "flex");
 
+  // when you click on the  btns, one btn is active and you see {typeList}
+  const [container] = [...open].filter(el => el.contains(e.target)).length > 0
+      ? [...open].filter(el => el.contains(e.target))
+      : [...hidden].filter(el => el.contains(e.target));
+  const isOpen = container.id;
+  const type = container.classList[container.classList.length - 1];
+  const [siblingContainer] = [...dropdownsBar.querySelectorAll(`.${type}`)].filter(el => el.id != isOpen);
 
-// RESULT CARD //
+  container.style.display = "flex" ? "none" : "flex";
+  siblingContainer.style.display = container.style.display == "flex" ? "none" : "flex";
+}
+
+/////////////   RECIPE  RESULT CARD //////////////////////
 function displayCards() {
-  for (let recipe of searchResult) {
+ for (let recipe of searchResult) {
       results.appendChild(recipe);
   }
 }
+//console.log(displayCards); ok
 

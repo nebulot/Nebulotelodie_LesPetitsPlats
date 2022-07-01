@@ -16,11 +16,11 @@ export class DropdownsBuilder {
               console.log('ERROR');
       }
   }
-  hiddenDrop() {
+  inactiveDrop() {
 
     const buttons = document.createElement("div");
     buttons.classList =  `btn-${this.type}-container col-1 px-0 input-group `;
-    buttons.id = "hidden";
+    buttons.id = "inactive";
 
     const btnOne = document.createElement("button");
       btnOne.classList = `form-control form-control-lg py-4 btn-${this.type} ingredients btn  btn-${this.color} rounded-left border-0`;
@@ -37,14 +37,14 @@ export class DropdownsBuilder {
      
 
       
-  openedDrop() {
+  activeDrop() {
       const buttons = document.createElement('div');
       const wrapper = document.createElement('div');
       const input = document.createElement('input');
       const btn = document.createElement("button");
       const listItem = document.createElement("div");
 
-      buttons.id = "opened";
+      buttons.id = "active";
       buttons.className = `row rounded mx-0 bg-${this.color} ${this.type}`;
       
       wrapper.classList = `col input-group list-wrapper`;
@@ -68,13 +68,12 @@ export class DropdownsBuilder {
       
   }
   make() {
-    return [this.hiddenDrop(), this.openedDrop()];
+    return [this.inactiveDrop(), this.activeDrop()];
     
     
   }
   
    }
   
-   //console.log(openedDrop);
-  
+   
 

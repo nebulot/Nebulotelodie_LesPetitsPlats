@@ -1,7 +1,7 @@
 import { getRecipes } from "../api.js";
 import { RecipeCard } from "../constructor/displayCards.js";
-//import { searchBarInput } from "./searchBar.js";
-//import { filteredCards } from "./searchBar.js";
+import { searchBarInput } from "../index.js";
+import { searchResultsRecipes } from "./searchBar.js";
 
 // condition to see the different alert success or danger
 export class Alerts {
@@ -12,7 +12,7 @@ export class Alerts {
       console.log(searchBarInput);
     } else if (
       searchBarInput.value.length < 3 &&
-      RecipeCard.length == filteredCards.length
+      RecipeCard.length == searchResultsRecipes.length
     ) {
       alertBox.classList.remove("displayed");
     } else {
@@ -25,6 +25,7 @@ export class Alerts {
   // when the research on the search bar is a success
   // create display
   successAlert(alertBox) {
+    
     alertBox.classList.add("alert-success");
     alertBox.classList.add("displayed");
     alertBox.classList.remove("alert-danger");
@@ -44,6 +45,7 @@ export class Alerts {
   // no success research on searchBar alert remove
   // create display dangerAlert
   dangerAlert(alertBox) {
+    
     alertBox.classList.add("alert-danger");
     alertBox.classList.add("displayed");
     alertBox.classList.remove("alert-success");

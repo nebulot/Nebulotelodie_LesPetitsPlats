@@ -60,23 +60,23 @@
   padding: 9px;
 }
 
-#hidden {
+#inactive {
   display: flex;
   width: 100%;
 }
 
-#opened {
+#active {
   display: none;
   width: 100%;
   margin-inline: 0;
 }
-#opened input {
+#active input {
   margin-inline-start: 0;
 }
-#opened button {
+#active button {
   margin-inline-end: 0;
 }
-#opened .result {
+#active .result {
   font-size: smaller;
   line-height: 1;
 }
@@ -88,20 +88,20 @@
   .btns-dropdown .input-group .form-control {
     font-size: 18px;
   }
-  .btns-dropdown #hidden {
+  .btns-dropdown #inactive {
     width: auto;
   }
-  .btns-dropdown #opened {
+  .btns-dropdown #active {
     width: auto;
     margin-inline: 10px;
   }
-  .btns-dropdown #opened input {
+  .btns-dropdown #active input {
     margin-inline-start: -20px;
   }
-  .btns-dropdown #opened button {
+  .btns-dropdown #active button {
     margin-inline-end: -20px;
   }
-  .btns-dropdown #opened .result {
+  .btns-dropdown #active .result {
     font-size: larger;
     line-height: 2;
   }
