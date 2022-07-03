@@ -1,7 +1,4 @@
-
-import { Tag } from "./tags.js";
-
-export class DropdownsBuilder {
+class DropdownsBuilder {
   constructor(type) {
       this.type = type;
       this.color = this.Color();

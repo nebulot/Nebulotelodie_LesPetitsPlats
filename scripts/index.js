@@ -1,16 +1,6 @@
-//import arrayAlgorithme 
-
-import {Tag} from "./utils/tags.js";
-import { listTags } from "./utils/tags.js";
-import { DropdownsBuilder } from "./utils/builderDropdown.js";
-
-//console.log(recipes);
-
 ///////////////////////5 DOM for "searchbar" and 8 "tags"/////////////////////////////
 const dropdownsBar = document.querySelector(".btns-dropdown");
 const tags = document.querySelector(".tags");
-
-
 
 //3 container card recipes
 //display cards recipes
@@ -26,21 +16,20 @@ const displayCards = (recipes) => {
 };*/
 
 //////////// 9 create an alert display under searchbar to success or danger research //////
-export const displayAlert = (count) => {
+/*export const displayAlert = (count) => {
   const alerts = document.querySelector(".alerts");
   alerts.append(new Alerts(count).handleAlert());
-  };
+  };*/
 
 
 ////////////////////////////////INIT////////////////////////////////
 async function init() {
   
-  //const { recipes } = await getRecipes();
-  //displayCards();
+  /*const { recipes } = await getRecipes();
+  displayCards();
   //console.log(recipes);   //=> search arrayalgo.js*/
-
-  // return bts'dropdown
   
+  // return bts'dropdown
   const dropdownsValues = ['ingredients', 'appareils', 'ustensiles'];
     for (let type of dropdownsValues) {
         const dropdownsBtn = new DropdownsBuilder(type);
@@ -60,32 +49,27 @@ const tag = new Tag('ingredients', 'lait de coco').make();
 };
 init();
 
-
-
 ///////////////////////    5 SEARCHBAR  arrayAlgo.js  ////////////////////////////////
 ///////////////////////DOM recipe card 
 const search = document.querySelector("form .input-group ");
-export const searchBarInput = search.querySelector("#search-bar");
-
+const searchBarInput = search.querySelector("#search-bar");
 const submit = search.querySelector("span");
 const open = dropdownsBar.querySelectorAll("#active");
 const hidden = dropdownsBar.querySelectorAll("#inactive");
-const results = document.querySelector("main .receipe-row");
-  
+const results = document.querySelector(".receipe-container");
+
 window.addEventListener('load', initRecipes);   //ask computer to querylength ?
 searchBarInput.addEventListener('input', searchResultsRecipes);   //search function
 search.addEventListener('submit', (e) => e.preventDefault()); 
 
-
-
-  ////////////////////////// TAGS BTN ////////////////////////////////////
+////////////////////////// TAGS BTN ////////////////////////////////////
   
-  export function closeTags(e) {
+  /*function closeTags(e) {
     const tagsBtn = [...tags.querySelectorAll("button")];
     const [container] = tagsBtn.filter(btn => btn.contains(e.target));
     container.remove();
     //console.log(tagsBtn); ok
-  } 
+  } */
   
   //let searchResultsRecipes = [];
   // create submit.addEventListener('click', searchResultsRecipes); arrayAlgo searchBar.js
@@ -119,18 +103,26 @@ function displayDropdown(e) {
   console.log(siblingContainer);
   //siblingContainer ; div wrapper-{type} input-dropdown + chevron 
 
-  //and tags condition
+  /*and tags condition
   if (isOpen == "inactive") {
     listTags(type);
   }
+  console.log(isOpen);
+  console.log(listTags);*/
   }
 
-/////////////   RECIPE  RESULT CARD //////////////////////
 
-function recipeCards() {
- for (let recipe of searchResult) {
+/////////////   RECIPE  RESULT CARD //////////////////////
+function displayResults() {
+  for (let recipe of searchResult) {
       results.appendChild(recipe);
   }
 }
-console.log(results);
+
+      
+   
+
+
+
+
 

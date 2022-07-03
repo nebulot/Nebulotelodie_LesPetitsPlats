@@ -1,4 +1,3 @@
-//import { Ingredient } from "../utils/ingredients.js";
 // 4 create DOM recipe CARD
 
 class RecipeCard {
@@ -62,7 +61,7 @@ class RecipeCard {
   }
 
   //5 create display card
-  get createRecipeCard() {
+  make() {
     const card = document.createElement("div");
     card.className = "receipe col-12 col-md-6 col-lg-4";
     card.innerHTML = `

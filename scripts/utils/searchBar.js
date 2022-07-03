@@ -1,25 +1,22 @@
 
 //ARRAY METHOD 
-const results = document.querySelector(".receipe-container");
 let recipes = [];
 let searchResult = [];
 let queryLength = 0;
 
-
 // GET JSON DATA API
 function getRecipes () {
-  const recipes = fetch("./scripts/data/recipe.json")
+  const recipes = fetch("./scripts/data/recipes.json")
         .then(data => data.json())
         .catch(err => console.log('Error', err));
     return recipes;
     
 }
 
-
 // INIT
 async function initRecipes() {
   recipes = await getRecipes();
-  console.log(recipes);
+  console.log(getRecipes());
 }
 
 function searchResultsRecipes() {
@@ -53,7 +50,7 @@ function searchResultsRecipes() {
 function displayRecipes(data) {
   results.innerHTML = '';
   data.forEach(recipe => {
-      let card = new RecipeCard(recipe).createRecipeCard;
+      let card = new RecipeCard(recipe).make();
       results.appendChild(card);
   });
 }
