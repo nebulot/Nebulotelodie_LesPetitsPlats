@@ -1,9 +1,5 @@
 
-  /*and tags condition
-  if (isOpen == "inactive") {
-    listTags(type);
-  }
-  }
+  /*
   
   // create CLOSEDROPDOWN 
  closeDropdown() {

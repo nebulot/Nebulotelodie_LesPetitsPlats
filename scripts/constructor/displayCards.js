@@ -1,7 +1,7 @@
 //import { Ingredient } from "../utils/ingredients.js";
 // 4 create DOM recipe CARD
 
-export class RecipeCard {
+class RecipeCard {
   /*
    * @constructor
    * @param {Object} data
@@ -93,3 +93,4 @@ export class RecipeCard {
     
   }
 }
+

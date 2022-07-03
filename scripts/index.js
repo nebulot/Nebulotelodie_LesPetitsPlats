@@ -1,21 +1,16 @@
 //import arrayAlgorithme 
-import { initRecipes } from "./utils/searchBar.js";
-import { searchResultsRecipes } from "./utils/searchBar.js";
 
-
-import { searchResult } from "./utils/searchBar.js";
 import {Tag} from "./utils/tags.js";
-import { Alerts } from "./utils/alerts.js";
+import { listTags } from "./utils/tags.js";
 import { DropdownsBuilder } from "./utils/builderDropdown.js";
-
-
 
 //console.log(recipes);
 
 ///////////////////////5 DOM for "searchbar" and 8 "tags"/////////////////////////////
 const dropdownsBar = document.querySelector(".btns-dropdown");
 const tags = document.querySelector(".tags");
-const recipesSection = document.querySelector(".receipe-container");
+
+
 
 //3 container card recipes
 //display cards recipes
@@ -25,7 +20,7 @@ const displayCards = (recipes) => {
     //console.log(recipe); ok
     recipesSection.append(new RecipeCard(recipe).createRecipeCard);
     console.log(RecipeCard);
-    //console.log(createRecipeCard); ok
+  console.log(createRecipeCard); ok
 
   });
 };*/
@@ -71,15 +66,11 @@ init();
 ///////////////////////DOM recipe card 
 const search = document.querySelector("form .input-group ");
 export const searchBarInput = search.querySelector("#search-bar");
+
 const submit = search.querySelector("span");
 const open = dropdownsBar.querySelectorAll("#active");
 const hidden = dropdownsBar.querySelectorAll("#inactive");
-const ingredients = dropdownsBar.querySelectorAll (".ingredients");
-const appliances = dropdownsBar.querySelectorAll (".applainces");
-const ustensiles = dropdownsBar.querySelectorAll (".ustensiles");
-
-const results = document.querySelector("main .receipe-container");
-
+const results = document.querySelector("main .receipe-row");
   
 window.addEventListener('load', initRecipes);   //ask computer to querylength ?
 searchBarInput.addEventListener('input', searchResultsRecipes);   //search function
@@ -109,26 +100,37 @@ console.log(open); //nodeList active (3) ok
 function displayDropdown(e) {
   
  // all btns is inactive we don't see the {typeList}
-  [...open].forEach(elt => elt.style.display = "none");
-  [...hidden].forEach(elt => elt.style.display = "flex");
+  [...open].forEach(elt => elt.style.display = "flex");
+  [...hidden].forEach(elt => elt.style.display = "none");
 
   // when you click on the  btns, one btn is active and you see {typeList}
   const [container] = [...open].filter(el => el.contains(e.target)).length > 0
       ? [...open].filter(el => el.contains(e.target))
       : [...hidden].filter(el => el.contains(e.target));
+      console.log(container);
   const isOpen = container.id;
+  //console.log(container); //div btn-{type}-container ok
+  //console.log(isOpen); //inactive div ok
   const type = container.classList[container.classList.length - 1];
   const [siblingContainer] = [...dropdownsBar.querySelectorAll(`.${type}`)].filter(el => el.id != isOpen);
-
+  //console.log(isOpen); inactive to
   container.style.display = "flex" ? "none" : "flex";
   siblingContainer.style.display = container.style.display == "flex" ? "none" : "flex";
-}
+  console.log(siblingContainer);
+  //siblingContainer ; div wrapper-{type} input-dropdown + chevron 
+
+  //and tags condition
+  if (isOpen == "inactive") {
+    listTags(type);
+  }
+  }
 
 /////////////   RECIPE  RESULT CARD //////////////////////
-function displayCards() {
+
+function recipeCards() {
  for (let recipe of searchResult) {
       results.appendChild(recipe);
   }
 }
-//console.log(displayCards); ok
+console.log(results);
 

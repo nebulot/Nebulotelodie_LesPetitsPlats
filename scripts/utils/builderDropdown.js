@@ -1,4 +1,6 @@
 
+import { Tag } from "./tags.js";
+
 export class DropdownsBuilder {
   constructor(type) {
       this.type = type;
@@ -74,6 +76,5 @@ export class DropdownsBuilder {
   }
   
    }
-  
-   
 
+  

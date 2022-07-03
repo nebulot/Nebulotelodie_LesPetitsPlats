@@ -1,28 +1,28 @@
-//import {displayAlert} from "../index.js";
-import {RecipeCard} from "../constructor/displayCards.js";
 
 //ARRAY METHOD 
 const results = document.querySelector(".receipe-container");
 let recipes = [];
-export let searchResult = [];
+let searchResult = [];
 let queryLength = 0;
 
 
 // GET JSON DATA API
-export function getRecipes () {
+function getRecipes () {
   const recipes = fetch("./scripts/data/recipe.json")
         .then(data => data.json())
         .catch(err => console.log('Error', err));
     return recipes;
+    
 }
+
 
 // INIT
-export async function initRecipes() {
+async function initRecipes() {
   recipes = await getRecipes();
-  //console.log(recipes);
+  console.log(recipes);
 }
 
-export function searchResultsRecipes() {
+function searchResultsRecipes() {
   const query = this.value;
   if (query.length > 2) {
       let [Array, results] = [[], []];
@@ -49,14 +49,16 @@ export function searchResultsRecipes() {
   }
 }
 
-// DISPLAY
+//DISPLAY create recipe card when write your name on the searchbar
 function displayRecipes(data) {
   results.innerHTML = '';
   data.forEach(recipe => {
-      let Card = new RecipeCard(recipe).createRecipeCard;
-      results.appendChild(Card);
+      let card = new RecipeCard(recipe).createRecipeCard;
+      results.appendChild(card);
   });
 }
+
+
 
 
 

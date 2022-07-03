@@ -1,10 +1,5 @@
-import { getRecipes } from "../api.js";
-import { RecipeCard } from "../constructor/displayCards.js";
-import { searchBarInput } from "../index.js";
-import { searchResultsRecipes } from "./searchBar.js";
-
 // condition to see the different alert success or danger
-export class Alerts {
+class Alerts {
   handleAlert() {    
     const alertBox = document.querySelector(".alert");
     if (searchBarInput.value.length != 0 && RecipeCard.length == 0) {

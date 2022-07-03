@@ -10,7 +10,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="./sass/styles.css" />
- 
+
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/504f488958.js" crossorigin="anonymous"></script>
@@ -21,30 +21,30 @@
 </head>
 
 <body>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <header class="container_header">
-          <img class="logo" src="./assets/logo.svg" alt="Logotype de l'enseigne">
-        </header>
-      </div>
-    </div>
-  </div>
-<!-- ARRAY OF search JS -->
-  <main id="app">
+  <header>
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <form action = "#">
-          <div class="input-group rounded">
-            <input id= "search-bar" class="search-bar form-control rounded border-0 bg-light" type="search" aria-label="search"
-              placeholder="Recherchez un ingrédient, un appareil, un ustensile ou une recette">
-            <span class="input-group-text border-0" id="search-addon">
-              <i class="fas fa-search"></i>
-            </span>
+          <div class="container_header">
+            <img class="logo" src="./assets/logo.svg" alt="Logotype de l'enseigne">
           </div>
-          <form>
+        </div>
+      </div>
+    </div>
+    <!-- ARRAY OF search JS -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <form action="#">
+            <div class="input-group rounded">
+              <input id="search-bar" class="search-bar form-control rounded border-0 bg-light" type="search"
+                aria-label="search" placeholder="Recherchez un ingrédient, un appareil, un ustensile ou une recette">
+              <span class="input-group-text border-0" id="search-addon">
+                <i class="fas fa-search"></i>
+              </span>
+            </div>
+            <form>
         </div>
       </div>
     </div>
@@ -78,9 +78,11 @@
         <!-- builderDropdown.js-->
       </div>
     </div>
+  </header>
 
 
-    <!-- RECIPECARD COMPONENT JS -->
+  <!-- RECIPECARD COMPONENT JS -->
+  <main>
     <div class="container">
       <div class="receipe-container row ">
       </div>
@@ -89,6 +91,9 @@
   </main>
 
   <!-- script JS -->
+  <script src="./scripts/constructor/displayCards.js"></script>
+  <script src="scripts/utils/searchBar.js"></script>
+  <script src="scripts/utils/alerts.js"></script>
   <script src="./scripts/index.js" type="module"></script>
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
