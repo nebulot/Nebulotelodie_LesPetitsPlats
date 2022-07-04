@@ -16,14 +16,13 @@ const displayCards = (recipes) => {
 };*/
 
 //////////// 9 create an alert display under searchbar to success or danger research //////
-/*export const displayAlert = (count) => {
-  const alerts = document.querySelector(".alerts");
-  alerts.append(new Alerts(count).handleAlert());
+/*export 
   };*/
 
 
 ////////////////////////////////INIT////////////////////////////////
-async function init() {
+//error stop async 
+function init() {
   
   /*const { recipes } = await getRecipes();
   displayCards();
@@ -49,49 +48,72 @@ const tag = new Tag('ingredients', 'lait de coco').make();
 };
 init();
 
-///////////////////////    5 SEARCHBAR  arrayAlgo.js  ////////////////////////////////
-///////////////////////DOM recipe card 
+///////////////////////    (5) SEARCHBAR  arrayAlgo.js  ////////////////////////////////
 const search = document.querySelector("form .input-group ");
+const results = document.querySelector("main .receipe-container");
+
 const searchBarInput = search.querySelector("#search-bar");
 const submit = search.querySelector("span");
+
+//8 alert display 
+const displayAlert = (count) => {
+  const alerts = document.querySelector(".alerts");
+  alerts.append(new Alerts(count).handleAlert());
+}
+//5 focus on searchbar and check all recipes : nodeList(50) Alert
+searchBarInput.addEventListener("keyup", (e) => {
+  //const searchRecipes = e.target.value;
+  const cards = document.querySelectorAll(".card");
+  let count = filteredCards(searchRecipes, cards);
+  displayAlert(count);
+  console.log(searchRecipes);
+});
+
+
+
+//////////////////////     (7)   DROPDOWN ////////////////////////////
+const appareils = dropdownsBar.querySelectorAll(".ingredients");
+const ustensils = dropdownsBar.querySelectorAll(".ustensiles");
+const appliances = dropdownsBar.querySelectorAll(".appareils");
+
 const open = dropdownsBar.querySelectorAll("#active");
 const hidden = dropdownsBar.querySelectorAll("#inactive");
-const results = document.querySelector(".receipe-container");
+
+
 
 window.addEventListener('load', initRecipes);   //ask computer to querylength ?
-searchBarInput.addEventListener('input', searchResultsRecipes);   //search function
+searchBarInput.addEventListener('input', searchRecipes);   //searchBar.js function
 search.addEventListener('submit', (e) => e.preventDefault()); 
 
 ////////////////////////// TAGS BTN ////////////////////////////////////
-  
-  /*function closeTags(e) {
+//global 
+  function closeTags(e) {
     const tagsBtn = [...tags.querySelectorAll("button")];
     const [container] = tagsBtn.filter(btn => btn.contains(e.target));
     container.remove();
     //console.log(tagsBtn); ok
-  } */
-  
-  //let searchResultsRecipes = [];
-  // create submit.addEventListener('click', searchResultsRecipes); arrayAlgo searchBar.js
-///////// DROPDOWN DISPLAY ////////////////
-// btn dropdown and search in tag List "li"
+  } 
 
+/////////////////////////////// event DROPDOWN global ////////////////////////////////
+  
 hidden.forEach(btn => btn.addEventListener('click', displayDropdown));
 open.forEach(btn => btn.querySelector('button').addEventListener('click', displayDropdown));
 console.log(hidden); //nodeList inactive (3) ok
 console.log(open); //nodeList active (3) ok
 
-function displayDropdown(e) {
-  
+function displayDropdown(e) {  
  // all btns is inactive we don't see the {typeList}
-  [...open].forEach(elt => elt.style.display = "flex");
-  [...hidden].forEach(elt => elt.style.display = "none");
+ // use el for element with (display, filter, contains....)
+
+  [...open].forEach(el => el.style.display = "none");
+  [...hidden].forEach(el => el.style.display = "flex");
 
   // when you click on the  btns, one btn is active and you see {typeList}
   const [container] = [...open].filter(el => el.contains(e.target)).length > 0
       ? [...open].filter(el => el.contains(e.target))
       : [...hidden].filter(el => el.contains(e.target));
-      console.log(container);
+  console.log(container);
+
   const isOpen = container.id;
   //console.log(container); //div btn-{type}-container ok
   //console.log(isOpen); //inactive div ok
@@ -102,27 +124,14 @@ function displayDropdown(e) {
   siblingContainer.style.display = container.style.display == "flex" ? "none" : "flex";
   console.log(siblingContainer);
   //siblingContainer ; div wrapper-{type} input-dropdown + chevron 
-
-  /*and tags condition
-  if (isOpen == "inactive") {
-    listTags(type);
-  }
-  console.log(isOpen);
-  console.log(listTags);*/
-  }
-
+}
+  
 
 /////////////   RECIPE  RESULT CARD //////////////////////
+// let searchResult => searchBar.js
+
 function displayResults() {
   for (let recipe of searchResult) {
       results.appendChild(recipe);
   }
 }
-
-      
-   
-
-
-
-
-

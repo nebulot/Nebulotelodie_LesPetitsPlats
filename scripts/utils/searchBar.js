@@ -10,27 +10,26 @@ function getRecipes () {
         .then(data => data.json())
         .catch(err => console.log('Error', err));
     return recipes;
-    
 }
 
-// INIT
+// INIT //async here not in index.js
 async function initRecipes() {
   recipes = await getRecipes();
-  console.log(getRecipes());
+  //console.log(recipes); Array(50);
 }
 
-function searchResultsRecipes() {
+function searchRecipes() {
   const query = this.value;
   if (query.length > 2) {
-      let [Array, results] = [[], []];
+      let [array, results] = [[], []];
       // CHECK FOR ERASE STRING / Keep old search OR reload all recipes
       if (queryLength > query.length) {
-          Array = [...recipes];
+          array = [...recipes];
       } else {
-          Array = searchResult.length > 0 ? [...searchResult] : [...recipes];
+          array = searchResult.length > 0 ? [...searchResult] : [...recipes];
       }
 
-      results = Array.filter(recipe => {
+      results = array.filter(recipe => {
           return recipe.name.toLowerCase().includes(query)
               || recipe.description.toLowerCase().includes(query)
               || recipe.ingredients.filter(ingredient => ingredient.ingredient.toLowerCase().includes(query)).length >= 1;
@@ -58,21 +57,9 @@ function displayRecipes(data) {
 
 
 
-
-//5 focus on searchbar and check all recipes : nodeList(50)
-/* const searchBarInput = document.querySelector(".search-bar");
-searchBarInput.addEventListener("keyup", (e) => {
-  const searchRecipes = e.target.value;
-  const cards = document.querySelectorAll(".card");
-  let count = filteredCards(searchRecipes, cards);
-  displayAlert(count);
-  console.log(searchRecipes);
-});
-
-
 //filtered by name and numbers of letters >2 write 3 letters
 //if letters = display blog vs number = display none
-export function filteredCards(letters, elements) {
+function filteredCards(letters, elements) {
   let count = 0;
   if (letters.length > 2) {
     for (let i = 0; i < elements.length; i++) {
@@ -86,4 +73,4 @@ export function filteredCards(letters, elements) {
   }
   return count;
 };
-*/
+

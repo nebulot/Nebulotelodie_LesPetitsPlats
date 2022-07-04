@@ -3,26 +3,27 @@
 class RecipeCard {
   /*
    * @constructor
-   * @param {Object} data
-   * @param {number} data.id
-   * @param {string} data.name
-   * @param {number} data.servings
-   * @param {number} data.time
-   * @param {string} data.description
-   * @param {string} data.appliance
-   * @param {Array.<string>} data.ustensils
-   * @param {Array.<Object>} data.ingredients
+   * @param {Object} recipe
+   * @param {number} recipe.id
+   * @param {string} recipe.name
+   * @param {number} recipe.servings
+   * @param {number} recipe.time
+   * @param {string} recipe.description
+   * @param {string} recipe.appliance
+   * @param {Array.<string>} recipe.ustensils
+   * @param {Array.<Object>} recipe.ingredients
    */
 
-  constructor(data) {
-    this._id = data.id;
-    this._name = data.name;
-    this._description = data.description;
-    this._time = data.time;
-    this._servings = data.servings;
-    this._ingredients = data.ingredients;
-    this._ustensils = data.ustensils;
-    this._appliance = data.appliance;
+  constructor(recipe) {
+    this.recipe = recipe;
+    this._id = recipe.id;
+    this._name = recipe.name;
+    this._description = recipe.description;
+    this._time = recipe.time;
+    this._servings = recipe.servings;
+    this._ingredients = recipe.ingredients;
+    this._ustensils = recipe.ustensils;
+    this._appliance = recipe.appliance;
   }
 
   //5 put the ingredients and quantity on the recipeCard (recipeContainer)

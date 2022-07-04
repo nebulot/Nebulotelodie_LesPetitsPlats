@@ -7,16 +7,16 @@ class Alerts {
       console.log(searchBarInput);
     } else if (
       searchBarInput.value.length < 3 &&
-      RecipeCard.length == searchResultsRecipes.length
+      RecipeCard.length == searchResult.length
     ) {
       alertBox.classList.remove("displayed");
     } else {
       this.successAlert(alertBox);
     }
     this.closeAlert(alertBox);
-    
-    //console.log(userInput);
   }
+   
+  
   // when the research on the search bar is a success
   // create display
   successAlert(alertBox) {
@@ -35,8 +35,8 @@ class Alerts {
                   <i class="close-alert far fa-times-circle"></i>
                   `;
     }
-    
   }
+  
   // no success research on searchBar alert remove
   // create display dangerAlert
   dangerAlert(alertBox) {
@@ -61,4 +61,5 @@ class Alerts {
     }
   }
 };
+
 

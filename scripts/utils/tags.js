@@ -4,10 +4,10 @@ class Tag {
   constructor(type, txt) {
     this.type = type;
     this.txt = txt;
-    this.color = this.defColor();
+    this.color = this.Color();
     this.idNum = Tag.#idNum++;
   }
-  defColor() {
+  Color() {
     switch (this.type) {
       case "ingredients":
         return "primary";
@@ -29,11 +29,6 @@ class Tag {
   }
 }
 
-/////// closeTags///////
+/////// closeTags/////// => index.js global
 
-function closeTags(e) {
-    const tagsBtn = [...tags.querySelectorAll("button")];
-    const [container] = tagsBtn.filter(btn => btn.contains(e.target));
-    container.remove();
-} 
 
