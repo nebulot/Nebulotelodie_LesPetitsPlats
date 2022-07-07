@@ -56,6 +56,20 @@
 
 //////// DROPDOWN TOGGLE BTN ///////////////
 
+.mystyle {
+  width: 100%;
+  padding: 25px;
+  background-color: coral;
+  color: white;
+  font-size: 25px;
+}
+
+.btn_ingredients, .btn_ustensiles, .btn_appareils {
+  width:auto;
+}
+
+
+
 .input-group {
       display: flex;
       width: auto;
@@ -99,6 +113,8 @@
   .btns-dropdown {
     flex-direction: inline;
 
+    
+
     .input-group {
         .form-control {
             font-size: 18px;
@@ -133,16 +149,17 @@
   align-items: center;
   justify-content: space-evenly;
   padding: 7px 0px;
-  width: 16%;
+  width:100%;
   color:white;
  
  
   @media screen and (max-width : 767px) {
-    width: 33%;
+    width: 100%;
   }
   @media screen and (max-width : 375px) {
     width: 100%;
     margin: 15px 0%;
+   
   }
 }
 

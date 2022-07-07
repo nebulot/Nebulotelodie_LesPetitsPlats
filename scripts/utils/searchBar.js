@@ -16,6 +16,8 @@ function getRecipes () {
 async function initRecipes() {
   recipes = await getRecipes();
   //console.log(recipes); Array(50);
+  //Pensez à afficher notre variable, creer au dessus,appelée, stockée
+  displayRecipes(recipes);
 }
 
 function searchRecipes() {
@@ -52,6 +54,8 @@ function displayRecipes(data) {
       let card = new RecipeCard(recipe).make();
       results.appendChild(card);
   });
+  console.log(results);
+  
 }
 
 

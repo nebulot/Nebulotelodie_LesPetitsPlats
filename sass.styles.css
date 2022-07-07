@@ -52,7 +52,7 @@
   font-size: 25px;
 }
 
-.btn_ingredients .btn_ustensiles .btn_appareils {
+.btn_ingredients, .btn_ustensiles, .btn_appareils {
   width: auto;
 }
 
@@ -193,4 +193,4 @@
   -webkit-box-orient: vertical;
 }
 
-/*# sourceMappingURL=styles.css.map */
+/*# sourceMappingURL=sass.styles.css.map */

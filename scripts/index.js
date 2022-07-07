@@ -2,39 +2,27 @@
 const dropdownsBar = document.querySelector(".btns-dropdown");
 const tags = document.querySelector(".tags");
 
-//3 container card recipes
-//display cards recipes
-/*const recipesSection = document.querySelector(".receipe-container");
-const displayCards = (recipes) => {
-  recipes.forEach((recipe) => {
-    //console.log(recipe); ok
-    recipesSection.append(new RecipeCard(recipe).createRecipeCard);
-    console.log(RecipeCard);
-  console.log(createRecipeCard); ok
-
-  });
-};*/
-
 //////////// 9 create an alert display under searchbar to success or danger research //////
-/*export 
-  };*/
-
 
 ////////////////////////////////INIT////////////////////////////////
 //error stop async 
 function init() {
   
-  /*const { recipes } = await getRecipes();
-  displayCards();
   //console.log(recipes);   //=> search arrayalgo.js*/
   
   // return bts'dropdown
+  // iteration
   const dropdownsValues = ['ingredients', 'appareils', 'ustensiles'];
+  dropdownsValues.forEach(el => console.log(el));
     for (let type of dropdownsValues) {
-        const dropdownsBtn = new DropdownsBuilder(type);
-        dropdownsBtn.make().forEach(btn => dropdownsBar.append(btn));
-        //console.log(dropdownsBtn); (type : "", color :"");
-        //console.log(dropdownsBar); <div "btns-dropdown">
+        const dropdownsBtn = new DropdownsBuilder(type).make();
+        dropdownsBar.appendChild(dropdownsBtn);
+        //dropdownsBar.append(dropdownsBtn);
+        //dropdownsBtn.render().forEach(btn => dropdownsBar.append(btn));
+        //dropdownsBtn.forEach(btn => dropdownsBar.append(btn));
+        console.log(dropdownsBtn); //(type : "", color :"");
+        console.log(dropdownsBar); //<div "btns-dropdown">
+        
     }
     // console.log(dropdownsValues); results (3)[ingredients,appliances,ustensils]
 
@@ -66,7 +54,7 @@ searchBarInput.addEventListener("keyup", (e) => {
   const cards = document.querySelectorAll(".card");
   let count = filteredCards(searchRecipes, cards);
   displayAlert(count);
-  console.log(searchRecipes);
+  //console.log(searchRecipes);
 });
 
 
@@ -96,13 +84,21 @@ search.addEventListener('submit', (e) => e.preventDefault());
 
 /////////////////////////////// event DROPDOWN global ////////////////////////////////
   
-hidden.forEach(btn => btn.addEventListener('click', displayDropdown));
+function displayDropdown(e) {   
+  const btnToggle = document.getElementById("btn-dropdown-toggle");
+  btnToggle.classList.toggle("mystyle");
+}
+
+
+/*hidden.forEach(btn => btn.addEventListener('click', displayDropdown));
 open.forEach(btn => btn.querySelector('button').addEventListener('click', displayDropdown));
 console.log(hidden); //nodeList inactive (3) ok
-console.log(open); //nodeList active (3) ok
+console.log(open); //nodeList active (3) ok*/
 
-function displayDropdown(e) {  
- // all btns is inactive we don't see the {typeList}
+
+//console.log(displayDropdown);
+//console.log(element);
+ /* all btns is inactive we don't see the {typeList}
  // use el for element with (display, filter, contains....)
 
   [...open].forEach(el => el.style.display = "none");
@@ -124,7 +120,7 @@ function displayDropdown(e) {
   siblingContainer.style.display = container.style.display == "flex" ? "none" : "flex";
   console.log(siblingContainer);
   //siblingContainer ; div wrapper-{type} input-dropdown + chevron 
-}
+}*/
   
 
 /////////////   RECIPE  RESULT CARD //////////////////////
@@ -134,4 +130,5 @@ function displayResults() {
   for (let recipe of searchResult) {
       results.appendChild(recipe);
   }
+  // displayResults give the number results of the research on the search bar
 }
