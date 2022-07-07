@@ -64,9 +64,19 @@
   font-size: 25px;
 }
 
-.btn_ingredients, .btn_ustensiles, .btn_appareils {
-  width:auto;
+.btns-dropdown {
+  display: flex;
+  .btn-dropdown-container {
+    display: block;
+    color: white;
+    font-size: 14px;
+    margin: 1rem 0;
+    margin-right: 1rem;
+    padding: 0.5rem;
+  }
 }
+
+
 
 
 
@@ -86,15 +96,9 @@
      padding: 9px;
   }
 
-  #inactive {
-      display: flex;
-      width: 100%;
-  }
 
-  #active {
-      display: none;
-      width: 100%;
-      margin-inline: 0;
+
+
       input {
           margin-inline-start: 0;
       }
@@ -105,7 +109,7 @@
           font-size: smaller;
           line-height: 1;
       }
-  }
+  
 
 
 
@@ -121,13 +125,9 @@
         }
     }
 
-    #inactive {
-        width: auto;
-    }
 
-    #active {
-        width: auto;
-        margin-inline: 10px;
+
+   
         input {
             margin-inline-start: -20px;
         }
@@ -141,7 +141,7 @@
         }
     }
 }
-}
+
 
 .btn {
   z-index: 2;

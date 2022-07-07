@@ -52,8 +52,16 @@
   font-size: 25px;
 }
 
-.btn_ingredients .btn_ustensiles .btn_appareils {
-  width: auto;
+.btns-dropdown {
+  display: flex;
+}
+.btns-dropdown .btn-dropdown-container {
+  display: block;
+  color: white;
+  font-size: 14px;
+  margin: 1rem 0;
+  margin-right: 1rem;
+  padding: 0.5rem;
 }
 
 .input-group {
@@ -72,23 +80,15 @@
   padding: 9px;
 }
 
-#inactive {
-  display: flex;
-  width: 100%;
-}
-
-#active {
-  display: none;
-  width: 100%;
-  margin-inline: 0;
-}
-#active input {
+input {
   margin-inline-start: 0;
 }
-#active button {
+
+button {
   margin-inline-end: 0;
 }
-#active .result {
+
+.result {
   font-size: smaller;
   line-height: 1;
 }
@@ -100,20 +100,13 @@
   .btns-dropdown .input-group .form-control {
     font-size: 18px;
   }
-  .btns-dropdown #inactive {
-    width: auto;
-  }
-  .btns-dropdown #active {
-    width: auto;
-    margin-inline: 10px;
-  }
-  .btns-dropdown #active input {
+  .btns-dropdown input {
     margin-inline-start: -20px;
   }
-  .btns-dropdown #active button {
+  .btns-dropdown button {
     margin-inline-end: -20px;
   }
-  .btns-dropdown #active .result {
+  .btns-dropdown .result {
     font-size: larger;
     line-height: 2;
   }
