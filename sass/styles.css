@@ -100,9 +100,6 @@ button {
   .btns-dropdown .input-group .form-control {
     font-size: 18px;
   }
-  .btns-dropdown input {
-    margin-inline-start: -20px;
-  }
   .btns-dropdown button {
     margin-inline-end: -20px;
   }

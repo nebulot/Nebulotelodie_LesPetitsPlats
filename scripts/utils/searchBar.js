@@ -53,11 +53,15 @@ function displayRecipes(data) {
   data.forEach(recipe => {
       let card = new RecipeCard(recipe).make();
       results.appendChild(card);
+      
+
   });
   console.log(results);
-  
+    
 }
 
+
+  
 
 
 
