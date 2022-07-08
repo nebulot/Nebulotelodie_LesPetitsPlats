@@ -1,4 +1,5 @@
 
+
 //ARRAY METHOD 
 let recipes = [];
 let searchResult = [];
@@ -11,6 +12,7 @@ function getRecipes () {
         .catch(err => console.log('Error', err));
     return recipes;
 }
+
 
 // INIT //async here not in index.js
 async function initRecipes() {
@@ -40,10 +42,13 @@ function searchRecipes() {
       searchResult = [...results];
       queryLength = query.length;
       displayRecipes(searchResult);
+
+      
   } else {
       searchResult = [...recipes];
       queryLength = 0;
       results.innerHTML = '';
+      
   }
 }
 
@@ -60,14 +65,9 @@ function displayRecipes(data) {
     
 }
 
-
-  
-
-
-
 //filtered by name and numbers of letters >2 write 3 letters
 //if letters = display blog vs number = display none
-function filteredCards(letters, elements) {
+/*function filteredCards(letters, elements) {
   let count = 0;
   if (letters.length > 2) {
     for (let i = 0; i < elements.length; i++) {
@@ -80,5 +80,5 @@ function filteredCards(letters, elements) {
     }
   }
   return count;
-};
+};*/
 

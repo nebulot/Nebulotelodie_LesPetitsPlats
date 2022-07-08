@@ -3,29 +3,15 @@ const dropdownsBar = document.querySelector(".btns-dropdown");
 const tags = document.querySelector(".tags");
 
 //////////// 9 create an alert display under searchbar to success or danger research //////
+let globalRecipesList = recipes.slice();
+console.log(recipes);
 
 ////////////////////////////////INIT////////////////////////////////
 //error stop async 
 function init() {
   
   //console.log(recipes);   //=> search arrayalgo.js*/
-  
-  // return bts'dropdown
-  // iteration
-  const dropdownsValues = ['ingredients', 'appareils', 'ustensiles'];
-  dropdownsValues.forEach(el => console.log(el));
-    for (let type of dropdownsValues) {
-        const dropdownsBtn = new DropdownsBuilder(type).make();
-        dropdownsBar.appendChild(dropdownsBtn);
-        //dropdownsBar.append(dropdownsBtn);
-        //dropdownsBtn.render().forEach(btn => dropdownsBar.append(btn));
-        //dropdownsBtn.forEach(btn => dropdownsBar.append(btn));
-        console.log(dropdownsBtn); //(type : "", color :"");
-        console.log(dropdownsBar); //<div "btns-dropdown">
-        
-    }
-    // console.log(dropdownsValues); results (3)[ingredients,appliances,ustensils]
-
+ 
 // 8 alert tag searchbar 
 const tag = new Tag('ingredients', 'lait de coco').make();
     tags.appendChild(tag);
@@ -43,19 +29,22 @@ const results = document.querySelector("main .receipe-container");
 const searchBarInput = search.querySelector("#search-bar");
 const submit = search.querySelector("span");
 
-//8 alert display 
-const displayAlert = (count) => {
-  const alerts = document.querySelector(".alerts");
-  alerts.append(new Alerts(count).handleAlert());
-}
+
+
 //5 focus on searchbar and check all recipes : nodeList(50) Alert
 searchBarInput.addEventListener("keyup", (e) => {
   //const searchRecipes = e.target.value;
+//8 alert display 
+  const alerts = document.querySelector(".alerts");
+  alerts.append(new Alerts().handleAlert);
+  console.log(alerts);
   const cards = document.querySelectorAll(".card");
-  let count = filteredCards(searchRecipes, cards);
-  displayAlert(count);
-  //console.log(searchRecipes);
+  //let count = filteredCards(searchRecipes, cards);
+  //displayAlert(count);
+  console.log(searchRecipes);
+  
 });
+
 
 
 
@@ -63,11 +52,6 @@ searchBarInput.addEventListener("keyup", (e) => {
 const appareils = dropdownsBar.querySelectorAll(".ingredients");
 const ustensils = dropdownsBar.querySelectorAll(".ustensiles");
 const appliances = dropdownsBar.querySelectorAll(".appareils");
-
-const open = dropdownsBar.querySelectorAll("#active");
-const hidden = dropdownsBar.querySelectorAll("#inactive");
-
-
 
 window.addEventListener('load', initRecipes);   //ask computer to querylength ?
 searchBarInput.addEventListener('input', searchRecipes);   //searchBar.js function
@@ -83,45 +67,24 @@ search.addEventListener('submit', (e) => e.preventDefault());
   } 
 
 /////////////////////////////// event DROPDOWN global ////////////////////////////////
-  
-function displayDropdown(e) {   
-  const btnToggle = document.getElementById("btn-dropdown-toggle");
-  btnToggle.classList.toggle("mystyle");
+const dropdown = document.querySelector(".dropdown");
+const blocLinks = document.querySelector(".bloc-links");
+const btnDrop = document.querySelector(".btn-top");
+const liItems = document.querySelectorAll(".dropdown li");
+
+btnDrop.addEventListener("click", toggleDropDown);
+let toggleIndex = [];
+
+function toggleDropDown() {
+  if (!toggleIndex) {
+    blocLinks.style.height = `${blocLinks.scrollHeight}px`;
+    toggleIndex = true;
+    return;
+  }
+  blocLinks.style.height = 0;
+  toggleIndex = false;
 }
-
-
-/*hidden.forEach(btn => btn.addEventListener('click', displayDropdown));
-open.forEach(btn => btn.querySelector('button').addEventListener('click', displayDropdown));
-console.log(hidden); //nodeList inactive (3) ok
-console.log(open); //nodeList active (3) ok*/
-
-
-//console.log(displayDropdown);
-//console.log(element);
- /* all btns is inactive we don't see the {typeList}
- // use el for element with (display, filter, contains....)
-
-  [...open].forEach(el => el.style.display = "none");
-  [...hidden].forEach(el => el.style.display = "flex");
-
-  // when you click on the  btns, one btn is active and you see {typeList}
-  const [container] = [...open].filter(el => el.contains(e.target)).length > 0
-      ? [...open].filter(el => el.contains(e.target))
-      : [...hidden].filter(el => el.contains(e.target));
-  console.log(container);
-
-  const isOpen = container.id;
-  //console.log(container); //div btn-{type}-container ok
-  //console.log(isOpen); //inactive div ok
-  const type = container.classList[container.classList.length - 1];
-  const [siblingContainer] = [...dropdownsBar.querySelectorAll(`.${type}`)].filter(el => el.id != isOpen);
-  //console.log(isOpen); inactive to
-  container.style.display = "flex" ? "none" : "flex";
-  siblingContainer.style.display = container.style.display == "flex" ? "none" : "flex";
-  console.log(siblingContainer);
-  //siblingContainer ; div wrapper-{type} input-dropdown + chevron 
-}*/
-  
+liItems.forEach((li) => li.addEventListener("click", toggleDropDown));
 
 /////////////   RECIPE  RESULT CARD //////////////////////
 // let searchResult => searchBar.js

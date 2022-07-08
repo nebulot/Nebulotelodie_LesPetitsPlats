@@ -76,51 +76,58 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <div class="btns-dropdown">
-            <!--<div class="btn-dropdown-container btn w-auto row rounded align-items-center ">
-              <button onclick="displayIngredients()"
-                class="btn btn-primary text-white form-control py-4 btn-ingredients rounded-left border-0"
+          <div class="btns-dropdown btn-group">
+            <div class="btn-dropdown-container dropdown btn w-auto row rounded align-items-center">
+              <button class="btn-primary btn-top text-white form-control py-4 btn-ingredients rounded-left border-0"
                 aria-haspopup="true" aria-expanded="false">
-                Ingredients <i class="fas fa-chevron-down"></i></button>
-                
-              <div id="btn-dropdown-toggle_ingredients" class="ingredients_container bg-primary mystyle">
+                Ingredients <i class="fas fa-chevron-down" alt="chevron-icon"></i></button>
+
+              <div class="ingredients_container bloc-links bg-primary">
                 <input type="text" id="input-ingredients"
                   class="input-dropdown form-control py-3 rounded-left border-0  bg-primary"
-                  placeholder="Rechercher un ingredients.substr(0,ingredients.length - 1)" min-length="3">
-                <ul class=" dropdown-list-tag rounded-bottom border-0 text-white bg-primary result">list item</ul>
+                  placeholder="Rechercher un ingredients" min-length="3" />
+                <ul class="result rounded-bottom border-0 text-white bg-primary">
+                  <li><a href=#></a></li>
+                  <li><a href=#></a></li>
+                </ul>
               </div>
             </div>
 
-            <div class="btn-dropdown-container btn w-auto row rounded align-items-center ">
-              <button onclick="displayAppliances()"
-                class="btn btn-success text-white form-control py-4 btn-dropdown-toggle_appareils rounded-left border-0"
+            <div class="btn-dropdown-container dropdown btn w-auto row rounded align-items-center">
+              <button class="btn-success btn-top text-white form-control py-4 btn-appareils rounded-left border-0"
                 aria-haspopup="true" aria-expanded="false">
-                Appareils <i class="fas fa-chevron-down"></i></button>
+                Appareils <i class="fas fa-chevron-down" alt="chevron-icon"></i></button>
 
-              <div id="btn-dropdown-toggle_appareils" class="appareils_container bg-success mystyle">
+              <div class="appareils_container bloc-links bg-danger">
                 <input type="text" id="input-appareils"
                   class="input-dropdown form-control py-3 rounded-left border-0  bg-success"
-                  placeholder="Rechercher un appareils.substr(0,ingredients.length - 1)" min-length="3">
-                <ul class=" dropdown-list-tag rounded-bottom border-0 text-white bg-success result">list item</ul>
+                  placeholder="Rechercher un appareils" min-length="3" />
+                <ul class="result rounded-bottom border-0 text-white bg-success">
+                  <li><a href=#></a></li>
+                  <li><a href=#></a></li>
+                </ul>
               </div>
             </div>
 
-            <div class="btn-dropdown-container btn w-auto row rounded align-items-center ">
-              <button onclick="displayUstensils()"
-                class="btn btn-danger text-white form-control py-4 btn-dropdown-toggle_ustensiles rounded-left border-0"
+            <div class="btn-dropdown-container dropdown btn w-auto row rounded align-items-center">
+              <button class="btn-danger btn-top text-white form-control py-4 btn-ustensiles rounded-left border-0"
                 aria-haspopup="true" aria-expanded="false">
-                Ustensiles <i class="fas fa-chevron-down"></i></button>
+                ustensiles <i class="fas fa-chevron-down" alt="chevron-icon"></i></button>
 
-              <div id="btn-dropdown-toggle_ustensiles" class="ustensiles_container bg-danger mystyle">
-                <input type="text" id="input-appareils"
+              <div class="ustensiles_container bloc-links bg-danger">
+                <input type="text" id="input-ustensiles"
                   class="input-dropdown form-control py-3 rounded-left border-0  bg-danger"
-                  placeholder="Rechercher un ustensiles.substr(0,ingredients.length - 1)" min-length="3">
-                <ul class=" dropdown-list-tag rounded-bottom border-0 text-white bg-danger result">list item</ul>
+                  placeholder="Rechercher un ustensiles" min-length="3" />
+                <ul class="result rounded-bottom border-0 text-white bg-danger">
+                  <li><a href=#></a></li>
+                  <li><a href=#></a></li>
+                </ul>
               </div>
             </div>
-          </div>-->
+          </div>
         </div>
       </div>
+    </div>
     </div>
 
   </header>
@@ -138,7 +145,6 @@
   <!-- script JS -->
   <script src="scripts/utils/searchBar.js"></script>
   <script src="./scripts/utils/tags.js"></script>
-  <script src="./scripts/utils/builderDropdown.js"></script>
   <script src="./scripts/constructor/displayCards.js"></script>
   <script src="./scripts/utils/alerts.js"></script>
   <script src="./scripts/index.js"></script>

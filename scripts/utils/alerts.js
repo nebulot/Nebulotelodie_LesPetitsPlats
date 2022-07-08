@@ -1,50 +1,48 @@
 // condition to see the different alert success or danger
 class Alerts {
-  handleAlert() {    
+  handleAlert() {
     const alertBox = document.querySelector(".alert");
-    if (searchBarInput.value.length != 0 && RecipeCard.length == 0) {
+    if (searchBarInput.value.length != 0 && globalRecipesList.length == 0) {
       this.dangerAlert(alertBox);
       console.log(searchBarInput);
     } else if (
       searchBarInput.value.length < 3 &&
-      RecipeCard.length == searchResult.length
+      globalRecipesList.length == recipes.length
     ) {
       alertBox.classList.remove("displayed");
     } else {
       this.successAlert(alertBox);
     }
     this.closeAlert(alertBox);
+    return alertBox;
   }
-   
-  
+
   // when the research on the search bar is a success
   // create display
   successAlert(alertBox) {
-    
     alertBox.classList.add("alert-success");
     alertBox.classList.add("displayed");
     alertBox.classList.remove("alert-danger");
-    if (RecipeCard.length > 1) {
+    if (globalRecipesList.length > 1) {
       alertBox.innerHTML = `
-                  ${RecipeCard.length} recettes correspondent à votre recherche
+                  ${globalRecipesList.length} recettes correspondent à votre recherche
                   <i class="close-alert far fa-times-circle"></i>
                   `;
     } else {
       alertBox.innerHTML = `
-                  ${RecipeCard.length} recettes correspondent à votre recherche
+                  ${globalRecipesList.length} recettes correspondent à votre recherche
                   <i class="close-alert far fa-times-circle"></i>
                   `;
     }
   }
-  
+
   // no success research on searchBar alert remove
   // create display dangerAlert
   dangerAlert(alertBox) {
-    
     alertBox.classList.add("alert-danger");
     alertBox.classList.add("displayed");
     alertBox.classList.remove("alert-success");
-    return alertBox.innerHTML = `
+    alertBox.innerHTML = `
                 Aucune recette ne correspond à votre critère... 
                 Vous pouvez chercher "tarte aux pommes", "poisson", etc.
                 <i class="close-alert far fa-times-circle"></i>
@@ -60,6 +58,4 @@ class Alerts {
       });
     }
   }
-};
-
-
+}
