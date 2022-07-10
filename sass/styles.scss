@@ -1,5 +1,7 @@
 //@import "./variables_overrides.scss";
-
+main {
+  margin-top : 20px;
+}
 
 //color '${this-color} 
 
@@ -49,21 +51,77 @@
       display: none;
     }
     .alert.displayed {
-      display: flex;
-      justify-content: space-between;
+     display: flex;
+     justify-content: space-between;
   }
 }
 
 //////// DROPDOWN TOGGLE BTN ///////////////
+.btns-dropdown {
+  display:flex;
+  width: 76%;
+  //inferieur a 762
+  gap : 6px;
+}
+
+#links-ingredients.open, #links-appareils.open, #links-ustensiles.open {
+  max-width: auto;
+  display : block;
+}
+
+.fa-chevron-down,
+.fa-chevron-up {
+  display : flex ;
+}
+
+.fa-chevron-up {
+  display : none ;
+  overflow : hidden;
+}
+
+
+
+#links-ingredients,#links-appareils, #links-ustensiles {
+  display : none;
+  overflow: hidden;
+  margin : 0px;
+  padding : 0px;
+  transition: height 0.2s ease-in-out;
+}
+
+
+
+#btn-ingredients, #btn-appareils, #btn-ustensiles {
+  border: none;
+  outline: none;
+  display : flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+} 
+
+
+/*.btns-dropdown .dropdown {
+  
+    //color: white;
+    //font-size: 14px;
+   // margin: 1rem 0;
+    margin-right: 10px;
+   // padding: 0.5rem;
+}
+
+
 .dropdown {
   overflow: hidden;
   margin : 0px;
   padding : 0px;
 }
 
+
 .btn-top {
-  padding: 20px;
-  width: 100%;
+  //padding: 20px;
+  //width: 100%;
   border: none;
   outline: none;
   display: flex;
@@ -73,9 +131,12 @@
   border-radius: 5px;
 }
 
+//rappel en dessous de 767 ecran 
+//il faut réduire l'affichage des bouton 
+
 .bloc-links {
   padding: 0 20px;
-  transition: height 0.2s ease-in-out;
+  
   height: 0;
 }
 
@@ -99,7 +160,7 @@ li .result {
     line-height: 1;
       }
   
-
+*/
 
 /*
 @media (min-width: 767px) {

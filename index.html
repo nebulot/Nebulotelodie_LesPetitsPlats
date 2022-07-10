@@ -77,12 +77,14 @@
       <div class="row">
         <div class="col-12">
           <div class="btns-dropdown btn-group">
-            <div class="btn-dropdown-container dropdown btn w-auto row rounded align-items-center">
-              <button class="btn-primary btn-top text-white form-control py-4 btn-ingredients rounded-left border-0"
+            <div class="btn-dropdown-container">
+              <button id="btn-ingredients"
+                class="btn-primary btn-top text-white form-control py-4 btn-ingredients rounded-left border-0"
                 aria-haspopup="true" aria-expanded="false">
-                Ingredients <i class="fas fa-chevron-down" alt="chevron-icon"></i></button>
+                Ingredients <i class="fas fa-chevron-down" alt="chevron-icon"></i>
+                <i class="fas fa-chevron-up" style="display:none;" alt="chevron-icon"></i></button>
 
-              <div class="ingredients_container bloc-links bg-primary">
+              <div id="links-ingredients" class="ingredients_container bloc-links bg-primary">
                 <input type="text" id="input-ingredients"
                   class="input-dropdown form-control py-3 rounded-left border-0  bg-primary"
                   placeholder="Rechercher un ingredients" min-length="3" />
@@ -90,15 +92,18 @@
                   <li><a href=#></a></li>
                   <li><a href=#></a></li>
                 </ul>
+
               </div>
             </div>
 
-            <div class="btn-dropdown-container dropdown btn w-auto row rounded align-items-center">
-              <button class="btn-success btn-top text-white form-control py-4 btn-appareils rounded-left border-0"
+            <div class="btn-dropdown-container">
+              <button id="btn-appareils"
+                class="btn-success btn-top text-white form-control py-4 btn-appareils rounded-left border-0"
                 aria-haspopup="true" aria-expanded="false">
-                Appareils <i class="fas fa-chevron-down" alt="chevron-icon"></i></button>
+                Appareils <i class="fas fa-chevron-down" alt="chevron-icon"></i>
+                <i class="fas fa-chevron-up" style="display:none;" alt="chevron-icon"></i></button>
 
-              <div class="appareils_container bloc-links bg-danger">
+              <div id="links-appareils" class="appareils_container bloc-links bg-success">
                 <input type="text" id="input-appareils"
                   class="input-dropdown form-control py-3 rounded-left border-0  bg-success"
                   placeholder="Rechercher un appareils" min-length="3" />
@@ -109,12 +114,14 @@
               </div>
             </div>
 
-            <div class="btn-dropdown-container dropdown btn w-auto row rounded align-items-center">
-              <button class="btn-danger btn-top text-white form-control py-4 btn-ustensiles rounded-left border-0"
+            <div class="btn-dropdown-container ">
+              <button id="btn-ustensiles"
+                class="btn-danger btn-top text-white form-control py-4 btn-ustensiles rounded-left border-0"
                 aria-haspopup="true" aria-expanded="false">
-                ustensiles <i class="fas fa-chevron-down" alt="chevron-icon"></i></button>
+                ustensiles <i class="fas fa-chevron-down" alt="chevron-icon"></i>
+                <i class="fas fa-chevron-up" style="display:none;" alt="chevron-icon"></i></button>
 
-              <div class="ustensiles_container bloc-links bg-danger">
+              <div id="links-ustensiles" class="ustensiles_container bloc-links bg-danger">
                 <input type="text" id="input-ustensiles"
                   class="input-dropdown form-control py-3 rounded-left border-0  bg-danger"
                   placeholder="Rechercher un ustensiles" min-length="3" />
@@ -134,7 +141,7 @@
 
 
   <!-- RECIPECARD COMPONENT JS -->
-  <main>
+  <main class = "results">
     <div class="container">
       <div class="receipe-container row ">
       </div>
@@ -145,8 +152,8 @@
   <!-- script JS -->
   <script src="scripts/utils/searchBar.js"></script>
   <script src="./scripts/utils/tags.js"></script>
+  <script src="./scripts/utils/dropdown.js"></script>
   <script src="./scripts/constructor/displayCards.js"></script>
-  <script src="./scripts/utils/alerts.js"></script>
   <script src="./scripts/index.js"></script>
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

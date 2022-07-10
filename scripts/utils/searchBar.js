@@ -1,5 +1,3 @@
-
-
 //ARRAY METHOD 
 let recipes = [];
 let searchResult = [];
@@ -43,12 +41,13 @@ function searchRecipes() {
       queryLength = query.length;
       displayRecipes(searchResult);
 
-      
+  //create alert when you don't write or just scribe under 3 letters.  
   } else {
       searchResult = [...recipes];
       queryLength = 0;
-      results.innerHTML = '';
-      
+      results.innerHTML = `<strong><span style="color:red">Aucune recette ne correspond à votre critère… </br>
+      Vous pouvez chercher « tarte aux pommes », « poisson », etc...</strong></span>`;
+      //console.log(results); ok
   }
 }
 
@@ -61,24 +60,9 @@ function displayRecipes(data) {
       
 
   });
-  console.log(results);
+  // console.log(results); ok 
     
 }
 
-//filtered by name and numbers of letters >2 write 3 letters
-//if letters = display blog vs number = display none
-/*function filteredCards(letters, elements) {
-  let count = 0;
-  if (letters.length > 2) {
-    for (let i = 0; i < elements.length; i++) {
-      if (elements[i].textContent.toLowerCase().includes(letters)) {
-        count++;
-        elements[i].style.display = "block";
-      } else {
-        elements[i].style.display = "none";
-      }
-    }
-  }
-  return count;
-};*/
+
 
