@@ -23,7 +23,7 @@ const tag = new Tag('ingredients', 'lait de coco').make();
 init();
 
 ///////////////////////    (5) SEARCHBAR  arrayAlgo.js  ////////////////////////////////
-const main = document.querySelector(".results");
+const main = document.querySelector(".main");
 const search = document.querySelector(".input-group ");
 const results = document.querySelector(".results .receipe-container");
 const searchBarInput = search.querySelector("#search-bar");
@@ -31,22 +31,7 @@ const submit = search.querySelector("span");
 
 
 //5 focus on searchbar and check all recipes : nodeList(50) Alert
-
-/*searchBarInput.addEventListener("keyup", (e) => {
-  //const searchRecipes = e.target.value;
-//8 alert display 
-  const alerts = document.querySelector(".alerts");
-  alerts.append(new Alerts().handleAlert());
- 
-  //const cards = document.querySelectorAll(".card");
-  //let count = filteredCards(searchRecipes, cards);
-  //displayAlert(count);
-
-  
-});*/
-
-
-
+//+>searchBar.js
 
 //////////////////////     (7)   DROPDOWN ////////////////////////////
 window.addEventListener('load', initRecipes);   //ask computer to querylength ?
@@ -73,4 +58,4 @@ function displayResults() {
       
   }
   // displayResults give the number results of the research on the search bar
-}
+};

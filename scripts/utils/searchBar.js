@@ -1,4 +1,21 @@
 //ARRAY METHOD 
+
+// research array from all btns dropdownfilters
+//=> dunction on click() check dropdownsBar.js
+const initFilters = (recipes) => {
+	let ingredients = [];
+	let appareil = [];
+	let ustensiles = [];
+	recipes.forEach((recipe) => {
+		ingredients = [
+			...new Set([...ingredients, ...recipe.ingredients.map((i) => i.ingredient)])].sort();
+		ustensiles = [...new Set([...ustensiles, ...recipe.ustensils.map((u) => u)])].sort();
+		appareil = [...new Set([...appareil, ...[recipe.appliance]])].sort();
+	});
+	return { ingredients, appareil, ustensiles };
+};
+
+// CREATE NEW ARRAY ''
 let recipes = [];
 let searchResult = [];
 let queryLength = 0;
@@ -15,6 +32,8 @@ function getRecipes () {
 // INIT //async here not in index.js
 async function initRecipes() {
   recipes = await getRecipes();
+  initFilters(recipes);
+  dropdownValues(recipes);
   //console.log(recipes); Array(50);
   //Pensez à afficher notre variable, creer au dessus,appelée, stockée
   displayRecipes(recipes);
@@ -36,6 +55,7 @@ function searchRecipes() {
               || recipe.description.toLowerCase().includes(query)
               || recipe.ingredients.filter(ingredient => ingredient.ingredient.toLowerCase().includes(query)).length >= 1;
           });
+         // console.log(results); if write "pom" console = "{10}" results
 
       searchResult = [...results];
       queryLength = query.length;
@@ -47,11 +67,11 @@ function searchRecipes() {
       queryLength = 0;
       results.innerHTML = `<strong><span style="color:red">Aucune recette ne correspond à votre critère… </br>
       Vous pouvez chercher « tarte aux pommes », « poisson », etc...</strong></span>`;
-      //console.log(results); ok
+      //console.log(results); ok div results
   }
 }
 
-//DISPLAY create recipe card when write your name on the searchbar
+//DISPLAY create recipe card when write your word on the searchbar
 function displayRecipes(data) {
   results.innerHTML = '';
   data.forEach(recipe => {
