@@ -1,13 +1,15 @@
 //ARRAY METHOD 
 
 // research array from all btns dropdownfilters
-//=> dunction on click() check dropdownsBar.js
+//=> function on click() check dropdownsBar.js
 const initFilters = (recipes) => {
 	let ingredients = [];
 	let appareil = [];
 	let ustensiles = [];
+
 	recipes.forEach((recipe) => {
 		ingredients = [
+            // chercher un tri doublons, majuscules,...
 			...new Set([...ingredients, ...recipe.ingredients.map((i) => i.ingredient)])].sort();
 		ustensiles = [...new Set([...ustensiles, ...recipe.ustensils.map((u) => u)])].sort();
 		appareil = [...new Set([...appareil, ...[recipe.appliance]])].sort();

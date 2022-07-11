@@ -62,24 +62,16 @@ main {
   width: 76%;
   //inferieur a 762
   gap : 6px;
+  .fa-chevron-down:hover {
+    transform: rotate(180deg) ;
+  }
 }
 
 #links-ingredients.open, #links-appareils.open, #links-ustensiles.open {
   max-width: auto;
   display : block;
+
 }
-
-.fa-chevron-down,
-.fa-chevron-up {
-  display : flex ;
-}
-
-.fa-chevron-up {
-  display : none ;
-  overflow : hidden;
-}
-
-
 
 #links-ingredients,#links-appareils, #links-ustensiles {
   display : none;
