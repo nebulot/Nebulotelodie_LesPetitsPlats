@@ -57,15 +57,15 @@ const tags = initFilters(recipes);
   //ul.innerHtml ="";
   const query = e.target.value.toLowerCase();
   console.log(query); //ok scibe pomm....
-  const results = tags.ingredients.filter((ingredient) => {
+  const searchresults = tags.ingredients.filter((ingredient) => {
 				return ingredient.toLowerCase().includes(query);
 			}); 
-      results.forEach((result) => {
-        const results = document.createElement("div");
-        results.textContent = results ;
+      searchresults.forEach((result) => {
+        const searchresults = document.createElement("div");
+        results.innerHtml = result ;
         });
-        console.log(results);
-        //listIngredientsItems();
+        console.log(searchresults);
+        listIngredientsItems();
 			});
      
   const listIngredientsItems = () => {
@@ -75,7 +75,7 @@ const tags = initFilters(recipes);
       selectedTags.push(item.textContent);
       const selectedTagsStop = [...new Set(selectedTags)];
       createTagsBar(selectedTagsStop, recipes);
-      console.log(createTagsBar);
+      //console.log(createTagsBar);
     });
   });
 };

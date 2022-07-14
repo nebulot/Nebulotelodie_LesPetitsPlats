@@ -33,9 +33,7 @@ function searchRecipes() {
           array = [...recipes];
       } else {
           array = searchResult.length > 0 ? [...searchResult] : [...recipes];
-          /*results.textContent = `<strong><span style="color:red">Aucune recette ne correspond à votre critère… </br>
-          Vous pouvez chercher « tarte aux pommes », « poisson », etc...</strong></span>`;*/
-         console.log(results);
+          console.log(results);
       }
 
       results = array.filter(recipe => {

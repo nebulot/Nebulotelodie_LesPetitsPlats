@@ -90,6 +90,7 @@ class Tag {
     alert.innerHTML = `Aucune recette ne correspond à votre critère… </br> vous pouvez
 		chercher « tarte aux pommes », « poisson », etc`
 		results.appendChild(alert);	
+		console.log(results);
 	};
 };
 
@@ -102,7 +103,7 @@ const listenOnTagBar = (tags, recipes) => {
 	console.log(tags);
 };
 
-/*const removeFilter = (selectedTag, arrayOfTag, recipes) => {
+const removeFilter = (selectedTag, arrayOfTag, recipes) => {
 	const index = arrayOfTag.indexOf(selectedTag);
 	arrayOfTag.slice(index, 0);
 	selectedTag.remove();
@@ -112,6 +113,10 @@ const listenOnTagBar = (tags, recipes) => {
 		displayRecipes(recipes);
 	} else {
 		researchOnFilters(recipes, arrayOfTag);
+		//console.log(selectedTag); show on console the last tags used.
+	    //console.log(index); when  close the tag show (0)
+	    //console.log(arrayOfTag) array move btn-tags
 	}
-};*/
+};
+
 

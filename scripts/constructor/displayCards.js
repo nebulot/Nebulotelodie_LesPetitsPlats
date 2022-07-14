@@ -37,18 +37,18 @@ class RecipeCard {
       if (ingredient.quantity) {
         if (ingredient.unit && ingredient.quantity) {
         ingredientsList += `
-      <li class = "recipe-ingredients">${ingredient.ingredient} : ${
+      <li class = "recipe-ingredients"> <strong>${ingredient.ingredient}</strong> : ${
           ingredient.quantity ?? ""
         } ${ingredient.unit ?? ""} </li>`;
       } else {
       ingredientsList += `
-      <li class= "recipe-ingredients">${ingredient.ingredient} :  ${
+      <li class= "recipe-ingredients"><strong>${ingredient.ingredient}</strong> :  ${
         ingredient.quantity}
        </li>`;
     }
       } else {
         ingredientsList += `
-      <li class= "recipe-ingredients">${ingredient.ingredient}</li>`;
+      <li class= "recipe-ingredients"><strong>${ingredient.ingredient}</strong></li>`;
       }
      });
     return ingredientsList;

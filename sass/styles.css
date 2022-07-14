@@ -14,7 +14,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  width: 94%;
+  width: 100%;
   cursor: pointer;
 }
 
@@ -49,13 +49,16 @@ main {
 }
 
 .btns-dropdown {
-  margin-top: 5px;
+  margin-top: 15px;
   display: flex;
-  width: 76%;
+  width: 100%;
   gap: 6px;
 }
 .btns-dropdown .fa-chevron-down:hover {
   transform: rotate(180deg);
+}
+.btns-dropdown .btn-dropdown-container {
+  width: 19%;
 }
 
 #links-ingredients.open, #links-appareils.open, #links-ustensiles.open {
@@ -83,6 +86,11 @@ main {
 
 ul {
   list-style: none;
+  margin: 0;
+  grid-template-columns: 160px 160px 160px;
+  display: grid;
+  padding: 15px;
+  column-gap: 10px;
 }
 
 li {
@@ -96,98 +104,42 @@ li {
   cursor: pointer;
 }
 
-/*.btns-dropdown .dropdown {
-
-    //color: white;
-    //font-size: 14px;
-   // margin: 1rem 0;
-    margin-right: 10px;
-   // padding: 0.5rem;
-}
-
-
-.dropdown {
-  overflow: hidden;
-  margin : 0px;
-  padding : 0px;
-}
-
-
-.btn-top {
-  //padding: 20px;
-  //width: 100%;
-  border: none;
-  outline: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-//rappel en dessous de 767 ecran 
-//il faut réduire l'affichage des bouton 
-
-.bloc-links {
-  padding: 0 20px;
-
-  height: 0;
-}
-
-.bloc-links li {
-  list-style-type: none;
-  padding: 5px 0;
-}
-
-.bloc-links li a {
-  font-size: 18px;
-  color: #f1f1f1;
-  margin-left: 5px;
-}
-
-.bloc-links li:last-child {
-  padding-bottom: 25px;
-}
-
-li .result {
-    font-size: smaller;
-    line-height: 1;
-      }
-
-*/
-/*
+/*rappel en dessous de 767 ecran 
+//il faut réduire l'affichage des bouton */
 @media (min-width: 767px) {
   .btns-dropdown {
     flex-direction: inline;
-
-
-
-    .input-group {
-        .form-control {
-            font-size: 18px;
-        }
-    }
-
-        button {
-            margin-inline-end: -20px;
-        }
-        .result {
-            font-size: larger;
-            line-height: 2;
-            // margin-bottom: 10px;
-        }
-    }
+  }
+  .btns-dropdown .input-group .form-control {
+    font-size: 18px;
+  }
+  .btns-dropdown button {
+    margin-inline-end: -20px;
+  }
+  .btns-dropdown .result {
+    font-size: larger;
+    line-height: 2;
+  }
+}
+@media screen and (max-width: 767px) {
+  .btns-dropdown {
+    flex-direction: column;
+  }
+  .btns-dropdown .btn-dropdown-container {
+    width: 100%;
+  }
+}
+/*@media screen and (max-width : 767px) {
+ width: 100%;
+}
+@media screen and (max-width : 375px) {
+  width: 100%;
+  margin: 15px 0%;
+ }*/
+.receipe {
+  display: flex;
 }
 
-  @media screen and (max-width : 767px) {
-    width: 100%;
-  }
-  @media screen and (max-width : 375px) {
-    width: 100%;
-    margin: 15px 0%;
-
-  }
-}*/
 .card {
   margin: 1rem 0;
   height: 450px;
@@ -207,7 +159,7 @@ li .result {
 }
 .title-time .card-title {
   width: 70%;
-  font-weight: 300;
+  font-weight: 500;
 }
 .title-time .recipe_time {
   display: flex;
@@ -215,7 +167,7 @@ li .result {
   width: 30%;
 }
 .title-time .recipe_time .time {
-  font-weight: 700;
+  font-weight: 500;
   margin: 0 0.5rem;
 }
 
