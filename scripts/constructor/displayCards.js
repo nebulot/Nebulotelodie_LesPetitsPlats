@@ -25,9 +25,6 @@ class RecipeCard {
     this._ingredient= recipe.ingredient;
     this._ustensils = recipe.ustensils;
     this._appliance = recipe.appliance;
-    
-
-    
   }
 
   //5 put the ingredients and quantity on the recipeCard (recipeContainer)
@@ -98,33 +95,4 @@ class RecipeCard {
   }
 
 
- //pour filtres sur tags
- hasIngredient(ingredient) {
-  let exists = false;
-  this.ingredients.forEach((ing) => {
-    if (ing.ingredient === ingredient) {
-      exists = true;
-    }
-  });
-  return exists;
-}
-
-hasAppliance(appl) {
-  let exists = false;
-
-  if (this.appliance === appl) {
-    exists = true;
-  }
-  return exists;
-}
-
-hasUstensil(ust) {
-  let exists = false;
-  this.ustensils.forEach((ustensil) => {
-    if (ustensil === ust) {
-      exists = true;
-    }
-  });
-  return exists;
-}
 }

@@ -30,12 +30,11 @@ main {
   display: flex;
 }
 .tags .tag {
-  display: block;
-  color: white;
   font-size: 14px;
   margin: 1rem 0;
   margin-right: 1rem;
   padding: 0.5rem;
+  border: none;
 }
 
 .alerts {
@@ -50,6 +49,7 @@ main {
 }
 
 .btns-dropdown {
+  margin-top: 5px;
   display: flex;
   width: 76%;
   gap: 6px;
@@ -79,6 +79,21 @@ main {
   align-items: center;
   cursor: pointer;
   border-radius: 5px;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  cursor: pointer;
+}
+
+.btn_tags {
+  background-color: aqua;
+}
+.btn_tags span {
+  cursor: pointer;
 }
 
 /*.btns-dropdown .dropdown {
