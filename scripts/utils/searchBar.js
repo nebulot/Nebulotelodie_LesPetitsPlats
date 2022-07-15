@@ -18,59 +18,49 @@ async function initRecipes() {
   //console.log(recipes); Array(50);
 }
 
-function searchRecipes() {
-  const query = this.value;
-  if (query.length > 2) {
-      let [array, results] = [[], []];
-      // CHECK FOR ERASE STRING / Keep old search OR reload all recipes
-      if (queryLength > query.length) {
-          array = [...recipes];
-      } else {
-          array = searchResult.length > 0 ? [...searchResult] : [...recipes];
+const searchRecipes = (recipes, search) => {
+  search.addEventListener("keyup", (e) => {
+      if (e.target.value.length >= 3) {
+        const results = [];
+        results.innerHTML = "";
+        const query = e.target.value.toLowerCase();
+        for (let i = 0; i < recipes.length; i++) {
+          const { name, ingredients, description } = recipes[i];
+          const includesName = name.toLowerCase().includes(query);
+          const includesDescription = description.toLowerCase().includes(query);
+          let includesIngredients = false;
+          for (let y = 0; y < ingredients.length; y++) {
+            if (ingredients[y].ingredient.toLowerCase().includes(query)) {
+              includesIngredients = true;
+            }
+          }
+          if (includesName || includesDescription || includesIngredients) {
+            results.push(recipes[i]);
+          }
+        }
+  
+        if (results.length) {
+          results.innerHTML = "";
+          (results);
+        }
+  
+        if (!results.length) {
+          recipesSection.innerHTML = "";
+          recipesSection.append(
+            createDom(
+              "div",
+              `Aucune recette ne correspond à votre critère… vous pouvez
+              chercher « tarte aux pommes », « poisson », etc.`,
+              { class: "no__results" }
+            )
+          );
+        }
       }
-
-      results = array.filter(recipe => {
-          return recipe.name.toLowerCase().includes(query)
-              || recipe.description.toLowerCase().includes(query)
-              || recipe.ingredients.filter(ingredient => ingredient.ingredient.toLowerCase().includes(query)).length >= 1;
-          });
-
-      searchResult = [...results];
-      queryLength = query.length;
-      displayRecipes(searchResult);
-  } else {
-      searchResult = [...recipes];
-      queryLength = 0;
-      results.innerHTML = '';
-  }
-}
-
-//DISPLAY create recipe card when write your name on the searchbar
-function displayRecipes(data) {
-  results.innerHTML = '';
-  data.forEach(recipe => {
-      let card = new RecipeCard(recipe).make();
-      results.appendChild(card);
-  });
-}
-
-
-
-
-//filtered by name and numbers of letters >2 write 3 letters
-//if letters = display blog vs number = display none
-function filteredCards(letters, elements) {
-  let count = 0;
-  if (letters.length > 2) {
-    for (let i = 0; i < elements.length; i++) {
-      if (elements[i].textContent.toLowerCase().includes(letters)) {
-        count++;
-        elements[i].style.display = "block";
-      } else {
-        elements[i].style.display = "none";
+      if (e.target.value.length <= 3) {
+        recipesSection.innerHTML = "";
+        createRecipesCard(recipes);
       }
-    }
-  }
-  return count;
-};
+    });
+  };
+}
 
