@@ -41,12 +41,12 @@ const searchRecipes = (recipes, search) => {
   
         if (results.length) {
           results.innerHTML = "";
-          (results);
+          displayRecipes(results);
         }
   
         if (!results.length) {
-          recipesSection.innerHTML = "";
-          recipesSection.append(
+          results.innerHTML = "";
+          results.append(
             createDom(
               "div",
               `Aucune recette ne correspond à votre critère… vous pouvez
@@ -57,10 +57,20 @@ const searchRecipes = (recipes, search) => {
         }
       }
       if (e.target.value.length <= 3) {
-        recipesSection.innerHTML = "";
-        createRecipesCard(recipes);
+        results.innerHTML = "";
+        displayRecipes(recipes);
       }
     });
   };
-}
+
+ //DISPLAY create recipe card when write your word on the searchbar
+function displayRecipes(data) {
+  results.innerHTML = '';
+  data.forEach(recipe => {
+      let card = new RecipeCard(recipe).make();
+      results.appendChild(card);
+});
+  // console.log(results); ok 
+    
+} 
 
