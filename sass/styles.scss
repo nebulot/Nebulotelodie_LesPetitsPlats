@@ -1,5 +1,9 @@
-//@import "./variables_overrides.scss";
+@import "./variables_overrides.scss";
 
+
+main {
+  margin-top : 20px;
+}
 
 //color '${this-color} 
 
@@ -16,7 +20,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  width: 94%;
+  width: 100%;
   cursor : pointer;
 }
 
@@ -31,12 +35,11 @@
 .tags {
     display: flex;
     .tag {
-      display: block;
-      color: white;
       font-size: 14px;
       margin: 1rem 0;
       margin-right: 1rem;
       padding: 0.5rem;
+      border: none;
     }
   }
   
@@ -49,73 +52,88 @@
       display: none;
     }
     .alert.displayed {
-      display: flex;
-      justify-content: space-between;
+     display: flex;
+     justify-content: space-between;
   }
 }
 
 //////// DROPDOWN TOGGLE BTN ///////////////
 
-.input-group {
-      display: flex;
-      width: auto;
-      .form-control {
-          font-size: 18px;
-          &::placeholder {
-              opacity: .5;
-              color: white;
-          }
-      }
-    }
-
-.input-group>.form-control, .input-group>.form-select {
-     padding: 9px;
+.btns-dropdown {
+  margin-top : 15px;
+  display: flex;
+  width: 100%;
+  //inferieur a 762
+  gap : 6px;
+  .fa-chevron-down:hover {
+    transform: rotate(180deg) ;
   }
-
-  #inactive {
-      display: flex;
-      width: 100%;
+  .btn-dropdown-container {
+    width : 19%;
   }
+}
 
-  #active {
-      display: none;
-      width: 100%;
-      margin-inline: 0;
-      input {
-          margin-inline-start: 0;
-      }
-      button {
-          margin-inline-end: 0;
-      }
-      .result {
-          font-size: smaller;
-          line-height: 1;
-      }
-  }
+#links-ingredients.open, #links-appareils.open, #links-ustensiles.open {
+  max-width: auto;
+  display : block;
+}
+
+#links-ingredients,#links-appareils, #links-ustensiles {
+  display : none;
+  overflow: hidden;
+  margin : 0px;
+  padding : 0px;
+  transition: height 0.2s ease-in-out;
+  width : fit-content;
+}
 
 
+
+#btn-ingredients, #btn-appareils, #btn-ustensiles {
+  border: none;
+  outline: none;
+  display : flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+} 
+
+ul {
+  list-style : none;
+  margin: 0;
+  grid-template-columns: 160px 160px 160px;
+  display: grid;
+  padding: 15px;
+  column-gap: 10px;
+}
+
+li{
+  cursor: pointer;
+  font-size: 16px;
+}
+.btn_tags {
+background-color: aqua;
+span {
+  cursor : pointer
+}
+
+}
+
+
+/*rappel en dessous de 767 ecran 
+//il faut réduire l'affichage des bouton */
 
 @media (min-width: 767px) {
   .btns-dropdown {
     flex-direction: inline;
-
     .input-group {
         .form-control {
             font-size: 18px;
         }
     }
 
-    #inactive {
-        width: auto;
-    }
-
-    #active {
-        width: auto;
-        margin-inline: 10px;
-        input {
-            margin-inline-start: -20px;
-        }
-        button {
+      button {
             margin-inline-end: -20px;
         }
         .result {
@@ -125,28 +143,27 @@
         }
     }
 }
+@media screen and (max-width : 767px) {
+  .btns-dropdown {
+    flex-direction: column;
+    .btn-dropdown-container{
+    width: 100%;
+    }
+}
 }
 
-.btn {
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 7px 0px;
-  width: 16%;
-  color:white;
- 
- 
-  @media screen and (max-width : 767px) {
-    width: 33%;
+  /*@media screen and (max-width : 767px) {
+   width: 100%;
   }
   @media screen and (max-width : 375px) {
     width: 100%;
     margin: 15px 0%;
-  }
-}
+   }*/
 
   ///////////////// DISPLAY CARD RECIPE///////////////////////////
+  .receipe {
+    display : flex;
+  }
   .card {
     margin: 1rem 0;
     height: 450px;
@@ -165,14 +182,14 @@
     width: 100%;
     .card-title {
       width: 70%;
-      font-weight: 300;
+      font-weight: 500;
     }
     .recipe_time {
       display: flex;
       align-items: center;
       width: 30%;
       .time {
-        font-weight: 700;
+        font-weight: 500;
         margin: 0 0.5rem;
       }
     }
@@ -199,8 +216,3 @@
       -webkit-box-orient: vertical;
     }
   }
-
-  
-  
-
-  

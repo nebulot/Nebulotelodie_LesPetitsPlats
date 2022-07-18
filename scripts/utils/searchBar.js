@@ -1,8 +1,6 @@
 
 //ARRAY METHOD 
 let recipes = [];
-let searchResult = [];
-let queryLength = 0;
 
 // GET JSON DATA API
 function getRecipes () {
@@ -11,17 +9,20 @@ function getRecipes () {
         .catch(err => console.log('Error', err));
     return recipes;
 }
+console.log(recipes);
 
 // INIT //async here not in index.js
 async function initRecipes() {
   recipes = await getRecipes();
   initFilters(recipes);
   dropdownValues(recipes);
+  displayRecipes(recipes);
   //console.log(recipes); Array(50);
   searchRecipes(recipes, search);
 }
 
 const searchRecipes = (recipes, search) => {
+  
   search.addEventListener("keyup", (e) => {
       if (e.target.value.length >= 3) {
         const results = [];

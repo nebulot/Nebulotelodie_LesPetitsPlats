@@ -47,7 +47,7 @@ class RecipeCard {
     }
       } else {
         ingredientsList += `
-      <li class= "recipe-ingredients"><strong>${ingredient.ingredient}</strong</li>`;
+      <li class= "recipe-ingredients"><strong>${ingredient.ingredient}</strong></li>`;
       }
      });
     return ingredientsList;

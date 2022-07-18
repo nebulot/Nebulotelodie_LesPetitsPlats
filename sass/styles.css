@@ -1,3 +1,8 @@
+@charset "UTF-8";
+main {
+  margin-top: 20px;
+}
+
 .container_header {
   display: flex;
   justify-content: center;
@@ -9,7 +14,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  width: 94%;
+  width: 100%;
   cursor: pointer;
 }
 
@@ -25,12 +30,11 @@
   display: flex;
 }
 .tags .tag {
-  display: block;
-  color: white;
   font-size: 14px;
   margin: 1rem 0;
   margin-right: 1rem;
   padding: 0.5rem;
+  border: none;
 }
 
 .alerts {
@@ -44,43 +48,66 @@
   justify-content: space-between;
 }
 
-.input-group {
-  display: flex;
-  width: auto;
-}
-.input-group .form-control {
-  font-size: 18px;
-}
-.input-group .form-control::placeholder {
-  opacity: 0.5;
-  color: white;
-}
-
-.input-group > .form-control, .input-group > .form-select {
-  padding: 9px;
-}
-
-#inactive {
+.btns-dropdown {
+  margin-top: 15px;
   display: flex;
   width: 100%;
+  gap: 6px;
+}
+.btns-dropdown .fa-chevron-down:hover {
+  transform: rotate(180deg);
+}
+.btns-dropdown .btn-dropdown-container {
+  width: 19%;
 }
 
-#active {
+#links-ingredients.open, #links-appareils.open, #links-ustensiles.open {
+  max-width: auto;
+  display: block;
+}
+
+#links-ingredients, #links-appareils, #links-ustensiles {
   display: none;
-  width: 100%;
-  margin-inline: 0;
-}
-#active input {
-  margin-inline-start: 0;
-}
-#active button {
-  margin-inline-end: 0;
-}
-#active .result {
-  font-size: smaller;
-  line-height: 1;
+  overflow: hidden;
+  margin: 0px;
+  padding: 0px;
+  transition: height 0.2s ease-in-out;
+  width: fit-content;
 }
 
+#btn-ingredients, #btn-appareils, #btn-ustensiles {
+  border: none;
+  outline: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  grid-template-columns: 160px 160px 160px;
+  display: grid;
+  padding: 15px;
+  column-gap: 10px;
+}
+
+li {
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn_tags {
+  background-color: aqua;
+}
+.btn_tags span {
+  cursor: pointer;
+}
+
+/*rappel en dessous de 767 ecran 
+//il faut réduire l'affichage des bouton */
 @media (min-width: 767px) {
   .btns-dropdown {
     flex-direction: inline;
@@ -88,43 +115,31 @@
   .btns-dropdown .input-group .form-control {
     font-size: 18px;
   }
-  .btns-dropdown #inactive {
-    width: auto;
-  }
-  .btns-dropdown #active {
-    width: auto;
-    margin-inline: 10px;
-  }
-  .btns-dropdown #active input {
-    margin-inline-start: -20px;
-  }
-  .btns-dropdown #active button {
+  .btns-dropdown button {
     margin-inline-end: -20px;
   }
-  .btns-dropdown #active .result {
+  .btns-dropdown .result {
     font-size: larger;
     line-height: 2;
   }
 }
-.btn {
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 7px 0px;
-  width: 16%;
-  color: white;
-}
 @media screen and (max-width: 767px) {
-  .btn {
-    width: 33%;
+  .btns-dropdown {
+    flex-direction: column;
+  }
+  .btns-dropdown .btn-dropdown-container {
+    width: 100%;
   }
 }
-@media screen and (max-width: 375px) {
-  .btn {
-    width: 100%;
-    margin: 15px 0%;
-  }
+/*@media screen and (max-width : 767px) {
+ width: 100%;
+}
+@media screen and (max-width : 375px) {
+  width: 100%;
+  margin: 15px 0%;
+ }*/
+.receipe {
+  display: flex;
 }
 
 .card {
@@ -146,7 +161,7 @@
 }
 .title-time .card-title {
   width: 70%;
-  font-weight: 300;
+  font-weight: 500;
 }
 .title-time .recipe_time {
   display: flex;
@@ -154,7 +169,7 @@
   width: 30%;
 }
 .title-time .recipe_time .time {
-  font-weight: 700;
+  font-weight: 500;
   margin: 0 0.5rem;
 }
 
