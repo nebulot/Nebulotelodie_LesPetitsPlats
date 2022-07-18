@@ -15,7 +15,10 @@ function getRecipes () {
 // INIT //async here not in index.js
 async function initRecipes() {
   recipes = await getRecipes();
+  initFilters(recipes);
+  dropdownValues(recipes);
   //console.log(recipes); Array(50);
+  searchRecipes(recipes, search);
 }
 
 const searchRecipes = (recipes, search) => {

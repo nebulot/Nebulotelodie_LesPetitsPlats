@@ -36,18 +36,18 @@ class RecipeCard {
       if (ingredient.quantity) {
         if (ingredient.unit && ingredient.quantity) {
         ingredientsList += `
-      <li class = "recipe-ingredients">${ingredient.ingredient} : ${
+      <li class = "recipe-ingredients"><strong>${ingredient.ingredient} : ${
           ingredient.quantity ?? ""
-        } ${ingredient.unit ?? ""} </li>`;
+        } ${ingredient.unit ?? ""} </strong></li>`;
       } else {
       ingredientsList += `
-      <li class= "recipe-ingredients">${ingredient.ingredient} :  ${
-        ingredient.quantity}
+      <li class= "recipe-ingredients"><strong>${ingredient.ingredient} :  ${
+        ingredient.quantity}</strong>
        </li>`;
     }
       } else {
         ingredientsList += `
-      <li class= "recipe-ingredients">${ingredient.ingredient}</li>`;
+      <li class= "recipe-ingredients"><strong>${ingredient.ingredient}</strong</li>`;
       }
      });
     return ingredientsList;
@@ -89,8 +89,7 @@ class RecipeCard {
    </div>
    </div>`;
    return card
-   
-    
+       
   }
 }
 
