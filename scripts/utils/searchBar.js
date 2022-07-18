@@ -2,6 +2,7 @@
 //ARRAY METHOD 
 let recipes = [];
 
+
 // GET JSON DATA API
 function getRecipes () {
   const recipes = fetch("./scripts/data/recipes.json")
@@ -18,14 +19,13 @@ async function initRecipes() {
   dropdownValues(recipes);
   displayRecipes(recipes);
   //console.log(recipes); Array(50);
-  searchRecipes(recipes, search);
+  searchRecipes(recipes, searchBarInput);
 }
 
-const searchRecipes = (recipes, search) => {
-  
-  search.addEventListener("keyup", (e) => {
+const searchRecipes = (recipes, searchBarInput) => {  
+  searchBarInput.addEventListener("click", (e) => {
       if (e.target.value.length >= 3) {
-        const results = [];
+        let result = [];
         results.innerHTML = "";
         const query = e.target.value.toLowerCase();
         for (let i = 0; i < recipes.length; i++) {
@@ -38,28 +38,28 @@ const searchRecipes = (recipes, search) => {
               includesIngredients = true;
             }
           }
+          console.log(searchBarInput);
           if (includesName || includesDescription || includesIngredients) {
-            results.push(recipes[i]);
+            result.push(recipes[i]);
           }
         }
   
-        if (results.length) {
+        if (result.length) {
           results.innerHTML = "";
-          displayRecipes(results);
+          displayRecipes(result);
         }
   
-        if (!results.length) {
+        if (!result.length) {
           results.innerHTML = "";
-          results.append(
-            createDom(
-              "div",
-              `Aucune recette ne correspond à votre critère… vous pouvez
-              chercher « tarte aux pommes », « poisson », etc.`,
-              { class: "no__results" }
-            )
-          );
+          const alert = document.createElement("span");
+          alert.className = "alert_Msg bg-danger rounded text-white py-4";
+          alert.innerHTML = `Aucune recette ne correspond à votre critère… </br> vous pouvez
+          chercher « tarte aux pommes », « poisson », etc`
+          results.appendChild(alert);	
+        
         }
       }
+
       if (e.target.value.length <= 3) {
         results.innerHTML = "";
         displayRecipes(recipes);

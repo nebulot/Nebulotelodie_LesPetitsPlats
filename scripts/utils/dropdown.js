@@ -51,7 +51,7 @@ listIngredientsItems();
 };
 
 const ingredientsInput = document.querySelector(".ingredient_input");
-ingredientsInput.addEventListener("keyup", (e) => {
+ingredientsInput.addEventListener("click", (e) => {
 const tags = initFilters(recipes);
 //const ul = document.querySelector("#links-ingredients .result");
   //ul.innerHtml ="";
@@ -61,8 +61,8 @@ const tags = initFilters(recipes);
 				return ingredient.toLowerCase().includes(query);
 			}); 
       searchresults.forEach((result) => {
-        const searchresults = document.createElement("div");
-        results.innerHtml = result ;
+        const addresults = document.createElement("div");
+        results.innerHtml = addresults ;
         });
         console.log(searchresults);
         listIngredientsItems();

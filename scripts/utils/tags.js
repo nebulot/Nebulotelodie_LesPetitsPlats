@@ -28,7 +28,7 @@
 	const researchOnFilters = (recipes, selectedTagsStop) => {
 	const tagsQuery = document.querySelectorAll(".btn_tags");
 	const tags = Array.from(tagsQuery);
-	const result = recipes.filter((recipe) => {
+	const resultat = recipes.filter((recipe) => {
 		return tags.every((item) => {
 			const formatedItem = item.textContent.toLowerCase();
 			return (
@@ -44,12 +44,12 @@
 	});
 	//console.log(result); ok number of recipe who match with tags selected
 
-	if (result.length) {
+	if (resultat.length) {
 		// show recipes
 		displayRecipes(result);
 		listenOnTagBar(tags, recipes);
 		//console.log(listenOnTagBar);
-	} else if (!result.length) {
+	} else if (!resultat.length) {
 		//show alert message don't find a recipe
 		listenOnTagBar(tags, recipes);
 		results.innerHTML = "";
