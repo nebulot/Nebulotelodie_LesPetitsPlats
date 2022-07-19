@@ -50,7 +50,7 @@ btn1.onclick = function() {
 listIngredientsItems();
 };
 
-const ingredientsInput = document.querySelector(".ingredient_input");
+/*const ingredientsInput = document.querySelector(".ingredient_input");
 ingredientsInput.addEventListener("click", (e) => {
 const tags = initFilters(recipes);
 //const ul = document.querySelector("#links-ingredients .result");
@@ -66,7 +66,7 @@ const tags = initFilters(recipes);
         });
         console.log(searchresults);
         listIngredientsItems();
-			});
+			});*/
      
   const listIngredientsItems = () => {
   const li = document.querySelectorAll(".ingredient_item");

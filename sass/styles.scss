@@ -22,6 +22,11 @@ main {
   align-items: stretch;
   width: 100%;
   cursor : pointer;
+  padding : 0px;
+}
+
+#search-bar {
+  padding: 14px;
 }
 
 .search-bar {
@@ -62,15 +67,23 @@ main {
 .btns-dropdown {
   margin-top : 15px;
   display: flex;
-  width: 100%;
-  //inferieur a 762
+  width: 59%;
+    //inferieur a 762
   gap : 6px;
-  .fa-chevron-down:hover {
-    transform: rotate(180deg) ;
+
+  .chevron-btn {
+    border: none;
+    margin: 0;
+    padding: 2px;
+    box-sizing: border-box;
+    color: white;
+    border-radius: 0 5px 5px 0;
   }
-  .btn-dropdown-container {
-    width : 19%;
-  }
+}
+
+#input-ingredients::placeholder, #input-appareils::placeholder, #input-ustensiles::placeholder {
+  color : rgba(255,255,255,0.70);
+
 }
 
 #links-ingredients.open, #links-appareils.open, #links-ustensiles.open {
@@ -80,6 +93,8 @@ main {
 
 #links-ingredients,#links-appareils, #links-ustensiles {
   display : none;
+  position : absolute;
+  z-index : 2;
   overflow: hidden;
   margin : 0px;
   padding : 0px;
@@ -87,7 +102,9 @@ main {
   width : fit-content;
 }
 
-
+.form-control{
+  padding : 0px;
+}
 
 #btn-ingredients, #btn-appareils, #btn-ustensiles {
   border: none;
@@ -97,6 +114,8 @@ main {
   align-items: center;
   cursor: pointer;
   border-radius: 5px;
+  padding : 9px;
+  padding-right : 6px;
 } 
 
 ul {
@@ -113,7 +132,6 @@ li{
   font-size: 16px;
 }
 .btn_tags {
-background-color: aqua;
 span {
   cursor : pointer
 }
@@ -216,3 +234,5 @@ span {
       -webkit-box-orient: vertical;
     }
   }
+
+  

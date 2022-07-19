@@ -23,7 +23,7 @@ async function initRecipes() {
 }
 
 const searchRecipes = (recipes, searchBarInput) => {  
-  searchBarInput.addEventListener("click", (e) => {
+  searchBarInput.addEventListener("keyup", (e) => {
       if (e.target.value.length >= 3) {
         let result = [];
         results.innerHTML = "";

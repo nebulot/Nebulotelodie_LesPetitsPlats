@@ -43,7 +43,7 @@ init();*/
 
 ///////////////////////    (5) SEARCHBAR  arrayAlgo.js  ////////////////////////////////
 const main = document.querySelector(".main");
-const search = document.querySelector(".input-group ");
+const search = document.querySelector(".input-group");
 const results = document.querySelector(".results .receipe-container");
 const searchBarInput = search.querySelector("#search-bar");
 const submit = search.querySelector("span");
