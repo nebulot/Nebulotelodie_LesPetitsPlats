@@ -1,16 +1,19 @@
 ///////////////////////////////Tags Bar filter////////////////////////////////////////
  
-  const createTagsBar = (selectedTagsStop, recipes) => {
+  const createTagsBar = (selectedTagsStop, type ,recipes) => {
     const tags = document.querySelector(".tags");
 	tags.innerHTML ="";
 	selectedTagsStop.forEach((tag) => {
 		  const tagsBox = document.createElement("button");
-		  tagsBox.className = `btn_tags tag w-auto rounded d-flex align-items-center text-white`;
+		  tagsBox.className = `btn_tags ${type} tag w-auto rounded d-flex align-items-center text-white`;
+		  
 		  tagsBox. innerHTML = tag + `<span><i class="far fa-times-circle ms-2"></i></span>`;		  
 		  tags.append(tagsBox); 
 		  tagsBox.addEventListener("click", closeTags);
+		  console.log(tag);
 		  //console.log(tags); // div class Tags
-		  //console.log(tagsBox); //div button+span
+		  console.log(tagsBox); //div button+span
+		  
 	});
 	researchOnFilters(recipes, selectedTagsStop);
 	//console.log(recipe)
