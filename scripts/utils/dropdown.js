@@ -49,10 +49,8 @@ btn1.addEventListener("click", () => {
     ul3.style.display = "none";
     
     //expand the button
-    const tags = initFilters(recipes);
-  
     //console.log(tags);
-    tags.ingredients.forEach((ingredient) => {
+    ingredients.forEach((ingredient) => {
       const li = document.createElement("li");
       li.textContent = ingredient;
       li.className = "ingredient_item";
@@ -82,8 +80,6 @@ ingredientsInput.addEventListener("keyup", (e) => {
       li.textContent = result;
       li.className = "ingredient_item";
       ul.appendChild(li);
-         
-    
   });  
   listIngredientsItems();
 }});
@@ -119,10 +115,8 @@ btn2.addEventListener("click", () => {
     ul3.style.display = "none";
     
     //expand the button
-    const tags = initFilters(recipes);
-  
     //console.log(tags);
-    tags.appareil.forEach((appliance) => {
+    appareil.forEach((appliance) => {
       const li = document.createElement("li");
       li.textContent = appliance;
       li.className = "appliance_item";
@@ -134,18 +128,40 @@ btn2.addEventListener("click", () => {
   }  
   listApplianceItems();
 });
-      
 
+appareilInput.addEventListener("keyup", (e) => {
+  //console.log(contentBtn);
+  if (e.target.value.length > 3) {
+  const query = e.target.value.toLowerCase();
+  //console.log(query); //ok scibe pomm....
+  const results = appareil.filter((item) => {
+    return item.toLowerCase().includes(query);
+  });
+  //console.log(results); //nbr [2] and name "pomme"..
+  results.forEach((result) => {
+    const li = document.createElement("li");
+      li.textContent = result;
+      li.className = "appliance_item";
+      ul2.appendChild(li);
+  });  
+  listApplianceItems();
+}});
+      
 const listApplianceItems = () => {
-  const appareilsItems = document.querySelectorAll(".appliance_item");
-  appareilsItems.forEach((item) => {
+  let li = [];
+  li = document.querySelectorAll(".appliance_item");
+ li.forEach((item) => {
     item.addEventListener("click", () => {
       selectedTags.push(item.textContent);
-      const selectedTagStop = [...new Set(selectedTags)];
-      createTagsBar(selectedTagStop, "bg-success", recipes);
-    });
+      const selectedTagsStop = [...new Set(selectedTags)];
+      createTagsBar(selectedTagsStop, "bg-success", recipes);
+      console.log(selectedTags); //ok ['pomme']
+      });
+      //console.log(li); ok li.ingredient_item
+      //console.log(item); ok balise <li class>name</li>
   });
 };
+
 
 ///////////////////////////////////////BOUTON 3 USTENSILES/////////////////////////////////////////
 
@@ -163,10 +179,9 @@ btn3.addEventListener("click", () => {
    ul2.style.display = "none";
    
    //expand the button
-   const tags = initFilters(recipes);
- 
    //console.log(tags);
-   tags.ustensiles.forEach((ustensils) => {
+
+   ustensiles.forEach((ustensils) => {
      const li = document.createElement("li");
      li.textContent = ustensils;
      li.className = "ustensils_item";
@@ -178,17 +193,37 @@ btn3.addEventListener("click", () => {
  }  
  listUstensilsItems();
 });
-     
 
+ustensilsInput.addEventListener("keyup", (e) => {
+  //console.log(contentBtn);
+  if (e.target.value.length > 3) {
+  const query = e.target.value.toLowerCase();
+  //console.log(query); //ok scibe pomm....
+  const results = ustensiles.filter((ustensils) => {
+    return ustensils.toLowerCase().includes(query);
+  });
+  //console.log(results); //nbr [2] and name "pomme"..
+  results.forEach((result) => {
+    const li = document.createElement("li");
+      li.textContent = result;
+      li.className = "ustensils_item";
+      ul3.appendChild(li);
+  });  
+  listUstensilsItems();
+}});
+      
 const listUstensilsItems = () => {
- const ustensilsItems = document.querySelectorAll(".ustensils_item");
- ustensilsItems.forEach((item) => {
-   item.addEventListener("click", () => {
-     selectedTags.push(item.textContent);
-     const selectedTagStop = [...new Set(selectedTags)];
-     createTagsBar(selectedTagStop, "bg-danger", recipes);
-   });
- });
+  let li = [];
+  li = document.querySelectorAll(".ustensils_item");
+ li.forEach((item) => {
+    item.addEventListener("click", () => {
+      selectedTags.push(item.textContent);
+      const selectedTagsStop = [...new Set(selectedTags)];
+      createTagsBar(selectedTagsStop, "bg-danger", recipes);
+      console.log(selectedTags); //ok ['pomme']
+      });
+      //console.log(li); ok li.ingredient_item
+      //console.log(item); ok balise <li class>name</li>
+  });
 };
-
 }
