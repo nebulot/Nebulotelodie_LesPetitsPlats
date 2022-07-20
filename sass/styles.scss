@@ -81,17 +81,17 @@ main {
   }
 }
 
-#input-ingredients::placeholder, #input-appareils::placeholder, #input-ustensiles::placeholder {
+#input-ingredients::placeholder, #input-appliance::placeholder, #input-ustensils::placeholder {
   color : rgba(255,255,255,0.70);
 
 }
 
-#links-ingredients.open, #links-appareils.open, #links-ustensiles.open {
+#links-ingredients.open, #links-appliance.open, #links-ustensils.open {
   max-width: auto;
   display : block;
 }
 
-#links-ingredients,#links-appareils, #links-ustensiles {
+#links-ingredients,#links-appliance, #links-ustensils {
   display : none;
   position : absolute;
   z-index : 2;
@@ -106,7 +106,7 @@ main {
   padding : 0px;
 }
 
-#btn-ingredients, #btn-appareils, #btn-ustensiles {
+#btn-ingredients, #btn-appliance, #btn-ustensils {
   border: none;
   outline: none;
   display : flex;
@@ -154,7 +154,7 @@ span {
       button {
             margin-inline-end: -20px;
         }
-        .result {
+        .result-ingredients, .result-appliance, .result-ustensils {
             font-size: larger;
             line-height: 2;
             // margin-bottom: 10px;

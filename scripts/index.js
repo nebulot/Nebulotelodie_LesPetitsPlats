@@ -2,6 +2,8 @@
 const dropdownsBar = document.querySelector(".btns-dropdown");
 const tags = document.querySelector(".tags");
 
+
+
 //////////// 9 create an alert display under searchbar to success or danger research //////
 let globalRecipesList = recipes.slice();
 console.log(recipes); //=> searchBar arrayalgo.js

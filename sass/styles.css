@@ -68,16 +68,16 @@ main {
   border-radius: 0 5px 5px 0;
 }
 
-#input-ingredients::placeholder, #input-appareils::placeholder, #input-ustensiles::placeholder {
+#input-ingredients::placeholder, #input-appliance::placeholder, #input-ustensils::placeholder {
   color: rgba(255, 255, 255, 0.7);
 }
 
-#links-ingredients.open, #links-appareils.open, #links-ustensiles.open {
+#links-ingredients.open, #links-appliance.open, #links-ustensils.open {
   max-width: auto;
   display: block;
 }
 
-#links-ingredients, #links-appareils, #links-ustensiles {
+#links-ingredients, #links-appliance, #links-ustensils {
   display: none;
   position: absolute;
   z-index: 2;
@@ -92,7 +92,7 @@ main {
   padding: 0px;
 }
 
-#btn-ingredients, #btn-appareils, #btn-ustensiles {
+#btn-ingredients, #btn-appliance, #btn-ustensils {
   border: none;
   outline: none;
   display: flex;
@@ -134,7 +134,7 @@ li {
   .btns-dropdown button {
     margin-inline-end: -20px;
   }
-  .btns-dropdown .result {
+  .btns-dropdown .result-ingredients, .btns-dropdown .result-appliance, .btns-dropdown .result-ustensils {
     font-size: larger;
     line-height: 2;
   }

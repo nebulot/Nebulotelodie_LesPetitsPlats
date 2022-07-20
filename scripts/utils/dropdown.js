@@ -1,137 +1,143 @@
 //text create with [active] and [inactive] problem
 
 let selectedTags = [];
-//use second solution dom Element and function onclick();
+
+
 const dropdownValues = (recipes) => {
   const { ingredients, appareil, ustensiles } = initFilters(recipes);
-};
+
 
 //////////DOM ELEMENTS/////////////////////////////
-// close and open dropdown
-const btn1 = document.getElementById("btn-ingredients");
-const btn2 = document.getElementById("btn-appareils");
-const btn3 = document.getElementById("btn-ustensiles");
-
-const appareilInput = document.querySelector(".appareil_input");
-const ustensilsInput = document.querySelector(".ustensils_input");
-
-const li = document.getElementsByClassName("result");
-
-const ingredientIcon = document.getElementsByClassName("ingredients_arrow");
-const appareilsIcon = document.getElementsByClassName("appliance_arrow");
-const ustensilsIcon = document.getElementsByClassName("ustensils_arrow");
 
 //main.addEventListener("click", closeAll);
 //search.addEventListener("click", closeAll);
 
-btn1.onclick = function () {
-  let contentBtn = document.getElementById("links-ingredients");
-  //let ingredientsIcon = document.getElementsByClassName("ingredients_arrow");
+// close and open dropdown
+const btn1 = document.getElementById("btn-ingredients");
+const contentBtn = document.getElementById("links-ingredients");
+const ul = document.querySelector(".result-ingredients");
+const ingredientsInput = document.querySelector("#input-ingredients");
+const ingredientsIcon = document.querySelector(".ingredients_arrow");
+
+
+const btn2 = document.getElementById("btn-appliance");
+const contentBtn2 = document.getElementById("links-appliance");
+const ul2 = document.querySelector(".result-appliance");
+const appareilInput = document.querySelector("#input-appliance");
+const appareilsIcon = document.querySelector(".appliance_arrow");
+
+const btn3 = document.getElementById("btn-ustensils");
+const contentBtn3 = document.getElementById("links-ustensils");
+const ul3 = document.querySelector(".result-ustensils");
+const ustensilsInput = document.querySelector("#input-ustensils");
+const ustensilsIcon = document.querySelector(".ustensils_arrow");
+
+//const li = document.querySelector(".ingredient_item")
+
+
+btn1.addEventListener("click", () => {
   //shrink the button
   if (contentBtn.style.display !== "none") {
     contentBtn.style.display = "none";
+    ingredientsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
   } else {
     contentBtn.style.display = "block";
+    ingredientsIcon.classList.replace("fa-chevron-down", "fa-chevron-up");
+    contentBtn2.style.display = "none";
+    ul2.style.display = "none";
+    contentBtn3.style.display = "none";
+    ul3.style.display = "none";
+    
     //expand the button
-    //ingredientsIcon.classList.replace("fa-chevron-down", "fa-chevron-up");
     const tags = initFilters(recipes);
-    console.log(tags);
-    const ul = document.querySelector("#links-ingredients .result");
-    //ul.innerHTML = "";
+  
+    //console.log(tags);
     tags.ingredients.forEach((ingredient) => {
       const li = document.createElement("li");
       li.textContent = ingredient;
       li.className = "ingredient_item";
       ul.appendChild(li);
-      //console.log(li);
-      //console.log(ul);
+      contentBtn.appendChild(ul);
+      //console.log(li); //<div btn>name<div>
+      //console.log(contentBtn);
     });
-    
-  }
-  const li = document.querySelectorAll(".ingredient_item");
-  listIngredientsItems(li);
-};
+  }  
+  listIngredientsItems();
+});
 
-const listIngredientsItems = (li) => {
+ingredientsInput.addEventListener("keyup", (e) => {
+  ul.innerHTML ="";
+  //console.log(contentBtn);
+  if (e.target.value.length > 3) {
+  const tags = initFilters(recipes);
+  const query = e.target.value.toLowerCase();
+  //const ul = document.querySelector("#links-ingredients .result");
+  //console.log(query); //ok scibe pomm....
+  const results = tags.ingredients.filter((ingredient) => {
+    return ingredient.toLowerCase().includes(query);
+  });
+  //console.log(results); //nbr [2] and name "pomme"..
+  results.forEach((result) => {
+    const li = document.createElement("li");
+      li.textContent = result;
+      li.className = "ingredient_item";
+      ul.appendChild(li);
+         
+    
+  });  
+  listIngredientsItems();
+}});
+
+const listIngredientsItems = () => {
+  let li = [];
+  li = document.querySelectorAll(".ingredient_item");
  li.forEach((item) => {
     item.addEventListener("click", () => {
       selectedTags.push(item.textContent);
       const selectedTagsStop = [...new Set(selectedTags)];
       createTagsBar(selectedTagsStop, "bg-primary", recipes);
-      //console.log(selectedTags); ok ['pomme']
+      console.log(selectedTags); //ok ['pomme']
       });
       //console.log(li); ok li.ingredient_item
       //console.log(item); ok balise <li class>name</li>
   });
 };
-//console.log(listIngredientsItems);
-
-
-const ingredientsInput = document.querySelector("#input-ingredients");
-ingredientsInput.addEventListener("keyup", (e) => {
-  const tags = initFilters(recipes);
-  const query = e.target.value.toLowerCase();
-  const ul = document.querySelector("#links-ingredients .result");
-  //console.log(query); //ok scibe pomm....
-  const searchresults = tags.ingredients.filter((ingredient) => {
-    return ingredient.toLowerCase().includes(query);
-  });
-  //console.log(searchresults); nbr [2] and name "pomme"..
-  let li = [];
-  li.forEach((item) => {
-    item.addEventListener("click", () => {
-      li.textContent = ingredient;
-      li.push(item.textContent);
-      
-      //createTagsBar(selectedTagsStop, "bg-primary", recipes);
-      //console.log(selectedTags); ok ['pomme']
-      });
-  //li.push(searchresults.textContent);
-  console.log(searchresults);
-    });
-  console.log(li); 
-
-
-  //ul.innerHtml ="";
-   //let li = [];
-  //li.push(item.textContent); //déclarer un tableau
- //searchresults.textContent = "li"; rajoute dans console un element
-  //searchresults.forEach((result) => {
-    // avoir un élément html pour replacer nos données (résultats console)
-    //searchresults.textContent = ;
-    //li.push(searchresults);
-    //results.innerHtml = result;
-  //});
-  
-  listIngredientsItems(li);
-});
-
 
 ////////////////////////////////BUTTON 2 APPAREIL//////////////////////////////////
 
-btn2.onclick = function () {
-  let contentBtn2 = document.getElementById("links-appareils");
-
-  //shrink the button
-  if (contentBtn2.style.display !== "none") {
+btn2.addEventListener("click", () => {
+   //shrink the button
+   if (contentBtn2.style.display !== "none") {
     contentBtn2.style.display = "none";
+    appareilsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
   } else {
     contentBtn2.style.display = "block";
+    appareilsIcon.classList.replace("fa-chevron-down", "fa-chevron-up");
+    contentBtn.style.display = "none";
+    ul.style.display = "none";
+    contentBtn3.style.display = "none";
+    ul3.style.display = "none";
+    
     //expand the button
     const tags = initFilters(recipes);
+  
+    //console.log(tags);
     tags.appareil.forEach((appliance) => {
-      const ul = document.querySelector("#links-appareils .result");
       const li = document.createElement("li");
       li.textContent = appliance;
-      li.className = "appareil_item";
-      ul.appendChild(li);
+      li.className = "appliance_item";
+      ul2.appendChild(li);
+      contentBtn2.appendChild(ul2);
+      console.log(li); //<div btn>name<div>
+      //console.log(contentBtn);
     });
-  }
-  listAppareilsItems();
-};
+  }  
+  listApplianceItems();
+});
+      
 
-const listAppareilsItems = () => {
-  const appareilsItems = document.querySelectorAll(".appareil_item");
+const listApplianceItems = () => {
+  const appareilsItems = document.querySelectorAll(".appliance_item");
   appareilsItems.forEach((item) => {
     item.addEventListener("click", () => {
       selectedTags.push(item.textContent);
@@ -143,36 +149,46 @@ const listAppareilsItems = () => {
 
 ///////////////////////////////////////BOUTON 3 USTENSILES/////////////////////////////////////////
 
-btn3.onclick = function () {
-  let contentBtn3 = document.getElementById("links-ustensiles");
-
+btn3.addEventListener("click", () => {
   //shrink the button
   if (contentBtn3.style.display !== "none") {
-    contentBtn3.style.display = "none";
-  } else {
-    contentBtn3.style.display = "block";
-    //expand the button
-    const tags = initFilters(recipes);
-    tags.ustensiles.forEach((ustensils) => {
-      const ul = document.querySelector("#links-ustensiles .result");
-      const li = document.createElement("li");
-      li.textContent = ustensils;
-      li.className = "ustensils_item";
-      ul.appendChild(li);
-    });
-  }
-  listUstensilesItems();
+   contentBtn3.style.display = "none";
+   ustensilsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
+ } else {
+   contentBtn3.style.display = "block";
+   ustensilsIcon.classList.replace("fa-chevron-down", "fa-chevron-up");
+   contentBtn.style.display = "none";
+   ul.style.display = "none";
+   contentBtn2.style.display = "none";
+   ul2.style.display = "none";
+   
+   //expand the button
+   const tags = initFilters(recipes);
+ 
+   //console.log(tags);
+   tags.ustensiles.forEach((ustensils) => {
+     const li = document.createElement("li");
+     li.textContent = ustensils;
+     li.className = "ustensils_item";
+     ul3.appendChild(li);
+     contentBtn3.appendChild(ul3);
+     console.log(li); //<div btn>name<div>
+     //console.log(contentBtn);
+   });
+ }  
+ listUstensilsItems();
+});
+     
+
+const listUstensilsItems = () => {
+ const ustensilsItems = document.querySelectorAll(".ustensils_item");
+ ustensilsItems.forEach((item) => {
+   item.addEventListener("click", () => {
+     selectedTags.push(item.textContent);
+     const selectedTagStop = [...new Set(selectedTags)];
+     createTagsBar(selectedTagStop, "bg-danger", recipes);
+   });
+ });
 };
 
-const listUstensilesItems = () => {
-  const ustensilesItems = document.querySelectorAll(".ustensils_item");
-  console.log(ustensilesItems); //nodeList (30) li.ustensils_items
-  ustensilesItems.forEach((item) => {
-    item.addEventListener("click", () => {
-      selectedTags.push(item.textContent);
-      console.log(selectedTags); // number of selection all (3)
-      const selectedTagsStop = [...new Set(selectedTags)];
-      createTagsBar(selectedTagsStop, "bg-danger", recipes);
-    });
-  });
-};
+}
