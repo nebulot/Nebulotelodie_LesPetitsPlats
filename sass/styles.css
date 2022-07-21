@@ -3,6 +3,10 @@ main {
   margin-top: 20px;
 }
 
+button:focus, input:focus {
+  box-shadow: none !important;
+}
+
 .container_header {
   display: flex;
   justify-content: center;
@@ -33,6 +37,10 @@ main {
 
 .tags {
   display: flex;
+  gap: 10px;
+  cursor: pointer;
+  margin: 0.5rem 0rem 0.5rem 0rem;
+  padding: 0.5rem 0.3rem;
 }
 .tags .tag {
   font-size: 14px;
@@ -59,8 +67,12 @@ main {
   width: 59%;
   gap: 6px;
 }
+.btns-dropdown .btn-dropdown-container {
+  width: 30%;
+}
 .btns-dropdown .chevron-btn {
   border: none;
+  cursor: pointer;
   margin: 0;
   padding: 2px;
   box-sizing: border-box;
@@ -68,31 +80,40 @@ main {
   border-radius: 0 5px 5px 0;
 }
 
-#input-ingredients::placeholder, #input-appareils::placeholder, #input-ustensiles::placeholder {
+#input-ingredients:focus, #input-appliance:focus, #input-ustensils:focus {
+  outline: none;
+}
+
+#input-ingredients::placeholder, #input-appliance::placeholder, #input-ustensils::placeholder {
   color: rgba(255, 255, 255, 0.7);
 }
 
-#links-ingredients.open, #links-appareils.open, #links-ustensiles.open {
-  max-width: auto;
-  display: block;
+.result_undisplayed {
+  display: none;
 }
 
-#links-ingredients, #links-appareils, #links-ustensiles {
-  display: none;
+.result_displayed {
   position: absolute;
+  list-style: none;
+  grid-template-columns: 160px 160px 160px;
+  display: grid;
+  padding: 15px;
+  column-gap: 10px;
+  width: fit-content;
   z-index: 2;
   overflow: hidden;
-  margin: 0px;
-  padding: 0px;
   transition: height 0.2s ease-in-out;
-  width: fit-content;
+  margin: 0px;
+  padding: 20px;
+  border-radius: 5px;
 }
 
-.form-control {
+.input-dropdown.form-control {
   padding: 0px;
+  color: white;
 }
 
-#btn-ingredients, #btn-appareils, #btn-ustensiles {
+#btn-ingredients, #btn-appliance, #btn-ustensils {
   border: none;
   outline: none;
   display: flex;
@@ -102,15 +123,6 @@ main {
   border-radius: 5px;
   padding: 9px;
   padding-right: 6px;
-}
-
-ul {
-  list-style: none;
-  margin: 0;
-  grid-template-columns: 160px 160px 160px;
-  display: grid;
-  padding: 15px;
-  column-gap: 10px;
 }
 
 li {
@@ -134,26 +146,19 @@ li {
   .btns-dropdown button {
     margin-inline-end: -20px;
   }
-  .btns-dropdown .result {
-    font-size: larger;
-    line-height: 2;
+
+  #btn-ingredients {
+    max-width: 100%;
   }
 }
 @media screen and (max-width: 767px) {
   .btns-dropdown {
     flex-direction: column;
   }
-  .btns-dropdown .btn-dropdown-container {
+  .btns-dropdown .btn-dropdown-container.result_displayed {
     width: 100%;
   }
 }
-/*@media screen and (max-width : 767px) {
- width: 100%;
-}
-@media screen and (max-width : 375px) {
-  width: 100%;
-  margin: 15px 0%;
- }*/
 .receipe {
   display: flex;
 }

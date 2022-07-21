@@ -1,152 +1,234 @@
-//text create with [active] and [inactive] problem 
+// (6) DROPDOWN DOM  (11) DROPDOWN events (click btn, keyup input, create tag)
+let selectedTags = [];
 
-const selectedTags = [];
-//use second solution dom Element and function onclick(); 
+
 const dropdownValues = (recipes) => {
   const { ingredients, appareil, ustensiles } = initFilters(recipes);
-};
-
 
 //////////DOM ELEMENTS/////////////////////////////
-// close and open dropdown 
-const btn1 = document.getElementById("btn-ingredients");
-const btn2 = document.getElementById("btn-appareils");
-const btn3 = document.getElementById("btn-ustensiles");
-
-const appareilInput = document.querySelector(".appareil_input");
-const ustensilsInput = document.querySelector(".ustensils_input");
-
-const li = document.getElementsByClassName("result");
-
-const ingredientIcon = document.getElementsByClassName("ingredients_arrow");
-const appareilsIcon = document.getElementsByClassName("appliance_arrow");
-const ustensilsIcon = document.getElementsByClassName("ustensils_arrow");
 
 //main.addEventListener("click", closeAll);
 //search.addEventListener("click", closeAll);
 
-btn1.onclick = function() {
-  let contentBtn = document.getElementById("links-ingredients");
-  //let ingredientsIcon = document.getElementsByClassName("ingredients_arrow");
-  //shrink the button
-  if (contentBtn.style.display !== "none") {
-    contentBtn.style.display = "none";
-    
-}else{
-  contentBtn.style.display = "block";
-      //expand the button
-  //ingredientsIcon.classList.replace("fa-chevron-down", "fa-chevron-up");
-  const tags = initFilters(recipes);
-  console.log(tags);
-  tags.ingredients.forEach((ingredient) => {
-    const ul = document.querySelector("#links-ingredients .result");
-    const li = document.createElement("li");
-    li.textContent = ingredient;
-    li.className = "ingredient_item";
-    ul.appendChild(li);
-    //console.log(li);
-    //console.log(ul);
-})};
-listIngredientsItems();
-};
+// close and open dropdown
+const btn1 = document.querySelector("#btn-ingredients");
+const ul = document.querySelector(".result_ingredients");
+const ingredientsInput = document.querySelector("#input-ingredients");
+const ingredientsIcon = document.querySelector(".ingredients_arrow");
 
-/*const ingredientsInput = document.querySelector(".ingredient_input");
-ingredientsInput.addEventListener("click", (e) => {
-const tags = initFilters(recipes);
-//const ul = document.querySelector("#links-ingredients .result");
-  //ul.innerHtml ="";
+
+const btn2 = document.querySelector("#btn-appliance");
+const ul2 = document.querySelector(".result_appliance");
+const appareilInput = document.querySelector("#input-appliance");
+const appareilsIcon = document.querySelector(".appliance_arrow");
+
+const btn3 = document.querySelector("#btn-ustensils");
+const ul3 = document.querySelector(".result_ustensils");
+const ustensilsInput = document.querySelector("#input-ustensils");
+const ustensilsIcon = document.querySelector(".ustensils_arrow");
+
+//const li = document.querySelector(".ingredient_item")
+
+////////////////// btn1 INGREDIENT BTN / INPUT / LIST /////////////////////////
+btn1.addEventListener("click", () => {
+  //shrink the button
+  if (ul.classList.contains("result_undisplayed")) {
+    ul.classList.replace("result_undisplayed", "result_displayed");
+    ingredientsIcon.classList.replace("fa-chevron-down", "fa-chevron-up");
+    ul2.classList.replace("result_displayed", "result_undisplayed");
+    ul2.innerHTML = "";
+    appareilsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
+    ul3.classList.replace("result_displayed", "result_undisplayed");
+    ul3.innerHTML = "";
+    ustensilsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
+    
+    //expand the button
+    //console.log(tags);
+    ingredients.forEach((ingredient) => {
+      const li = document.createElement("li");
+      li.textContent = ingredient;
+      li.className = "ingredient_item";
+      ul.appendChild(li);
+      //contentBtn.appendChild(ul);
+      //console.log(li); //<div btn>name<div>
+      //console.log(contentBtn);
+    });
+  } else {
+    ul.classList.replace("result_displayed", "result_undisplayed");
+    ul.innerHTML="";
+    ingredientsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
+  }
+  listIngredientsItems();
+});
+
+ingredientsInput.addEventListener("keyup", (e) => {
+  ul.innerHTML ="";
+  //console.log(contentBtn);
+  if (e.target.value.length > 3) {
+  const tags = initFilters(recipes);
   const query = e.target.value.toLowerCase();
-  console.log(query); //ok scibe pomm....
-  const searchresults = tags.ingredients.filter((ingredient) => {
-				return ingredient.toLowerCase().includes(query);
-			}); 
-      searchresults.forEach((result) => {
-        const addresults = document.createElement("div");
-        results.innerHtml = addresults ;
-        });
-        console.log(searchresults);
-        listIngredientsItems();
-			});*/
-     
-  const listIngredientsItems = () => {
-  const li = document.querySelectorAll(".ingredient_item");
-  li.forEach((item) => {
+  //const ul = document.querySelector("#links-ingredients .result");
+  //console.log(query); //ok scibe pomm....
+  const results = tags.ingredients.filter((ingredient) => {
+    return ingredient.toLowerCase().includes(query);
+  });
+  //console.log(results); //nbr [2] and name "pomme"..
+  results.forEach((result) => {
+    const li = document.createElement("li");
+      li.textContent = result;
+      li.className = "ingredient_item";
+      ul.appendChild(li);
+  });  
+  listIngredientsItems();
+}});
+
+const listIngredientsItems = () => {
+  let li = [];
+  li = document.querySelectorAll(".ingredient_item");
+ li.forEach((item) => {
     item.addEventListener("click", () => {
       selectedTags.push(item.textContent);
       const selectedTagsStop = [...new Set(selectedTags)];
-      createTagsBar(selectedTagsStop, recipes);
-      //console.log(createTagsBar);
-    });
-  });
-};
-		
-////////////////////////////////BUTTON 2 APPAREIL//////////////////////////////////
-
-btn2.onclick = function() {
-  let contentBtn2 = document.getElementById("links-appareils");
- 
-  //shrink the button
-  if (contentBtn2.style.display !== "none") {
-    contentBtn2.style.display = "none";
-    
-}else{
-  contentBtn2.style.display = "block";
-  //expand the button
-  const tags = initFilters(recipes);
-  tags.appareil.forEach((appliance) => {
-    const ul = document.querySelector("#links-appareils .result");
-    const li = document.createElement("li");
-    li.textContent = appliance;
-    li.className = "appareil_item";
-    ul.appendChild(li);
-  })};
-  listAppareilsItems();
-}
-
-const listAppareilsItems = () => {
-  const appareilsItems = document.querySelectorAll(".appareil_item");
-  appareilsItems.forEach((item) => {
-    item.addEventListener("click", () => {
-      selectedTags.push(item.textContent);
-      const selectedTagStop = [...new Set(selectedTags)];
-      createTagsBar(selectedTagStop, recipes);
-    });
+      createTagsBar(selectedTagsStop, "bg-primary", recipes);
+      //console.log(selectedTags); //ok ['pomme']
+      });
+      //console.log(li); ok li.ingredient_item
+      //console.log(item); ok balise <li class>name</li>
   });
 };
 
-///////////////////////////////////////BOUTON 3 USTENSILES/////////////////////////////////////////
+////////////////// btn2 APPAREIL BTN / INPUT / LIST /////////////////////////
 
-btn3.onclick = function() {
-  let contentBtn3 = document.getElementById("links-ustensiles");
-  
-  //shrink the button
-  if (contentBtn3.style.display !== "none") {
-    contentBtn3.style.display = "none";
-    
-}else{
-  contentBtn3.style.display = "block";
-      //expand the button
-      const tags = initFilters(recipes);
-  tags.ustensiles.forEach((ustensils) => {
-    const ul = document.querySelector("#links-ustensiles .result");
+btn2.addEventListener("click", () => {
+   //shrink the button
+   if (ul2.classList.contains("result_undisplayed")) {
+    ul2.classList.replace("result_undisplayed", "result_displayed");
+    appareilsIcon.classList.replace("fa-chevron-down", "fa-chevron-up");
+    ul.classList.replace("result_displayed", "result_undisplayed");
+    ul.innerHTML = "";
+    ingredientsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
+    ul3.classList.replace("result_displayed", "result_undisplayed");
+    ul3.innerHTML = "";
+    ustensilsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
+    //expand the button
+    //console.log(tags);
+    appareil.forEach((appliance) => {
+      const li = document.createElement("li");
+      li.textContent = appliance;
+      li.className = "appliance_item";
+      ul2.appendChild(li);
+      console.log(li); //<div btn>name<div>
+      //console.log(contentBtn);
+    });   
+  } else {   
+    ul2.innerHTML = "";
+    ul2.classList.replace("result_displayed", "result_undisplayed");
+    appareilsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
+  }  
+  listApplianceItems();
+});
+
+appareilInput.addEventListener("keyup", (e) => {
+  ul2.innerHTML="";
+  //console.log(contentBtn);
+  if (e.target.value.length > 3) {
+  const tags = initFilters(recipes); 
+  const query = e.target.value.toLowerCase();
+  //console.log(query); //ok scibe pomm....
+  const results = tags.appareil.filter((item) => {
+    return item.toLowerCase().includes(query);
+  });
+  //console.log(results); //nbr [2] and name "pomme"..
+  results.forEach((result) => {
     const li = document.createElement("li");
-    li.textContent = ustensils;
-    li.className = "ustensils_item";
-    ul.appendChild(li);
-  })};
-  listUstensilesItems();
-}
-
-const listUstensilesItems = () => {
-  const ustensilesItems = document.querySelectorAll(".ustensils_item");
-  console.log(ustensilesItems); //nodeList (30) li.ustensils_items
-  ustensilesItems.forEach((item) => {
-    item.addEventListener("click", () => {
-      selectedTags.push(item.textContent);
-      console.log(selectedTags);// number of selection all (3)
-      const selectedTagsStop = [...new Set(selectedTags)];
-      createTagsBar(selectedTagsStop, recipes);
+      li.textContent = result;
+      li.className = "appliance_item";
+      ul2.appendChild(li);
+  });  
+  listApplianceItems();
+}});
       
-    });
+const listApplianceItems = () => {
+  let li = [];
+  li = document.querySelectorAll(".appliance_item");
+ li.forEach((item) => {
+    item.addEventListener("click", () => {
+      selectedTags.push(item.textContent);
+      const selectedTagsStop = [...new Set(selectedTags)];
+      createTagsBar(selectedTagsStop, "bg-success", recipes);
+      console.log(selectedTags); //ok ['pomme']
+      });
+      //console.log(li); ok li.ingredient_item
+      //console.log(item); ok balise <li class>name</li>
   });
 };
+
+
+////////////////// btn3 USTENSILS BTN / INPUT / LIST /////////////////////////
+
+btn3.addEventListener("click", () => {
+  //shrink the button
+  if (ul3.classList.contains("result_undisplayed")) {
+    ul3.classList.replace("result_undisplayed", "result_displayed");
+    ustensilsIcon.classList.replace("fa-chevron-down", "fa-chevron-up");
+    ul2.classList.replace("result_displayed", "result_undisplayed");
+    ul2.innerHTML = "";
+    appareilsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
+    ul.classList.replace("result_displayed", "result_undisplayed");
+    ingredientsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
+   //expand the button
+   //console.log(tags);
+
+   ustensiles.forEach((ustensils) => {
+     const li = document.createElement("li");
+     li.textContent = ustensils;
+     li.className = "ustensils_item";
+     ul3.appendChild(li);
+     
+     console.log(li); //<div btn>name<div>
+  });    
+  } else {
+ 
+   ul3.innerHTML = "";
+    ul3.classList.replace("result_displayed", "result_undisplayed");
+    ustensilsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
+ }  
+ listUstensilsItems();
+});
+
+ustensilsInput.addEventListener("keyup", (e) => {
+  ul3.innerHTML = "";
+  //console.log(contentBtn);
+  if (e.target.value.length > 3) {
+  const tags = initFilters(recipes);
+  const query = e.target.value.toLowerCase();
+  //console.log(query); //ok scibe pomm....
+  const results = tags.ustensiles.filter((ustensil) => {
+    return ustensil.toLowerCase().includes(query);
+  });
+  //console.log(results); //nbr [2] and name "pomme"..
+  results.forEach((result) => {
+    const li = document.createElement("li");
+      li.textContent = result;
+      li.className = "ustensils_item";
+      ul3.appendChild(li);
+  });  
+  //console.log(results); ok idem [nbr + name results research]
+  listUstensilsItems();
+}});
+      
+const listUstensilsItems = () => {
+  let li = [];
+  li = document.querySelectorAll(".ustensils_item");
+ li.forEach((item) => {
+    item.addEventListener("click", () => {
+      selectedTags.push(item.textContent);
+      const selectedTagsStop = [...new Set(selectedTags)];
+      createTagsBar(selectedTagsStop, "bg-danger", recipes);
+      console.log(selectedTags); //ok ['pomme']
+      });
+      //console.log(li); //ok li.ingredient_item
+      //console.log(item); //ok balise <li class>name</li>
+  });
+};
+}

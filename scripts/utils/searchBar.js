@@ -1,14 +1,12 @@
-
-//ARRAY METHOD 
 let recipes = [];
-
 
 // GET JSON DATA API
 function getRecipes () {
   const recipes = fetch("./scripts/data/recipes.json")
         .then(data => data.json())
         .catch(err => console.log('Error', err));
-    return recipes;
+        return recipes;
+    
 }
 console.log(recipes);
 
@@ -19,15 +17,19 @@ async function initRecipes() {
   dropdownValues(recipes);
   displayRecipes(recipes);
   //console.log(recipes); Array(50);
-  searchRecipes(recipes, searchBarInput);
+  searchRecipes(recipes, search);
 }
 
-const searchRecipes = (recipes, searchBarInput) => {  
-  searchBarInput.addEventListener("keyup", (e) => {
-      if (e.target.value.length >= 3) {
+//algo 2 native 
+
+const searchRecipes = (recipes, search) => { 
+  
+  search.addEventListener("keyup", (e) => {
+    const query = e.target.value.toLowerCase();
+      if (query.length >= 3) {
         let result = [];
         results.innerHTML = "";
-        const query = e.target.value.toLowerCase();
+        
         for (let i = 0; i < recipes.length; i++) {
           const { name, ingredients, description } = recipes[i];
           const includesName = name.toLowerCase().includes(query);
@@ -66,6 +68,8 @@ const searchRecipes = (recipes, searchBarInput) => {
       }
     });
   };
+
+
 
  //DISPLAY create recipe card when write your word on the searchbar
 function displayRecipes(data) {
