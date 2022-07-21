@@ -130,11 +130,13 @@ btn2.addEventListener("click", () => {
 });
 
 appareilInput.addEventListener("keyup", (e) => {
+  ul2.innerHTML="";
   //console.log(contentBtn);
   if (e.target.value.length > 3) {
+  const tags = initFilters(recipes); 
   const query = e.target.value.toLowerCase();
   //console.log(query); //ok scibe pomm....
-  const results = appareil.filter((item) => {
+  const results = tags.appareil.filter((item) => {
     return item.toLowerCase().includes(query);
   });
   //console.log(results); //nbr [2] and name "pomme"..
@@ -196,11 +198,13 @@ btn3.addEventListener("click", () => {
 });
 
 ustensilsInput.addEventListener("keyup", (e) => {
+  ul3.innerHTML = "";
   //console.log(contentBtn);
   if (e.target.value.length > 3) {
+  const tags = initFilters(recipes);
   const query = e.target.value.toLowerCase();
   //console.log(query); //ok scibe pomm....
-  const results = ustensiles.filter((ustensil) => {
+  const results = tags.ustensiles.filter((ustensil) => {
     return ustensil.toLowerCase().includes(query);
   });
   //console.log(results); //nbr [2] and name "pomme"..

@@ -3,6 +3,10 @@ main {
   margin-top: 20px;
 }
 
+button:focus, input:focus {
+  box-shadow: none !important;
+}
+
 .container_header {
   display: flex;
   justify-content: center;
@@ -86,24 +90,23 @@ main {
 
 .result_displayed {
   position: absolute;
-  z-index: 2;
-  overflow: hidden;
-  transition: height 0.2s ease-in-out;
-  margin: 0px;
-  padding: 0px;
-}
-.result_displayed ul {
   list-style: none;
-  margin: 0;
   grid-template-columns: 160px 160px 160px;
   display: grid;
   padding: 15px;
   column-gap: 10px;
   width: fit-content;
+  z-index: 2;
+  overflow: hidden;
+  transition: height 0.2s ease-in-out;
+  margin: 0px;
+  padding: 20px;
+  border-radius: 5px;
 }
 
-.form-control {
+.input-dropdown.form-control {
   padding: 0px;
+  color: white;
 }
 
 #btn-ingredients, #btn-appliance, #btn-ustensils {
@@ -139,12 +142,16 @@ li {
   .btns-dropdown button {
     margin-inline-end: -20px;
   }
+
+  #btn-ingredients {
+    max-width: 100%;
+  }
 }
 @media screen and (max-width: 767px) {
   .btns-dropdown {
     flex-direction: column;
   }
-  .btns-dropdown .btn-dropdown-container {
+  .btns-dropdown .btn-dropdown-container.result_displayed {
     width: 100%;
   }
 }

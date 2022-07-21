@@ -1,11 +1,20 @@
-@import "./variables_overrides.scss";
+
+$white: #FFFFFF;
+$black: #000;
+$primaryGrey: #E7E7E7;
+$secondaryGrey: #C7BEBE;
+$primary: #3282F7;
+$success: #68D9A4;
+$danger: #ED6454;
 
 
 main {
   margin-top : 20px;
 }
 
-//color '${this-color} 
+button:focus, input:focus {
+  box-shadow: none !important;
+}
 
 /////////////////LOGO PETITS PLATS////////////////////
 .container_header {
@@ -23,7 +32,8 @@ main {
   width: 100%;
   cursor : pointer;
   padding : 0px;
-}
+  
+ }
 
 #search-bar {
   padding: 14px;
@@ -85,13 +95,14 @@ main {
   }
 }
 
+
+
 #input-ingredients:focus, #input-appliance:focus, #input-ustensils:focus {
   outline : none;
 }
 
 #input-ingredients::placeholder, #input-appliance::placeholder, #input-ustensils::placeholder {
   color : rgba(255,255,255,0.70);
-
 }
 
 .result_undisplayed {
@@ -99,29 +110,28 @@ main {
 }
 
 .result_displayed {
-  ul {
+  position : absolute;
     list-style : none;
-    margin: 0;
     grid-template-columns: 160px 160px 160px;
     display: grid;
     padding: 15px;
     column-gap: 10px;
-    width : fit-content;
-   
+    width : fit-content;  
+    z-index : 2;
+    overflow: hidden;
+    transition: height 0.2s ease-in-out;
+    margin : 0px;
+    padding : 20px;
+    border-radius: 5px;
+}
+
+.input-dropdown.form-control {
+    padding : 0px;
+    color : white;
     }
-  position : absolute;
-  z-index : 2;
-  overflow: hidden;
-  transition: height 0.2s ease-in-out;
-  margin : 0px;
-  padding : 0px;
-}
 
 
 
-.form-control{
-  padding : 0px;
-}
 
 #btn-ingredients, #btn-appliance, #btn-ustensils {
   border: none;
@@ -159,18 +169,20 @@ span {
         .form-control {
             font-size: 18px;
         }
-    }
-
-      button {
+      }
+    button {
             margin-inline-end: -20px;
                   }
+    }
+    #btn-ingredients {
+      max-width: 100%;
     }
 }
 
 @media screen and (max-width : 767px) {
   .btns-dropdown {
     flex-direction: column;
-    .btn-dropdown-container{
+    .btn-dropdown-container.result_displayed{
     width: 100%;
     }
 }
