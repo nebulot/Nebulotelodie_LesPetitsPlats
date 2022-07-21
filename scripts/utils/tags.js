@@ -8,26 +8,25 @@ const createTagsBar = (selectedTagsStop, type, recipes) => {
 		  tagsBox.className = `btn_tags ${type} w-auto rounded d-flex align-items-center text-white`;
 		  tagsBox.innerHTML = tag + `<span><i class="far fa-times-circle ms-2"></i></span>`;		  
 		  tags.append(tagsBox); 
-		  tagsBox.addEventListener("click", closeTags);
 		  //console.log(tag); // ok ex ananas
 		  //console.log(tags); // div class Tags
 		  //console.log(tagsBox); //div button+span
 		  
 	});
-	researchOnFilters(recipes, selectedTagsStop);
+	researchOnTags(recipes, selectedTagsStop);
 	
   }	
 
-  //close tags///
+  /*close tags///
   function closeTags(e) {
     const tagsBtn = [...tags.querySelectorAll("button")];
     console.log(tagsBtn);
     const [container] = tagsBtn.filter(btn => btn.contains(e.target));
 	container.remove();
-} 
+} */
 
 
-	const researchOnFilters = (recipes, selectedTagsStop) => {
+	const researchOnTags = (recipes, selectedTagsStop) => {
 	const tagsQuery = document.querySelectorAll(".btn_tags");
 	const tags = Array.from(tagsQuery);
 	const result = recipes.filter((recipe) => {
@@ -68,24 +67,25 @@ const createTagsBar = (selectedTagsStop, type, recipes) => {
 const listenOnTagBar = (tags, recipes) => {
 	tags.forEach((tag) => {
 		tag.addEventListener("click", () => {
-			removeFilter(tag, tags,recipes);
+			removeTag(tag, tags,recipes);
 		});
 	});
 	console.log(tags); //button + class erreur change de couleurs
 };
 
-const removeFilter = (selectedTags, arrayOfTag, recipes) => {
-	const index = arrayOfTag.indexOf(selectedTags);
-	arrayOfTag.slice(index, 0);
-	selectedTags.remove();
+const removeTag = (selectedTag, arrayOfTags, recipes) => {
+	const index = arrayOfTags.indexOf(selectedTag);
+	arrayOfTags.slice(index, 0);
+	selectedTag.remove();
 	selectedTags.splice(0, selectedTags.length)
-	if (!arrayOfTag.length) {
+	if (!arrayOfTags.length) {
 		results.innerHTML = "";
 		displayRecipes(recipes);
 	} else {
-		researchOnFilters(recipes, arrayOfTag);
-		//console.log(selectedTag); show on console the last tags used.
-	    //console.log(index); when  close the tag show (0)
-	    //console.log(arrayOfTag) array move btn-tags
+		researchOnTags(recipes, arrayOfTags);
+		//console.log(selectedTag); //show on console the last tags used.
+	    //console.log(index); //when  close the tag show nbr (0)
+	    //console.log(arrayOfTags) //array move btn-tags
+		console.log(selectedTags);
 	}
 };
