@@ -35,7 +35,7 @@ return { ingredients, appareil, ustensiles };
 
 ///////////////////////    (5) SEARCHBAR   ////////////////////////////////
 const main = document.querySelector(".main");
-const search = document.querySelector(".input-group ");
+const search = document.querySelector(".input-group");
 const results = document.querySelector(".results .receipe-container");
 const searchBarInput = search.querySelector("#search-bar");
 const submit = search.querySelector("span");
@@ -46,7 +46,7 @@ const submit = search.querySelector("span");
 
 ///////////////// (7)   SEARCHBAR event  display => searchBar.js  ///////////
 window.addEventListener('load', initRecipes);   //ask computer to querylength ?
-searchBarInput.addEventListener('keyup', searchRecipes);   //searchBar.js function
+//searchBarInput.addEventListener('keyup', searchRecipes);   //searchBar.js function
 search.addEventListener('submit', (e) => e.preventDefault()); //ALGO 2
 
 /////////////   RECIPE  RESULT CARD //////////////////////

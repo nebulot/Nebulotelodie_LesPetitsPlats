@@ -23,7 +23,6 @@ async function initRecipes() {
 //algo 2 native 
 
 const searchRecipes = (recipes, search) => { 
-  
   search.addEventListener("keyup", (e) => {
     const query = e.target.value.toLowerCase();
       if (query.length >= 3) {
@@ -40,7 +39,6 @@ const searchRecipes = (recipes, search) => {
               includesIngredients = true;
             }
           }
-          console.log(searchBarInput);
           if (includesName || includesDescription || includesIngredients) {
             result.push(recipes[i]);
           }
