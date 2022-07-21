@@ -70,9 +70,13 @@ main {
   width: 59%;
     //inferieur a 762
   gap : 6px;
+  .btn-dropdown-container {
+    width: 30%;
+  }
 
   .chevron-btn {
     border: none;
+    cursor : pointer;
     margin: 0;
     padding: 2px;
     box-sizing: border-box;
@@ -81,26 +85,39 @@ main {
   }
 }
 
+#input-ingredients:focus, #input-appliance:focus, #input-ustensils:focus {
+  outline : none;
+}
+
 #input-ingredients::placeholder, #input-appliance::placeholder, #input-ustensils::placeholder {
   color : rgba(255,255,255,0.70);
 
 }
 
-#links-ingredients.open, #links-appliance.open, #links-ustensils.open {
-  max-width: auto;
-  display : block;
+.result_undisplayed {
+  display : none ; 
 }
 
-#links-ingredients,#links-appliance, #links-ustensils {
-  display : none;
+.result_displayed {
+  ul {
+    list-style : none;
+    margin: 0;
+    grid-template-columns: 160px 160px 160px;
+    display: grid;
+    padding: 15px;
+    column-gap: 10px;
+    width : fit-content;
+   
+    }
   position : absolute;
   z-index : 2;
   overflow: hidden;
+  transition: height 0.2s ease-in-out;
   margin : 0px;
   padding : 0px;
-  transition: height 0.2s ease-in-out;
-  width : fit-content;
 }
+
+
 
 .form-control{
   padding : 0px;
@@ -118,14 +135,7 @@ main {
   padding-right : 6px;
 } 
 
-ul {
-  list-style : none;
-  margin: 0;
-  grid-template-columns: 160px 160px 160px;
-  display: grid;
-  padding: 15px;
-  column-gap: 10px;
-}
+
 
 li{
   cursor: pointer;
@@ -153,14 +163,10 @@ span {
 
       button {
             margin-inline-end: -20px;
-        }
-        .result-ingredients, .result-appliance, .result-ustensils {
-            font-size: larger;
-            line-height: 2;
-            // margin-bottom: 10px;
-        }
+                  }
     }
 }
+
 @media screen and (max-width : 767px) {
   .btns-dropdown {
     flex-direction: column;
@@ -170,15 +176,8 @@ span {
 }
 }
 
-  /*@media screen and (max-width : 767px) {
-   width: 100%;
-  }
-  @media screen and (max-width : 375px) {
-    width: 100%;
-    margin: 15px 0%;
-   }*/
 
-  ///////////////// DISPLAY CARD RECIPE///////////////////////////
+///////////////// DISPLAY CARD RECIPE///////////////////////////
   .receipe {
     display : flex;
   }

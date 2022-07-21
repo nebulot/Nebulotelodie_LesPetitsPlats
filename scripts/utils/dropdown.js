@@ -1,11 +1,10 @@
-//text create with [active] and [inactive] problem
 
+// (6) DROPDOWN DOM  (11) DROPDOWN events (click btn, keyup input, create tag)
 let selectedTags = [];
 
 
 const dropdownValues = (recipes) => {
   const { ingredients, appareil, ustensiles } = initFilters(recipes);
-
 
 //////////DOM ELEMENTS/////////////////////////////
 
@@ -13,40 +12,36 @@ const dropdownValues = (recipes) => {
 //search.addEventListener("click", closeAll);
 
 // close and open dropdown
-const btn1 = document.getElementById("btn-ingredients");
-const contentBtn = document.getElementById("links-ingredients");
-const ul = document.querySelector(".result-ingredients");
+const btn1 = document.querySelector("#btn-ingredients");
+const ul = document.querySelector(".result_ingredients");
 const ingredientsInput = document.querySelector("#input-ingredients");
 const ingredientsIcon = document.querySelector(".ingredients_arrow");
 
 
-const btn2 = document.getElementById("btn-appliance");
-const contentBtn2 = document.getElementById("links-appliance");
-const ul2 = document.querySelector(".result-appliance");
+const btn2 = document.querySelector("#btn-appliance");
+const ul2 = document.querySelector(".result_appliance");
 const appareilInput = document.querySelector("#input-appliance");
 const appareilsIcon = document.querySelector(".appliance_arrow");
 
-const btn3 = document.getElementById("btn-ustensils");
-const contentBtn3 = document.getElementById("links-ustensils");
-const ul3 = document.querySelector(".result-ustensils");
+const btn3 = document.querySelector("#btn-ustensils");
+const ul3 = document.querySelector(".result_ustensils");
 const ustensilsInput = document.querySelector("#input-ustensils");
 const ustensilsIcon = document.querySelector(".ustensils_arrow");
 
 //const li = document.querySelector(".ingredient_item")
 
-
+////////////////// btn1 INGREDIENT BTN / INPUT / LIST /////////////////////////
 btn1.addEventListener("click", () => {
   //shrink the button
-  if (contentBtn.style.display !== "none") {
-    contentBtn.style.display = "none";
-    ingredientsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
-  } else {
-    contentBtn.style.display = "block";
+  if (ul.classList.contains("result_undisplayed")) {
+    ul.classList.replace("result_undisplayed", "result_displayed");
     ingredientsIcon.classList.replace("fa-chevron-down", "fa-chevron-up");
-    contentBtn2.style.display = "none";
-    ul2.style.display = "none";
-    contentBtn3.style.display = "none";
-    ul3.style.display = "none";
+    ul2.classList.replace("result_displayed", "result_undisplayed");
+    ul2.innerHTML = "";
+    appareilsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
+    ul3.classList.replace("result_displayed", "result_undisplayed");
+    ul3.innerHTML = "";
+    ustensilsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
     
     //expand the button
     //console.log(tags);
@@ -55,11 +50,15 @@ btn1.addEventListener("click", () => {
       li.textContent = ingredient;
       li.className = "ingredient_item";
       ul.appendChild(li);
-      contentBtn.appendChild(ul);
+      //contentBtn.appendChild(ul);
       //console.log(li); //<div btn>name<div>
       //console.log(contentBtn);
     });
-  }  
+  } else {
+    ul.classList.replace("result_displayed", "result_undisplayed");
+    ul.innerHTML="";
+    ingredientsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
+  }
   listIngredientsItems();
 });
 
@@ -92,28 +91,26 @@ const listIngredientsItems = () => {
       selectedTags.push(item.textContent);
       const selectedTagsStop = [...new Set(selectedTags)];
       createTagsBar(selectedTagsStop, "bg-primary", recipes);
-      console.log(selectedTags); //ok ['pomme']
+      //console.log(selectedTags); //ok ['pomme']
       });
       //console.log(li); ok li.ingredient_item
       //console.log(item); ok balise <li class>name</li>
   });
 };
 
-////////////////////////////////BUTTON 2 APPAREIL//////////////////////////////////
+////////////////// btn2 APPAREIL BTN / INPUT / LIST /////////////////////////
 
 btn2.addEventListener("click", () => {
    //shrink the button
-   if (contentBtn2.style.display !== "none") {
-    contentBtn2.style.display = "none";
-    appareilsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
-  } else {
-    contentBtn2.style.display = "block";
+   if (ul2.classList.contains("result_undisplayed")) {
+    ul2.classList.replace("result_undisplayed", "result_displayed");
     appareilsIcon.classList.replace("fa-chevron-down", "fa-chevron-up");
-    contentBtn.style.display = "none";
-    ul.style.display = "none";
-    contentBtn3.style.display = "none";
-    ul3.style.display = "none";
-    
+    ul.classList.replace("result_displayed", "result_undisplayed");
+    ul.innerHTML = "";
+    ingredientsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
+    ul3.classList.replace("result_displayed", "result_undisplayed");
+    ul3.innerHTML = "";
+    ustensilsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
     //expand the button
     //console.log(tags);
     appareil.forEach((appliance) => {
@@ -121,10 +118,13 @@ btn2.addEventListener("click", () => {
       li.textContent = appliance;
       li.className = "appliance_item";
       ul2.appendChild(li);
-      contentBtn2.appendChild(ul2);
       console.log(li); //<div btn>name<div>
       //console.log(contentBtn);
-    });
+    });   
+  } else {   
+    ul2.innerHTML = "";
+    ul2.classList.replace("result_displayed", "result_undisplayed");
+    appareilsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
   }  
   listApplianceItems();
 });
@@ -163,21 +163,18 @@ const listApplianceItems = () => {
 };
 
 
-///////////////////////////////////////BOUTON 3 USTENSILES/////////////////////////////////////////
+////////////////// btn3 USTENSILS BTN / INPUT / LIST /////////////////////////
 
 btn3.addEventListener("click", () => {
   //shrink the button
-  if (contentBtn3.style.display !== "none") {
-   contentBtn3.style.display = "none";
-   ustensilsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
- } else {
-   contentBtn3.style.display = "block";
-   ustensilsIcon.classList.replace("fa-chevron-down", "fa-chevron-up");
-   contentBtn.style.display = "none";
-   ul.style.display = "none";
-   contentBtn2.style.display = "none";
-   ul2.style.display = "none";
-   
+  if (ul3.classList.contains("result_undisplayed")) {
+    ul3.classList.replace("result_undisplayed", "result_displayed");
+    ustensilsIcon.classList.replace("fa-chevron-down", "fa-chevron-up");
+    ul2.classList.replace("result_displayed", "result_undisplayed");
+    ul2.innerHTML = "";
+    appareilsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
+    ul.classList.replace("result_displayed", "result_undisplayed");
+    ingredientsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
    //expand the button
    //console.log(tags);
 
@@ -186,10 +183,14 @@ btn3.addEventListener("click", () => {
      li.textContent = ustensils;
      li.className = "ustensils_item";
      ul3.appendChild(li);
-     contentBtn3.appendChild(ul3);
+     
      console.log(li); //<div btn>name<div>
-     //console.log(contentBtn);
-   });
+  });    
+  } else {
+ 
+   ul3.innerHTML = "";
+    ul3.classList.replace("result_displayed", "result_undisplayed");
+    ustensilsIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
  }  
  listUstensilsItems();
 });
@@ -199,8 +200,8 @@ ustensilsInput.addEventListener("keyup", (e) => {
   if (e.target.value.length > 3) {
   const query = e.target.value.toLowerCase();
   //console.log(query); //ok scibe pomm....
-  const results = ustensiles.filter((ustensils) => {
-    return ustensils.toLowerCase().includes(query);
+  const results = ustensiles.filter((ustensil) => {
+    return ustensil.toLowerCase().includes(query);
   });
   //console.log(results); //nbr [2] and name "pomme"..
   results.forEach((result) => {
@@ -209,6 +210,7 @@ ustensilsInput.addEventListener("keyup", (e) => {
       li.className = "ustensils_item";
       ul3.appendChild(li);
   });  
+  //console.log(results); ok idem [nbr + name results research]
   listUstensilsItems();
 }});
       
@@ -222,8 +224,8 @@ const listUstensilsItems = () => {
       createTagsBar(selectedTagsStop, "bg-danger", recipes);
       console.log(selectedTags); //ok ['pomme']
       });
-      //console.log(li); ok li.ingredient_item
-      //console.log(item); ok balise <li class>name</li>
+      //console.log(li); //ok li.ingredient_item
+      //console.log(item); //ok balise <li class>name</li>
   });
 };
 }

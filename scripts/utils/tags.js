@@ -1,4 +1,4 @@
-///////////////////////////////Tags Bar filter////////////////////////////////////////
+///////////////////////////////(13) Tags Bar filter////////////////////////////////////////
  
   const createTagsBar = (selectedTagsStop, type ,recipes) => {
     const tags = document.querySelector(".tags");
@@ -10,13 +10,13 @@
 		  tagsBox. innerHTML = tag + `<span><i class="far fa-times-circle ms-2"></i></span>`;		  
 		  tags.append(tagsBox); 
 		  tagsBox.addEventListener("click", closeTags);
-		  console.log(tag);
+		  //console.log(tag); // ok ex ananas
 		  //console.log(tags); // div class Tags
-		  console.log(tagsBox); //div button+span
+		  //console.log(tagsBox); //div button+span
 		  
 	});
 	researchOnFilters(recipes, selectedTagsStop);
-	//console.log(recipe)
+	
   }	
 
   //close tags///
@@ -61,7 +61,7 @@
     alert.innerHTML = `Aucune recette ne correspond à votre critère… </br> vous pouvez
 		chercher « tarte aux pommes », « poisson », etc`
 		results.appendChild(alert);	
-		console.log(results);
+		console.log(result);
 	};
 };
 
@@ -71,7 +71,7 @@ const listenOnTagBar = (tags, recipes) => {
 			removeFilter(tag, tags, recipes);
 		});
 	});
-	console.log(tags);
+	//console.log(tags); //button + class
 };
 
 const removeFilter = (selectedTag, arrayOfTag, recipes) => {

@@ -1,19 +1,17 @@
 //ARRAY METHOD 
 
-// CREATE NEW ARRAY ''
+// (11)CREATE NEW ARRAY ''
 let recipes = [];
 let searchResult = [];
 let queryLength = 0;
 
-// GET JSON DATA API
+// (1) GET JSON DATA API
 function getRecipes () {
   const recipes = fetch("./scripts/data/recipes.json")
         .then(data => data.json())
         .catch(err => console.log('Error', err));
     return recipes;
 }
-
-
 // INIT //async here not in index.js
 async function initRecipes() {
   recipes = await getRecipes();
@@ -24,6 +22,7 @@ async function initRecipes() {
   displayRecipes(recipes);
 }
 
+//  algo 1 _ ARRAY
 function searchRecipes() {
   const query = this.value;
   if (query.length > 2) {
