@@ -129,15 +129,15 @@ button:focus, input:focus {
   display: grid;
   padding: 13px;
   column-gap: 5px;
-  width: fit-content;
   z-index: 2;
   overflow: hidden;
   transition: height 0.2s ease-in-out;
   margin: 0px;
   border-radius: 5px;
+  width: fit-content;
 }
 
-.input-dropdown.form-control {
+.input-dropdown {
   padding: 0px;
   color: white;
 }
@@ -161,10 +161,7 @@ li {
 
 /*rappel en dessous de 767 ecran 
 //il faut réduire l'affichage des bouton */
-@media (min-width: 767px) {
-  .btns-dropdown {
-    flex-direction: inline;
-  }
+@media (min-width: 768px) {
   .btns-dropdown .input-group .form-control {
     font-size: 18px;
   }
@@ -172,19 +169,19 @@ li {
     margin-inline-end: -20px;
   }
 
-  #btn-ingredients {
-    max-width: 100%;
+  .input-dropdown {
+    width: 100%;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .btns-dropdown {
     flex-direction: column;
     width: 100%;
   }
-  .btns-dropdown .btn-dropdown-container.result_displayed {
+  .btns-dropdown .btn-dropdown-container {
     width: 100%;
   }
-  .btns-dropdown .btn-dropdown-container {
+  .btns-dropdown .btn-dropdown-container .result_displayed {
     width: 100%;
   }
 }
