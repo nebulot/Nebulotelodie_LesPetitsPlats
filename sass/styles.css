@@ -140,7 +140,6 @@ button:focus, input:focus {
 .input-dropdown.form-control {
   padding: 0px;
   color: white;
-  background-color: none;
 }
 
 #btn-ingredients, #btn-appliance, #btn-ustensils {
@@ -163,14 +162,15 @@ li {
 /*rappel en dessous de 767 ecran 
 //il faut réduire l'affichage des bouton */
 @media (min-width: 768px) {
-  .btns-dropdown {
-    flex-direction: inline;
-  }
   .btns-dropdown .input-group .form-control {
     font-size: 18px;
   }
   .btns-dropdown button {
     margin-inline-end: -20px;
+  }
+
+  .input-dropdown {
+    width: 100%;
   }
 }
 @media screen and (max-width: 768px) {
@@ -191,10 +191,6 @@ li {
     grid-template-columns: 160px 160px;
     padding: 10px;
     gap: 3px;
-  }
-
-  .tags {
-    flex-wrap: wrap;
   }
 }
 .receipe {
