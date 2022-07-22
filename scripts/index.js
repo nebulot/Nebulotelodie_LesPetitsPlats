@@ -2,25 +2,21 @@
 const dropdownsBar = document.querySelector(".btns-dropdown");
 const tags = document.querySelector(".tags");
 
-
-
 //////////// (9) create an alert display under searchbar to success or danger research //////
 let globalRecipesList = recipes.slice();
 console.log(recipes); //=> searchBar arrayalgo.js
 
 // research array from all btns dropdownfilters
-//=> function on click() check dropdownsBar.js
+// simulate an api , to put a new result modification on new array
 const initFilters = (recipes) => {
 	let ingredients = [];
 	let appareil = [];
 	let ustensiles = [];
-  //console.log(ingredients); ok []
-  //console.log(appareil); ok []
-
+  
+//loop on all recipes when the users search or click on a tags (filter)
 recipes.forEach((recipe) => {
-  ingredients = [
-          // chercher un tri doublons, majuscules,...
-    ...new Set([...ingredients, ...recipe.ingredients.map((i) => i.ingredient)])].sort();
+  ingredients = [          
+  ...new Set([...ingredients, ...recipe.ingredients.map((i) => i.ingredient)])].sort();
   ustensiles = [...new Set([...ustensiles, ...recipe.ustensils.map((u) => u)])].sort();
   appareil = [...new Set([...appareil, ...[recipe.appliance]])].sort();
   //console.log(ingredients); ok {'coco' 'noix de coco' .....}/recette

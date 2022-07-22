@@ -1,6 +1,7 @@
 let recipes = [];
 
-// GET JSON DATA API
+// (1)GET JSON DATA API
+//Simulates a connection to a database with a json file
 function getRecipes () {
   const recipes = fetch("./scripts/data/recipes.json")
         .then(data => data.json())
@@ -10,7 +11,7 @@ function getRecipes () {
 }
 console.log(recipes);
 
-// INIT //async here not in index.js
+// (13) INIT RECEIPES with all utils and components
 async function initRecipes() {
   recipes = await getRecipes();
   initFilters(recipes);
@@ -20,7 +21,12 @@ async function initRecipes() {
   searchRecipes(recipes, search);
 }
 
-//algo 2 native 
+
+ /** 
+     *algo 2 native 
+     * get all ingredients' receipes
+     * @returns {array} array with all ingredients' receipes
+     */
 
 const searchRecipes = (recipes, search) => { 
   search.addEventListener("keyup", (e) => {

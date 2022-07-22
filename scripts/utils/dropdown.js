@@ -5,6 +5,7 @@ let selectedTags = [];
 const dropdownValues = (recipes) => {
   const { ingredients, appareil, ustensiles } = initFilters(recipes);
 
+
 //////////DOM ELEMENTS/////////////////////////////
 
 //main.addEventListener("click", closeAll);
@@ -89,7 +90,7 @@ const listIngredientsItems = () => {
     item.addEventListener("click", () => {
       selectedTags.push(item.textContent);
       const selectedTagsStop = [...new Set(selectedTags)];
-      createTagsBar(selectedTagsStop, "bg-primary", recipes);
+      createTagsBar(selectedTagsStop, "ingredient", recipes);
       //console.log(selectedTags); //ok ['pomme']
       });
       //console.log(li); ok li.ingredient_item
@@ -155,7 +156,7 @@ const listApplianceItems = () => {
     item.addEventListener("click", () => {
       selectedTags.push(item.textContent);
       const selectedTagsStop = [...new Set(selectedTags)];
-      createTagsBar(selectedTagsStop, "bg-success", recipes);
+      createTagsBar(selectedTagsStop, "appliance", recipes);
       console.log(selectedTags); //ok ['pomme']
       });
       //console.log(li); ok li.ingredient_item
@@ -224,7 +225,7 @@ const listUstensilsItems = () => {
     item.addEventListener("click", () => {
       selectedTags.push(item.textContent);
       const selectedTagsStop = [...new Set(selectedTags)];
-      createTagsBar(selectedTagsStop, "bg-danger", recipes);
+      createTagsBar(selectedTagsStop, "ustensil", recipes);
       console.log(selectedTags); //ok ['pomme']
       });
       //console.log(li); //ok li.ingredient_item

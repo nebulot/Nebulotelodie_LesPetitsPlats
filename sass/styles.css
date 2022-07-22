@@ -1,4 +1,24 @@
 @charset "UTF-8";
+.bg-blue {
+  background-color: #3282F7;
+}
+
+.bg-green {
+  background-color: #68D9A4;
+}
+
+.bg-red {
+  background-color: #ED6454;
+}
+
+.bg-light {
+  background-color: #E7E7E7;
+}
+
+.bg-grey {
+  background-color: #C7BEBE;
+}
+
 main {
   margin-top: 20px;
 }
@@ -37,28 +57,38 @@ button:focus, input:focus {
 
 .tags {
   display: flex;
-  gap: 10px;
   cursor: pointer;
   margin: 0.5rem 0rem 0.5rem 0rem;
   padding: 0.5rem 0.3rem;
 }
-.tags .tag {
+
+.btn_tags {
   font-size: 14px;
   margin: 1rem 0;
   margin-right: 1rem;
   padding: 0.5rem;
   border: none;
+  cursor: pointer;
 }
 
-.alerts {
-  padding: 1rem 0;
+.tag-ingredient {
+  background-color: #3282F7;
 }
-.alerts .alert {
-  display: none;
+
+.tag-appliance {
+  background-color: #68D9A4;
 }
-.alerts .alert.displayed {
+
+.tag-ustensil {
+  background-color: #ED6454;
+}
+
+.alert_Msg {
   display: flex;
   justify-content: space-between;
+  background-color: #ED6454;
+  width: 90%;
+  margin-left: 25px;
 }
 
 .btns-dropdown {
@@ -68,7 +98,7 @@ button:focus, input:focus {
   gap: 6px;
 }
 .btns-dropdown .btn-dropdown-container {
-  width: 30%;
+  width: 36%;
 }
 .btns-dropdown .chevron-btn {
   border: none;
@@ -95,16 +125,15 @@ button:focus, input:focus {
 .result_displayed {
   position: absolute;
   list-style: none;
-  grid-template-columns: 160px 160px 160px;
+  grid-template-columns: 140px 140px 140px;
   display: grid;
-  padding: 15px;
-  column-gap: 10px;
+  padding: 13px;
+  column-gap: 5px;
   width: fit-content;
   z-index: 2;
   overflow: hidden;
   transition: height 0.2s ease-in-out;
   margin: 0px;
-  padding: 20px;
   border-radius: 5px;
 }
 
@@ -130,10 +159,6 @@ li {
   font-size: 16px;
 }
 
-.btn_tags span {
-  cursor: pointer;
-}
-
 /*rappel en dessous de 767 ecran 
 //il faut réduire l'affichage des bouton */
 @media (min-width: 767px) {
@@ -154,9 +179,21 @@ li {
 @media screen and (max-width: 767px) {
   .btns-dropdown {
     flex-direction: column;
+    width: 100%;
   }
   .btns-dropdown .btn-dropdown-container.result_displayed {
     width: 100%;
+  }
+  .btns-dropdown .btn-dropdown-container {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 558px) {
+  .result_displayed {
+    width: 100%;
+    grid-template-columns: 160px 160px;
+    padding: 10px;
+    gap: 3px;
   }
 }
 .receipe {

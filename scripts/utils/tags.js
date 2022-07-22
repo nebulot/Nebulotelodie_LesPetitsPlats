@@ -3,9 +3,11 @@
 const createTagsBar = (selectedTagsStop, type, recipes) => {
     const tags = document.querySelector(".tags");
 	tags.innerHTML ="";
+
+	//diplay tagsbox return HTMLElement
 	selectedTagsStop.forEach((tag) => {
 		  const tagsBox = document.createElement("button");
-		  tagsBox.className = `btn_tags ${type} w-auto rounded d-flex align-items-center text-white`;
+		  tagsBox.className = `btn_tags tag-${type} w-auto rounded d-flex align-items-center text-white`;
 		  tagsBox.innerHTML = tag + `<span><i class="far fa-times-circle ms-2"></i></span>`;		  
 		  tags.append(tagsBox); 
 		  //console.log(tag); // ok ex ananas
@@ -16,22 +18,14 @@ const createTagsBar = (selectedTagsStop, type, recipes) => {
 	researchOnTags(recipes, selectedTagsStop);
 	
   }	
-
-  /*close tags///
-  function closeTags(e) {
-    const tagsBtn = [...tags.querySelectorAll("button")];
-    console.log(tagsBtn);
-    const [container] = tagsBtn.filter(btn => btn.contains(e.target));
-	container.remove();
-} */
-
-
-	const researchOnTags = (recipes, selectedTagsStop) => {
+    const researchOnTags = (recipes, selectedTagsStop) => {
 	const tagsQuery = document.querySelectorAll(".btn_tags");
 	const tags = Array.from(tagsQuery);
+		
 	const result = recipes.filter((recipe) => {
 		return tags.every((item) => {
 			const formatedItem = item.textContent.toLowerCase();
+			console.log(tags);
 			return (
 				recipe.ingredients.some((i) => {
 					return i.ingredient.toLowerCase().includes(formatedItem);
@@ -56,13 +50,15 @@ const createTagsBar = (selectedTagsStop, type, recipes) => {
 		listenOnTagBar(tags, recipes);
 		results.innerHTML = "";
     const alert = document.createElement("span");
-    alert.className = "alert_Msg bg-danger rounded text-white py-4";
+    alert.className = "alert_Msg rounded text-white py-4";
     alert.innerHTML = `Aucune recette ne correspond à votre critère… </br> vous pouvez
 		chercher « tarte aux pommes », « poisson », etc`
 		results.appendChild(alert);	
 		console.log(result);
 	};
 };
+
+// add display tag when you click on li item you create tag
 
 const listenOnTagBar = (tags, recipes) => {
 	tags.forEach((tag) => {
@@ -72,6 +68,16 @@ const listenOnTagBar = (tags, recipes) => {
 	});
 	console.log(tags); //button + class erreur change de couleurs
 };
+
+
+// closed select tag and reset the new array result (receipes)
+
+/**
+ * 
+ * @param {string} arrayOfTags
+ * @param {number} index 
+ * and return
+ */
 
 const removeTag = (selectedTag, arrayOfTags, recipes) => {
 	const index = arrayOfTags.indexOf(selectedTag);
