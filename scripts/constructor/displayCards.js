@@ -67,7 +67,7 @@ class RecipeCard {
     card.className = "receipe col-12 col-md-6 col-lg-4";
     card.innerHTML = `
     <div class="card rounded border-0">
-    <div class="card-header bg-secondary"></div>
+    <div class="card-header bg-grey"></div>
 	    <div class="card-body bg-light">
 	    <div class="title-time">
 		 <h5 class="card-title m-0 font-weight-light">
