@@ -7,9 +7,9 @@ const createTagsBar = (selectedTagsStop, type, recipes) => {
   //diplay tagsbox return HTMLElement
   selectedTagsStop.forEach((tag) => {
     const tagsBox = document.createElement("button");
-    tagsBox.className = `btn_tags tag-${type} w-auto rounded d-flex align-items-center text-white`;
+    tagsBox.className = `btn_tags tag-${tag.type} w-auto rounded d-flex align-items-center text-white`;
     tagsBox.innerHTML =
-      tag + `<span><i class="far fa-times-circle ms-2"></i></span>`;
+      tag.text + `<span><i class="far fa-times-circle ms-2"></i></span>`;
     tags.append(tagsBox);
     //console.log(tag); // ok ex ananas
     //console.log(tags); // div class Tags
@@ -51,7 +51,7 @@ const researchOnTags = (recipes, selectedTagsStop) => {
     const alert = document.createElement("span");
     alert.className = "alert_Msg rounded text-white py-4";
     alert.innerHTML = `Aucune recette ne correspond à votre critère… </br> vous pouvez
-		chercher « tarte aux pommes », « poisson », etc`;
+		  chercher « tarte aux pommes », « poisson », etc`;
     results.appendChild(alert);
     console.log(result);
   }

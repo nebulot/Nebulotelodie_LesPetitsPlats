@@ -58,4 +58,4 @@ function displayResults() {
       
   }
   // displayResults give the number results of the research on the search bar
-};
+}
