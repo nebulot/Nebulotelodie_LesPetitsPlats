@@ -3,7 +3,7 @@ let selectedTags = [];
 
 
 const dropdownValues = (recipes) => {
-  const { ingredients, appareil, ustensiles } = initFilters(recipes);
+ const { ingredients, appareil, ustensiles } = initFilters(recipes);
 
 
 //////////DOM ELEMENTS/////////////////////////////
@@ -88,7 +88,12 @@ const listIngredientsItems = () => {
   li = document.querySelectorAll(".ingredient_item");
  li.forEach((item) => {
     item.addEventListener("click", () => {
-      selectedTags.push(item.textContent);
+      let tab = {
+        "text": item.textContent,
+        "type" : "ingredient"
+      };
+      
+      selectedTags.push(tab);
       const selectedTagsStop = [...new Set(selectedTags)];
       createTagsBar(selectedTagsStop, "ingredient", recipes);
       //console.log(selectedTags); //ok ['pomme']
@@ -154,7 +159,11 @@ const listApplianceItems = () => {
   li = document.querySelectorAll(".appliance_item");
  li.forEach((item) => {
     item.addEventListener("click", () => {
-      selectedTags.push(item.textContent);
+      let tab = {
+        "text": item.textContent,
+        "type" : "appliance"
+      };
+      selectedTags.push(tab);
       const selectedTagsStop = [...new Set(selectedTags)];
       createTagsBar(selectedTagsStop, "appliance", recipes);
       console.log(selectedTags); //ok ['pomme']
@@ -223,7 +232,11 @@ const listUstensilsItems = () => {
   li = document.querySelectorAll(".ustensils_item");
  li.forEach((item) => {
     item.addEventListener("click", () => {
-      selectedTags.push(item.textContent);
+      let tab = {
+        "text": item.textContent,
+        "type" : "ustensil"
+      };
+      selectedTags.push(tab);
       const selectedTagsStop = [...new Set(selectedTags)];
       createTagsBar(selectedTagsStop, "ustensil", recipes);
       console.log(selectedTags); //ok ['pomme']

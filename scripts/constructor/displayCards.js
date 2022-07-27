@@ -56,7 +56,8 @@ class RecipeCard {
   // when description is too long, remove by "&hellip;" => ...
   get shortDescription() {
     const limit = 200;
-    if (this._description.length <= limit) return this._description;
+    if (this._description.length <= limit) 
+    return this._description;
     let description = this._description.substr(0, limit - 1);
     return description.substr(0, description.lastIndexOf(" ")) + " &hellip;";
   }

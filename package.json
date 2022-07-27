@@ -18,5 +18,8 @@
   "homepage": "https://github.com/nebulot/p7_nebulot_elodie#readme",
   "dependencies": {
     "bootstrap": "file:bootstrap"
+  },
+  "devDependencies": {
+    "eslint": "^8.20.0"
   }
 }
