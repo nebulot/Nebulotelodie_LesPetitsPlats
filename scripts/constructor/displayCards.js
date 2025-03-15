@@ -69,7 +69,7 @@ class RecipeCard {
     <div class="card rounded border-0">
     <div class="card-header bg-grey">
     <div class="recipe-img-container">
-    <img src="assets/recettes/${this._image}" alt="${this._name}"></div>
+    <img src="./assets/recettes/${this._image}" alt="${this._name}"></div>
     </div>
 
 	    <div class="card-body bg-light">
