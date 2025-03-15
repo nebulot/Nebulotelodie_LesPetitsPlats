@@ -65,11 +65,13 @@ class RecipeCard {
   make() {
     const card = document.createElement("div");
     card.className = "receipe col-12 col-md-6 col-lg-4";
+	  console.log("Image URL:", `assets/recettes/${this._image}`);
+
     card.innerHTML = `
     <div class="card rounded border-0">
     <div class="card-header bg-grey">
     <div class="recipe-img-container">
-    <img src="assets/recettes/${this._image}" alt="${this._name}"></div>
+    <img src="./assets/recettes/${this._image}" alt="${this._name}"></div>
     </div>
 
 	    <div class="card-body bg-light">
