@@ -18,11 +18,12 @@ class RecipeCard {
     this.recipe = recipe;
     this._id = recipe.id;
     this._name = recipe.name;
+    this._image = recipe.image;
     this._description = recipe.description;
     this._time = recipe.time;
     this._servings = recipe.servings;
     this._ingredients = recipe.ingredients;
-    this._ingredient= recipe.ingredient;
+    this._ingredient = recipe.ingredient;
     this._ustensils = recipe.ustensils;
     this._appliance = recipe.appliance;
   }
@@ -31,26 +32,24 @@ class RecipeCard {
   //create li to put ingredients[array].ingredients.ingredients
 
   get ingredientsList() {
-    
     let ingredientsList = "";
     this._ingredients.forEach((ingredient) => {
       if (ingredient.quantity) {
         if (ingredient.unit && ingredient.quantity) {
-        ingredientsList += `
-      <li class = "recipe-ingredients"> <strong>${ingredient.ingredient}</strong> : ${
-          ingredient.quantity ?? ""
-        } ${ingredient.unit ?? ""} </li>`;
-      } else {
-      ingredientsList += `
-      <li class= "recipe-ingredients"><strong>${ingredient.ingredient}</strong> :  ${
-        ingredient.quantity}
+          ingredientsList += `
+      <li class = "recipe-ingredients"> <strong>${
+        ingredient.ingredient
+      }</strong> : ${ingredient.quantity ?? ""} ${ingredient.unit ?? ""} </li>`;
+        } else {
+          ingredientsList += `
+      <li class= "recipe-ingredients"><strong>${ingredient.ingredient}</strong> :  ${ingredient.quantity}
        </li>`;
-    }
+        }
       } else {
         ingredientsList += `
       <li class= "recipe-ingredients"><strong>${ingredient.ingredient}</strong></li>`;
       }
-     });
+    });
     return ingredientsList;
   }
 
@@ -68,7 +67,11 @@ class RecipeCard {
     card.className = "receipe col-12 col-md-6 col-lg-4";
     card.innerHTML = `
     <div class="card rounded border-0">
-    <div class="card-header bg-grey"></div>
+    <div class="card-header bg-grey">
+    <div class="recipe-img-container">
+    <img src="assets/recettes/${this._image}" alt="${this._name}"></div>
+    </div>
+
 	    <div class="card-body bg-light">
 	    <div class="title-time">
 		 <h5 class="card-title m-0 font-weight-light">
@@ -89,10 +92,6 @@ class RecipeCard {
 	 </div>
    </div>
    </div>`;
-   return card
-   
-    
+    return card;
   }
-
-
 }

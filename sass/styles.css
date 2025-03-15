@@ -1,29 +1,30 @@
 @charset "UTF-8";
 .bg-blue {
-  background-color: #3282F7;
+  background-color: #3282f7;
 }
 
 .bg-green {
-  background-color: #68D9A4;
+  background-color: #68d9a4;
 }
 
 .bg-red {
-  background-color: #ED6454;
+  background-color: #ed6454;
 }
 
 .bg-light {
-  background-color: #E7E7E7;
+  background-color: #e7e7e7;
 }
 
 .bg-grey {
-  background-color: #C7BEBE;
+  background-color: #c7bebe;
 }
 
 main {
   margin-top: 20px;
 }
 
-button:focus, input:focus {
+button:focus,
+input:focus {
   box-shadow: none !important;
 }
 
@@ -72,21 +73,21 @@ button:focus, input:focus {
 }
 
 .tag-ingredient {
-  background-color: #3282F7;
+  background-color: #3282f7;
 }
 
 .tag-appliance {
-  background-color: #68D9A4;
+  background-color: #68d9a4;
 }
 
 .tag-ustensil {
-  background-color: #ED6454;
+  background-color: #ed6454;
 }
 
 .alert_Msg {
   display: flex;
   justify-content: space-between;
-  background-color: #ED6454;
+  background-color: #ed6454;
   width: 90%;
   margin-left: 25px;
 }
@@ -110,11 +111,15 @@ button:focus, input:focus {
   border-radius: 0 5px 5px 0;
 }
 
-#input-ingredients:focus, #input-appliance:focus, #input-ustensils:focus {
+#input-ingredients:focus,
+#input-appliance:focus,
+#input-ustensils:focus {
   outline: none;
 }
 
-#input-ingredients::placeholder, #input-appliance::placeholder, #input-ustensils::placeholder {
+#input-ingredients::placeholder,
+#input-appliance::placeholder,
+#input-ustensils::placeholder {
   color: rgba(255, 255, 255, 0.7);
 }
 
@@ -142,7 +147,9 @@ button:focus, input:focus {
   color: white;
 }
 
-#btn-ingredients, #btn-appliance, #btn-ustensils {
+#btn-ingredients,
+#btn-appliance,
+#btn-ustensils {
   border: none;
   outline: none;
   display: flex;
@@ -249,6 +256,22 @@ li {
   -webkit-line-clamp: 6;
   /* number of lines to show */
   -webkit-box-orient: vertical;
+}
+
+.recipe-img-container {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+}
+
+.recipe-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /*# sourceMappingURL=styles.css.map */
