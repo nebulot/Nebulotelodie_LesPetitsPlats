@@ -49,7 +49,7 @@ Le projet sera accessible via http://localhost:3000, avec un rechargement automa
 => 
 [Liens du benchmark](https://jsben.ch/uTLlJ)
 => W3C validator 
-[Liens W3C](https://jsben.ch/uTLlJ)
+[Liens W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Fnebulot.github.io%2FNebulotelodie_LesPetitsPlats%2F)
 
 
 
